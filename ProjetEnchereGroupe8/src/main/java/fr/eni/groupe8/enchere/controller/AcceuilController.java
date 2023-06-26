@@ -1,14 +1,24 @@
 package fr.eni.groupe8.enchere.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
-public class AcceuilController { //Contrôleur pour la page d'accueil et la recherche d'articles. {
+import fr.eni.groupe8.enchere.bll.ArticlesService;
 
-	@GetMapping("/")
-	public static Acceuil() {
-		return "acceuil"
+
+@Controller
+public class AcceuilController { //Contrôleur pour la page d'accueil et la recherche d'articles.
+	private ArticlesService service;
+	
+	@Autowired
+	public AcceuilController(ArticlesService service) {
+		this.service = service; 
 	}
-}
+
+	@GetMapping({"/", "acceuil"})
+	public String afficherAcceuil() {
+		return "acceuil";
+	}
+	}
+
