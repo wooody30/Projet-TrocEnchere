@@ -1,6 +1,7 @@
 package fr.eni.groupe8.enchere.bo;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -9,13 +10,13 @@ public class Article {
 	private Integer noArticle;
 	private String nomArticle;
 	private String description;
-	private LocalDateTime dateDebutEncheres;
-	private LocalDateTime dateFinEncheres;
+	private LocalDate dateDebutEncheres;
+	private LocalDate dateFinEncheres;
 	private LocalTime heureDebutEnchere;
 	private LocalTime heureFinEnchere;
 	private int prixInitial;
 	private int prixVente;
-	private String etatVente;
+	private boolean etatVente;
 	private Utilisateur vendeur;
 	private Categorie noCategorie;
 
@@ -23,9 +24,9 @@ public class Article {
 
 	}
 
-	public Article(Integer noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres,
-			LocalDateTime dateFinEncheres, LocalTime heureDebutEnchere, LocalTime heureFinEnchere,
-			int prixInitial, int prixVente, String etatVente, Utilisateur vendeur,
+	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, LocalTime heureDebutEnchere, LocalTime heureFinEnchere,
+			int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
 			Categorie noCategorie) {
 		super();
 		this.noArticle = noArticle;
@@ -41,6 +42,7 @@ public class Article {
 		this.vendeur = vendeur;
 		this.noCategorie = noCategorie;
 	}
+
 
 	public Integer getNoArticle() {
 		return noArticle;
@@ -66,19 +68,19 @@ public class Article {
 		this.description = description;
 	}
 
-	public LocalDateTime getDateDebutEncheres() {
+	public LocalDate getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
 
-	public void setDateDebutEncheres(LocalDateTime dateDebutEncheres) {
+	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
 
-	public LocalDateTime getDateFinEncheres() {
+	public LocalDate getDateFinEncheres() {
 		return dateFinEncheres;
 	}
 
-	public void setDateFinEncheres(LocalDateTime dateFinEncheres) {
+	public void setDateFinEncheres(LocalDate dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 
@@ -98,11 +100,11 @@ public class Article {
 		this.prixVente = prixVente;
 	}
 
-	public String getEtatVente() {
+	public Boolean getEtatVente() {
 		return etatVente;
 	}
 
-	public void setEtatVente(String etatVente) {
+	public void setEtatVente(boolean etatVente) {
 		this.etatVente = etatVente;
 	}
 
@@ -145,6 +147,22 @@ public class Article {
 				+ ", heureDebutEnchere=" + heureDebutEnchere + ", heureFinEnchere=" + heureFinEnchere + ", prixInitial="
 				+ prixInitial + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", vendeur=" + vendeur
 				+ ", noCategorie=" + noCategorie + "]";
+	}
+
+	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
+			Categorie noCategorie) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.vendeur = vendeur;
+		this.noCategorie = noCategorie;
 	}
 
 }

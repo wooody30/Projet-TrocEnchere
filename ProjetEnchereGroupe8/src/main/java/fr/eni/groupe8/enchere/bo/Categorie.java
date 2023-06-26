@@ -5,11 +5,7 @@ public class Categorie {
 	private Integer noCategorie;
 	private String libelle;
 
-	
-	
-	
-	
-	
+
 	public Categorie() {
 
 	}

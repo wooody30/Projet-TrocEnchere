@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import fr.eni.groupe8.enchere.bo.Article;
 import fr.eni.groupe8.enchere.dal.ArticlesDAO;
 
 
@@ -17,7 +18,7 @@ private ArticlesDAO articlesDAO;
 	}
 	
 	@Override
-	public List<Articles> findAllArticles() {
+	public List<Article> findAllArticles() {
 		// TODO Auto-generated method stub
 		return articlesDAO.findAll();
 	}

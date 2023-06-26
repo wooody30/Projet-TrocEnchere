@@ -1,5 +1,5 @@
 package fr.eni.groupe8.enchere.dal;
 
-public interface CategoryDAO {
+public interface CategorieDAO {
 
 }
