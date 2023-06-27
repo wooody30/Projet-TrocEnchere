@@ -25,6 +25,13 @@ public class AcceuilController { //Contrôleur pour la page d'accueil et la rech
 		return "Acceuil";
 	}
 	
+	@GetMapping({"/NouvelleVente"})
+	public String afficherNouvelleVente() {
+		
+		return "NouvelleVente";
+	}
+	
+	
 	@GetMapping("/Connexion")
 	public String afficherConnexion() {
 		return "Connexion";
