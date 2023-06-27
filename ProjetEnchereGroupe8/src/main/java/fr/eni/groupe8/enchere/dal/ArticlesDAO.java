@@ -6,6 +6,8 @@ import fr.eni.groupe8.enchere.bo.Article;
 
 public interface ArticlesDAO {
 
-	List<Article> findAllArticles();
+	List<Article> findAll();
+
+
 	
 }

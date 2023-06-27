@@ -19,7 +19,6 @@ private ArticlesDAO articlesDAO;
 	
 	@Override
 	public List<Article> findAllArticles() {
-		// TODO Auto-generated method stub
 		return articlesDAO.findAll();
 	}
 
