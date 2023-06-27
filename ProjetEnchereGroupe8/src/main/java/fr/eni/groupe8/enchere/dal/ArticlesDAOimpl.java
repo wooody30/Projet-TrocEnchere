@@ -21,8 +21,7 @@ import fr.eni.groupe8.enchere.bo.Utilisateur;
 @Repository
 public class ArticlesDAOimpl implements ArticlesDAO {
 
-	private static final String FIND_ALL = "select no_article, nom_article,description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente"
-			+ "								no_utilisateur, no_categorie  from ARTICLES_VENDUS";
+	private static final String FIND_ALL = "select no_article, nom_article,description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie  from ARTICLES_VENDUS";
 
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
