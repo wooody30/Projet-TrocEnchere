@@ -18,7 +18,9 @@ public class AcceuilController { //Contrôleur pour la page d'accueil et la rech
 
 	@GetMapping({"/", "acceuil"})
 	public String afficherAcceuil() {
-		return "acceuil";
+		return "Acceuil";
 	}
+	
+	
 	}
 
