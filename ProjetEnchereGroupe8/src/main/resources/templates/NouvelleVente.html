@@ -1,56 +1,79 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">  
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vente</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vente</title>
 </head>
 <body>
-  <h1>ENI-Encheres</h1>
-  <h2>Nouvelle vente</h2>
-  
-   <form action="" method="get" class="NouvelleVente">
-   
-   	<div>
-  		 <label for="article">Article:</label>
-  		<input type="text" id="article" name="article" placeholder="Nom de l'article"> 
-  	</div>
-  
-  	<div>
-  		 <label for="description">Description:</label>
-  		<input type="text" id="description" name="description" placeholder="décrivez l'article"> 
-  	</div>
-   
-   <div>
-    <label for="select-Categorie">Categorie:</label>
-    <select name="Categorie" id="select-Categorie">
-        <option value="">--Toutes--</option>
-        <option value="informatique">Informatique</option>
-        <option value="Ameublement">Ameublement</option>
-        <option value="vetement">Vetement</option>
-        <option value="sport/loisirs">Sport&Loisirs</option>
-     </select>
-   	</div>
-   
-   <div>
-  		 <label for="photo">Photo de l'article:</label>
-  		<input type="text" id="description" name="description" placeholder="décrivez l'article"> 
-  	</div>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    </form>    
-        
+	<h1>ENI-Encheres</h1>
+	<h2>Nouvelle vente</h2>
+
+	<form action="@{/submit}" method="get" class="NouvelleVente" enctype="multipart/form-data">
+
+		<div>
+			<label for="article">Article :</label> <input type="text"
+				id="article" name="article" placeholder="Nom de l'article" required>
+		</div>
+
+		<div>
+			<label for="description">Description :</label> <input type="text"
+				id="description" name="description"
+				placeholder="Décrivez l'article mis en vente" required>
+		</div>
+
+		<div>
+			<label for="select-Categorie">Categorie:</label> <select
+				name="Categorie" id="select-Categorie" required>
+				<option value="">--Toutes--</option>
+				<option value="informatique">Informatique</option>
+				<option value="Ameublement">Ameublement</option>
+				<option value="vetement">Vetement</option>
+				<option value="sport/loisirs">Sport&Loisirs</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="photo">Photo de l'article :</label> <input type="file"
+				id="photo" name="photo">
+		</div>
+
+		<div>
+			<label for="miseaprix">Mise à prix :</label> <input type="text"
+				id="miseaprix" name="miseaprix" placeholder="Prix de départ en €" required>
+		</div>
+		<div>
+			<label for="debutenchere">Début de l'enchère :</label> <input
+				type="date" id="debutenchere" name="debutenchere"
+				placeholder="Date de début de l'enchère" required>
+		</div>
+		<div>
+			<label for="finenchere">Fin de l'enchère :</label> <input type="date"
+				id="finenchere" name="finenchere"
+				placeholder="Date de fin de l'enchère" required>
+		</div>
+		<div>
+			<h3>Retrait :</h3>
+			<div>
+				<label for="rue">Rue :</label> <input type="text" id="rue"
+					name="rue" placeholder="Votre n° et nom de rue" required>
+			</div>
+			<div>
+				<label for="codepostal">Code postal :</label> <input type="text"
+					id="codepostal" name="codepostal" placeholder="Votre code postal" required>
+			</div>
+			<div>
+				<label for="ville">Ville :</label> <input type="text" id="ville"
+					name="ville" placeholder="Votre ville" required>
+			</div>
+		</div>
+		<div>
+			<button type="submit">Enregistrer</button>
+			<button type="reset">Annuler</button>
+		</div>
+
+
+	</form>
+
 </body>
 </html>
