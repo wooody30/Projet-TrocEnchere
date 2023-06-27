@@ -21,6 +21,15 @@ public class AcceuilController { //Contrôleur pour la page d'accueil et la rech
 		return "Acceuil";
 	}
 	
-	
+	@GetMapping("/Connexion")
+	public String afficherConnexion() {
+		return "Connexion";
 	}
+	
+	@GetMapping("/CreerCompte")
+	public String afficherCreeCompte() {
+		return "CreerCompte";
+	}
+	
+}
 
