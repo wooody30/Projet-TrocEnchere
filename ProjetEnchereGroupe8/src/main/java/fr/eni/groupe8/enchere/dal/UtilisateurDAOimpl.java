@@ -16,6 +16,8 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 
 	private static final String FIND_ALL = "select * from UTILISATEURS";
 	private static final String FIND_BY_ID = "select * from UTILISATEURS where no_utilisateur=:no_utilisateur";
+	private final static String INSERT = "insert into UTILISATEURS ( pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit) values ( :pseudo, :nom, :prenom, :email, :telephone, :rue, :codePostal, :ville, :motDePasse, :credit)" ;
+	private final static String UPDATE = "update UTILISATEURS set pseudo=:pseudo, nom=:nom, prenom=:prenom, email=:email, telephone=:telephone, rue=:rue, codePostal=:codePostal, ville=:ville, motDePasse=:motDePasse, :credit=:credit" ;
 
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
