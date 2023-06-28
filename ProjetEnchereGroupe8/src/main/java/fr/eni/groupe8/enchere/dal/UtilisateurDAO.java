@@ -6,12 +6,10 @@ import fr.eni.groupe8.enchere.bo.Utilisateur;
 
 public interface UtilisateurDAO {
 
-	
-	List<Utilisateur>findAllUtilisateur();
+	List<Utilisateur> findAllUtilisateur();
 
-	Utilisateur readUtilisateur(Integer no_utilisateur);
+	Utilisateur readUtilisateur(Integer noUtilisateur);
 
 	void save(Utilisateur utilisateur);
-	
-	
+
 }

@@ -52,9 +52,9 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 			vendeur = utilisateurDAO.readUtilisateur(rs.getInt("no_utilisateur"));
 			article.setVendeur(vendeur);
 			
-			Categorie noCategorie = null;
-			noCategorie = categorieDAO.readCategorie(rs.getInt("no_categorie"));
-			article.setNoCategorie(noCategorie);
+			Categorie categorie = null;
+			categorie = categorieDAO.readCategorie(rs.getInt("no_categorie"));
+			article.setCategorie(categorie);
 			
 			
 			return article;

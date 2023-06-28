@@ -34,9 +34,9 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 		return lstUtilisteur;
 	}
 
-	public Utilisateur readUtilisateur(Integer no_utilisateur) {
+	public Utilisateur readUtilisateur(Integer noUtilisateur) {
 		Map<String, Object> params = new HashMap<>();
-		params.put("no_utilisateur", no_utilisateur);
+		params.put("no_utilisateur", noUtilisateur);
 
 		Utilisateur util = null;
 

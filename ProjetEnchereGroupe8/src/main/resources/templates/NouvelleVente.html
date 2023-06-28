@@ -9,71 +9,74 @@
 	<h1>ENI-Encheres</h1>
 	<h2>Nouvelle vente</h2>
 
-	<form action="@{/submit}" method="get" class="NouvelleVente" enctype="multipart/form-data">
 
-		<div>
-			<label for="article">Article :</label> <input type="text"
-				id="article" name="article" placeholder="Nom de l'article" required>
-		</div>
+	<div class="NouvelleVente">
 
-		<div>
-			<label for="description">Description :</label> <input type="text"
-				id="description" name="description"
-				placeholder="Décrivez l'article mis en vente" required>
-		</div>
+		<form action="/ajouterVente" th:object="${article}" method="post" enctype="multipart/form-data">
 
-		<div>
-			<label for="select-Categorie">Categorie:</label> <select
-				name="Categorie" id="select-Categorie" required>
-				<option value="">--Toutes--</option>
-				<option value="informatique">Informatique</option>
-				<option value="Ameublement">Ameublement</option>
-				<option value="vetement">Vetement</option>
-				<option value="sport/loisirs">Sport&Loisirs</option>
-			</select>
-		</div>
+			<div class="article">
+				<label for="nomArticle">Article :</label> <input type="text"
+					th:field="*{nomArticle}" id="article" name="article" placeholder="Nom de l'article" required>
+			</div>
 
-		<div>
-			<label for="photo">Photo de l'article :</label> <input type="file"
-				id="photo" name="photo">
-		</div>
+			<div class="article">
+				<label for="description">Description :</label> <input type="text" th:field="*{description}"
+					id="description" name="description"
+					placeholder="Décrivez l'article mis en vente" required>
+			</div>
+ 
+			<div class="article">
+				<label for="select-Categorie">Categorie:</label> 
+				<select
+					th:field="*{categorie}" name="categorie" id="select-Categorie" required>
+				<option th:each="categorie: ${@categorieService.ListCategorie}"
+					th:value="${categorie.noCategorie}" th:text="${categorie.libelle}"></option>
+				</select>
+			</div>
 
-		<div>
-			<label for="miseaprix">Mise à prix :</label> <input type="text"
-				id="miseaprix" name="miseaprix" placeholder="Prix de départ en €" required>
-		</div>
-		<div>
-			<label for="debutenchere">Début de l'enchère :</label> <input
-				type="date" id="debutenchere" name="debutenchere"
-				placeholder="Date de début de l'enchère" required>
-		</div>
-		<div>
-			<label for="finenchere">Fin de l'enchère :</label> <input type="date"
-				id="finenchere" name="finenchere"
-				placeholder="Date de fin de l'enchère" required>
-		</div>
-		<div>
-			<h3>Retrait :</h3>
 			<div>
-				<label for="rue">Rue :</label> <input type="text" id="rue"
-					name="rue" placeholder="Votre n° et nom de rue" required>
+				<label for="photo">Photo de l'article :</label> <input type="file"
+					id="photo" name="photo">
+			</div>
+
+			<div class="article">
+				<label for="miseaprix">Mise à prix :</label> <input type="text" th:field="*{prixInitial}"
+					id="miseaprix" name="miseaprix" placeholder="Prix de départ en €"
+					required>
+			</div>
+			<div class="article">
+				<label for="debutenchere">Début de l'enchère :</label> <input
+					type="date" th:field="*{dateDebutEncheres}" id="debutenchere" name="debutenchere"
+					placeholder="Date de début de l'enchère" required>
 			</div>
 			<div>
-				<label for="codepostal">Code postal :</label> <input type="text"
-					id="codepostal" name="codepostal" placeholder="Votre code postal" required>
+				<label for="finenchere">Fin de l'enchère :</label> <input
+					type="date" th:field="*{dateFinEncheres}" id="finenchere" name="finenchere"
+					placeholder="Date de fin de l'enchère" required>
 			</div>
 			<div>
-				<label for="ville">Ville :</label> <input type="text" id="ville"
-					name="ville" placeholder="Votre ville" required>
+				<h3>Retrait :</h3>
+				<div>
+					<label for="rue">Rue :</label> <input type="text" id="rue"
+						name="rue" placeholder="Votre n° et nom de rue" required>
+				</div>
+				<div>
+					<label for="codepostal">Code postal :</label> <input type="text"
+						id="codepostal" name="codepostal" placeholder="Votre code postal"
+						required>
+				</div>
+				<div>
+					<label for="ville">Ville :</label> <input type="text" id="ville"
+						name="ville" placeholder="Votre ville" required>
+				</div>
 			</div>
-		</div>
-		<div>
-			<button type="submit">Enregistrer</button>
-			<button type="reset">Annuler</button>
-		</div>
+			<div>
+				<button type="submit">Enregistrer</button>
+				<button type="reset">Annuler</button>
+			</div>
 
 
-	</form>
-
+		</form>
+	</div>
 </body>
 </html>
