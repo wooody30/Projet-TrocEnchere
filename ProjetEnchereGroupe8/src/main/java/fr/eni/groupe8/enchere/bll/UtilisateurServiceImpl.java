@@ -1,10 +1,8 @@
 package fr.eni.groupe8.enchere.bll;
 
-<<<<<<< HEAD
+
 import java.util.List;
 
-=======
->>>>>>> refs/remotes/origin/main
 import org.springframework.stereotype.Service;
 
 import fr.eni.groupe8.enchere.bo.Utilisateur;
@@ -42,21 +40,6 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 	
 	
-	
-	
 
-private UtilisateurDAO utilisateurDAO;
-	
-	public UtilisateurServiceImpl(UtilisateurDAO utilisateurDAO) {
-		this.utilisateurDAO = utilisateurDAO;
-	}
-	
-	@Override
-	public void enregistrerUtilisateurs(Utilisateur utilisateur) {
-		
-		utilisateurDAO.save(utilisateur);
-		
-		
-	}
 	
 }
