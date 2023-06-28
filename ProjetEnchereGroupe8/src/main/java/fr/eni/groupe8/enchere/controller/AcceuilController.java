@@ -43,21 +43,5 @@ public class AcceuilController { //Contrôleur pour la page d'accueil et la rech
 		return "Connexion";
 	}
 	
-	@GetMapping("/CreerCompte")
-	public String afficherCreeCompte(Model model) {
-	    model.addAttribute("utilisateur", new Utilisateur());
-	    return "CreerCompte";
-	}
-
-	
-	@PostMapping("/CreerCompte")
-	public String newUtilisateurs(Utilisateur utilisateur) {
-		utilisateurService.enregistrerUtilisateurs(utilisateur);
-		
-		System.out.println("enregistrement de : " + utilisateur);
-		
-		return "redirect:/Acceuil";
-	}
-	
 }
 
