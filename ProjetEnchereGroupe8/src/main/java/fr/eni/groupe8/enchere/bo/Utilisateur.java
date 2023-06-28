@@ -138,12 +138,6 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	// public String getAdministrateur() {
-	// return administrateur;
-	// }
 
-	// public void setAdministrateur(String administrateur) {
-	// this.administrateur = administrateur;
-	// }
 
 }
