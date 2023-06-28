@@ -32,9 +32,9 @@ public class CategorieDAOimpl implements CategorieDAO {
 	}
 	
 	
-	public Categorie readCategorie (Integer no_categorie) {
+	public Categorie readCategorie (Integer nocategorie) {
 		Map<String, Object> params = new HashMap<>();
-		params.put("no_categorie", no_categorie);
+		params.put("no_categorie", nocategorie);
 		
 		Categorie cat = null;
 		cat = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, params, new BeanPropertyRowMapper<>(Categorie.class));

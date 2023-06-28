@@ -4,6 +4,7 @@ package fr.eni.groupe8.enchere.bo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 public class Article {
 
@@ -163,6 +164,11 @@ public class Article {
 		this.etatVente = etatVente;
 		this.vendeur = vendeur;
 		this.noCategorie = noCategorie;
+	}
+
+	public void addAttribute(String string, List<Categorie> listCategorie) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -8,7 +8,7 @@ public interface CategorieDAO {
 
 	List<Categorie>findAllCategorie();
 
-	Categorie readCategorie(Integer no_categorie);
+	Categorie readCategorie(Integer nocategorie);
 
 	
 
