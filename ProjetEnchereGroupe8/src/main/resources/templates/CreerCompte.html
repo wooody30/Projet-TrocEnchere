@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +53,9 @@
           <button type="submit" value="Créer">Créer</button>
         </div>
       </form>
-      <button onclick="window.location.href = 'Acceuil.html';">Annuler</button>
+      
+      <a th:href="@{/Acceuil}">Acceuil</a>
+      
 
 </body>
 </html>

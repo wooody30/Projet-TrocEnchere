@@ -37,6 +37,11 @@ public class UtilisateurController{ //Contrôleur pour les fonctionnalités lié
 		return "redirect:/AcceuilConnexion";
 	}
 	
+	@GetMapping("/annuler")
+    public String annuler() {
+        return "redirect:/Acceuil.html";
+    }
+	
 	@GetMapping("/AcceuilConnexion")
 	public String afficherAcceuilConnecter(Model model) {
 		model.addAttribute("articles", service.findAllArticles());
