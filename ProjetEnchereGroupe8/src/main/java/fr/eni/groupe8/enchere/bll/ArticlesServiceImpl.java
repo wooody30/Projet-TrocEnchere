@@ -22,4 +22,10 @@ private ArticlesDAO articlesDAO;
 		return articlesDAO.findAll();
 	}
 
+	@Override
+	public void ajouterArticle(Article article) {
+		articlesDAO.saveArticle(article);
+		
+	}
+
 }

@@ -8,6 +8,8 @@ public interface ArticlesDAO {
 
 	List<Article> findAll();
 
+	void saveArticle(Article article);
+
 
 	
 }
