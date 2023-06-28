@@ -9,7 +9,7 @@ import fr.eni.groupe8.enchere.bo.Utilisateur;
 import fr.eni.groupe8.enchere.dal.UtilisateurDAO;
 
 
-@Service
+@Service("utilisateurService")
 public class UtilisateurServiceImpl implements UtilisateurService {
 	
 	private UtilisateurDAO utilisateurDAO;

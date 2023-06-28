@@ -41,7 +41,7 @@ public class Article {
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
 		this.vendeur = vendeur;
-		this.categorie = categorie;
+		this.categorie =categorie;
 	}
 
 
