@@ -13,7 +13,7 @@ public class Utilisateur {
 	private String ville;
 	private String motDePasse;
 	private int credit;
-	// private String administrateur;
+	private boolean administrateur;
 
 	public Utilisateur() {
 
@@ -130,12 +130,14 @@ public class Utilisateur {
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit + "]";
 	}
 
-	// public String getAdministrateur() {
-	// return administrateur;
-	// }
+	public boolean getAdministrateur() {
+		return administrateur;
+	}
 
-	// public void setAdministrateur(String administrateur) {
-	// this.administrateur = administrateur;
-	// }
+	public void setAdministrateur(Boolean administrateur) {
+		this.administrateur = administrateur;
+	}
+
+
 
 }

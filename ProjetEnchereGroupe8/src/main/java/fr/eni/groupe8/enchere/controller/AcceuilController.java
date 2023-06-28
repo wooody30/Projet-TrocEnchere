@@ -5,12 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.eni.groupe8.enchere.bll.ArticlesService;
 import fr.eni.groupe8.enchere.bll.CategorieService;
 import fr.eni.groupe8.enchere.bll.UtilisateurService;
 import fr.eni.groupe8.enchere.bo.Article;
+import fr.eni.groupe8.enchere.bo.Utilisateur;
 
 
 @Controller
