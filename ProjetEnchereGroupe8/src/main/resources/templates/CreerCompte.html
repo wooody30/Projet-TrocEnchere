@@ -8,51 +8,52 @@
 <body>
     <h1>ENI-Encheres</h1>
     <h2>Mon Profil</h2>
-    <form action="" method="get" class="MonProfil">
+    <form th:action="@{/CreerCompte}" th:object="${utilisateur}" method="post">
         <div class="MonProfil">
           <label for="pseudo">Pseudo: </label>
-          <input type="text" name="pseudo" id="pseudo" required>
+          <input type="text" th:field="*{pseudo}" required>
         </div>
         <div class="MonProfil">
           <label for="nom">Nom: </label>
-          <input type="text" name="nom" id="nom" required>
+          <input type="text" th:field="*{nom}" required>
         </div>
         <div class="MonProfil">
             <label for="prenom">Prenom: </label>
-            <input type="text" name="prenom" id="prenom" required>
+            <input type="text" th:field="*{prenom}" required>
           </div>
           <div class="MonProfil">
             <label for="email">Email: </label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" th:field="*{email}" required>
           </div>
           <div class="MonProfil">
             <label for="tel">Telephone: </label>
-            <input type="tel" name="tel" id="tel" required>
+            <input type="tel" th:field="*{telephone}" required>
           </div>
           <div class="MonProfil">
             <label for="rue">Rue: </label>
-            <input type="text" name="rue" id="rue" required>
+            <input type="text" th:field="*{rue}" required>
           </div>
           <div class="MonProfil">
             <label for="CP">Code postal: </label>
-            <input type="text" name="CP" id="CP" required>
+            <input type="text" th:field="*{codePostal}" required>
           </div>
           <div class="MonProfil">
             <label for="ville">Ville: </label>
-            <input type="text" name="ville" id="ville" required>
+            <input type="text" th:field="*{ville}" required>
           </div>
           <div class="MonProfil">
             <label for="mdp">Mot de passe </label>
-            <input type="password" name="mdp" id="mdp" required>
+            <input type="password" th:field="*{motDePasse}" required>
           </div>
           <div class="MonProfil">
             <label for="mdpConfirm">Confirmation: </label>
-            <input type="password" name="mdpConfirm" id="mdpConfirm" required>
+            <input type="password" th:field="*{motDePasse}" required>
           </div>
-        <div class="MonProfil">
-          <input type="submit" value="Créer">
-          <input type="submit" value="Annuler">
+        <div class="bouton">
+          <button type="submit" value="Créer">Créer</button>
         </div>
       </form>
+      <button onclick="window.location.href = 'Acceuil.html';">Annuler</button>
+
 </body>
 </html>
