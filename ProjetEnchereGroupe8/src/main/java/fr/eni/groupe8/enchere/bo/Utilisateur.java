@@ -13,7 +13,7 @@ public class Utilisateur {
 	private String ville;
 	private String motDePasse;
 	private int credit;
-	// private String administrateur;
+	private boolean administrateur;
 
 	public Utilisateur() {
 
@@ -128,6 +128,14 @@ public class Utilisateur {
 		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="
 				+ prenom + ", email=" + email + ", telephone=" + telephone + ", rue=" + rue + ", codePostal="
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit + "]";
+	}
+
+	public boolean getAdministrateur() {
+		return administrateur;
+	}
+
+	public void setAdministrateur(Boolean administrateur) {
+		this.administrateur = administrateur;
 	}
 
 	// public String getAdministrateur() {

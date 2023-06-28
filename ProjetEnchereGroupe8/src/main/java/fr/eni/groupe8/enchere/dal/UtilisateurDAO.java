@@ -10,6 +10,8 @@ public interface UtilisateurDAO {
 	List<Utilisateur>findAllUtilisateur();
 
 	Utilisateur readUtilisateur(Integer no_utilisateur);
+
+	void save(Utilisateur utilisateur);
 	
 	
 }
