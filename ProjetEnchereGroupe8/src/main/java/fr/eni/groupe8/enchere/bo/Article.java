@@ -19,7 +19,7 @@ public class Article {
 	private int prixVente;
 	private boolean etatVente;
 	private Utilisateur vendeur;
-	private Categorie noCategorie;
+	private Categorie categorie;
 
 	public Article() {
 
@@ -28,7 +28,7 @@ public class Article {
 	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, LocalTime heureDebutEnchere, LocalTime heureFinEnchere,
 			int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
-			Categorie noCategorie) {
+			Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -41,7 +41,7 @@ public class Article {
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
 		this.vendeur = vendeur;
-		this.noCategorie = noCategorie;
+		this.categorie = categorie;
 	}
 
 
@@ -109,12 +109,12 @@ public class Article {
 		this.etatVente = etatVente;
 	}
 
-	public Categorie getNoCategorie() {
-		return noCategorie;
+	public Categorie getCategorie() {
+		return categorie;
 	}
 
-	public void setNoCategorie(Categorie noCategorie) {
-		this.noCategorie = noCategorie;
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 
 	public Utilisateur getVendeur() {
@@ -147,12 +147,12 @@ public class Article {
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres
 				+ ", heureDebutEnchere=" + heureDebutEnchere + ", heureFinEnchere=" + heureFinEnchere + ", prixInitial="
 				+ prixInitial + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", vendeur=" + vendeur
-				+ ", noCategorie=" + noCategorie + "]";
+				+ ", categorie=" + categorie + "]";
 	}
 
 	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
-			Categorie noCategorie) {
+			Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -163,7 +163,7 @@ public class Article {
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
 		this.vendeur = vendeur;
-		this.noCategorie = noCategorie;
+		this.categorie = categorie;
 	}
 
 	public void addAttribute(String string, List<Categorie> listCategorie) {
