@@ -7,17 +7,20 @@
 </head>
 <body>
     <h1>ENI-Encheres</h1>
-    <form action="/session" method="get" class="Connexion">
+    <form action="@{/session}" th:object="${utilisateur}" method="post">
         <div class="Connexion">
           <label for="email">Identifiant: </label>
-          <input type="text" name="pseudo" id="pseudo" required>
+          <input type="text" th:field="*{email}" required>
         </div>
         <div class="Connexion">
           <label for="mdp">Mot de passe: </label>
-          <input type="password" name="mdp" id="mdp" required>
+          <input type="password" th:field="*{motDePasse}" required>
         </div>
-        <div class="Connexion">
-          <input type="submit" value="Connexion">
+        <div class="bouton">
+          <button type="submit" value="Créer">Connexion</button>
+        </div>
+        
+        <div>
           <input type="checkbox" id="SeSouvenir" name="SeSouvenir">
           <label for="SeSouvenir">Se souvenir de moi</label>
         <a href="">Mot de passe oubliée</a>

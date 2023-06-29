@@ -57,10 +57,5 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	}
 	
-	
-	@GetMapping("/Connexion")
-	public String afficherConnexion() {
-		return "Connexion";
-	}
 
 }
