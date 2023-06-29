@@ -9,6 +9,8 @@ public interface UtilisateurDAO {
 	List<Utilisateur> findAllUtilisateur();
 
 	Utilisateur readUtilisateur(Integer noUtilisateur);
+	
+	Utilisateur readUtilisateur_email(String email);
 
 	void save(Utilisateur utilisateur);
 

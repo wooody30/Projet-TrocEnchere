@@ -1,5 +1,9 @@
 package fr.eni.groupe8.enchere.bo;
 
+import java.util.Objects;
+
+
+
 public class Utilisateur {
 
 	private Integer noUtilisateur = 1;
@@ -138,6 +142,29 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
+	/**
+	 * Pour valider qu'un membre en session correspond à celui en base. 
+	 * Redéfinition de la méthode equals sur toutes les propriétés sauf motDePasse.
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(administrateur, pseudo);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Utilisateur other = (Utilisateur) obj;
+		return administrateur == other.administrateur && Objects.equals(pseudo, other.pseudo);
+	}
 
 
 }
