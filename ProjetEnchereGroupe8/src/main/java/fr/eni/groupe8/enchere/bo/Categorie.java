@@ -2,7 +2,7 @@ package fr.eni.groupe8.enchere.bo;
 
 public class Categorie {
 
-	private Integer noCategorie;
+	private Integer noCategorie = 1;
 	private String libelle;
 
 

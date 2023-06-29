@@ -12,8 +12,8 @@
 
 	<div class="NouvelleVente">
 
-		<form action="/ajouterVente" th:object="${article}" method="post"
-			enctype="multipart/form-data">
+		<form action="/ajouterVente" th:object="${article}" method="POST">
+			<!--enctype="multipart/form-data"-->
 
 			<div class="article">
 				<label for="nomArticle">Article :</label> <input type="text"
@@ -60,8 +60,8 @@
 			<div>
 				<h3>Retrait :</h3>
 				<div>
-					<label for="codepostal">Rue :</label> <input type="text"
-						id="codepostal" name="codepostal" placeholder="Votre code postal"
+					<label for="rue">Rue :</label> <input type="text"
+						id="rue" name="rue" placeholder="Votre adresse"
 						required>
 				</div>
 				<div>

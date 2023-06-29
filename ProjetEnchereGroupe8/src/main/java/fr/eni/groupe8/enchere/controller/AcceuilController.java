@@ -49,9 +49,10 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	
 	@PostMapping("/ajouterVente")
-	public void ajouterVente(@ModelAttribute Article article) {
+	public String ajouterVente(@ModelAttribute Article article) {
 	
 		service.ajouterArticle(article);
+		return "redirect:/AcceuilConnexion";
 	}
 	
 	
