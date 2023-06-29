@@ -35,7 +35,7 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	}
 
-	@GetMapping({ "/", "Acceuil" })
+	@GetMapping({ "/", "/Acceuil" })
 	public String afficherAcceuil(Model model) {
 		model.addAttribute("articles", service.findAllArticles());
 		return "Acceuil";
@@ -49,9 +49,11 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	
 	@PostMapping("/ajouterVente")
-	public void ajouterVente(@ModelAttribute Article article) {
+	public String ajouterVente(@ModelAttribute Article article) {
 	
 		service.ajouterArticle(article);
+		
+		return "redirect:/Acceuil";
 	}
 	
 	

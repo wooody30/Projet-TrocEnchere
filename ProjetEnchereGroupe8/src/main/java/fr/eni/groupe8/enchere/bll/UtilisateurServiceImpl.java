@@ -24,6 +24,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return utilisateurDAO.findAllUtilisateur();
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public Utilisateur findUtilisateurById(Integer noUtilisateur) {
 		
@@ -38,7 +43,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		
 		
 	}
-	
+
+
+
+
 	
 
 	
