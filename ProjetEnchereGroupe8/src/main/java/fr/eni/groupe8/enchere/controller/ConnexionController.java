@@ -37,7 +37,7 @@ public class ConnexionController {
 
 	@GetMapping("/login")
 	public String afficherConnexion() {
-		return "login";
+		return "loginForm";
 	}
 
 	@PostMapping("/session")

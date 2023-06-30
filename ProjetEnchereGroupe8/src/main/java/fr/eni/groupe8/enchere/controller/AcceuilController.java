@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 import fr.eni.groupe8.enchere.bll.ArticlesService;
 import fr.eni.groupe8.enchere.bll.CategorieService;
 import fr.eni.groupe8.enchere.bll.UtilisateurService;
@@ -43,19 +42,17 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	@GetMapping({ "/NouvelleVente" })
 	public String afficherNouvelleVente(@ModelAttribute Article article) {
-		
+
 		return "NouvelleVente";
 	}
 
-	
 	@PostMapping("/ajouterVente")
 	public String ajouterVente(@ModelAttribute Article article) {
-	
+
 		service.ajouterArticle(article);
 
 		return "redirect:/AcceuilConnexion";
 
 	}
-	
 
 }

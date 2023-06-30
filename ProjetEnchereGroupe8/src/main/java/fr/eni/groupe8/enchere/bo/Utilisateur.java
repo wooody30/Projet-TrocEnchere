@@ -2,11 +2,9 @@ package fr.eni.groupe8.enchere.bo;
 
 import java.util.Objects;
 
-
-
 public class Utilisateur {
 
-	private Integer noUtilisateur = 1;
+	private Integer noUtilisateur;
 	private String pseudo;
 	private String nom;
 	private String prenom;
@@ -143,8 +141,8 @@ public class Utilisateur {
 	}
 
 	/**
-	 * Pour valider qu'un membre en session correspond à celui en base. 
-	 * Redéfinition de la méthode equals sur toutes les propriétés sauf motDePasse.
+	 * Pour valider qu'un membre en session correspond à celui en base. Redéfinition
+	 * de la méthode equals sur toutes les propriétés sauf motDePasse.
 	 */
 	@Override
 	public int hashCode() {
@@ -165,6 +163,5 @@ public class Utilisateur {
 		Utilisateur other = (Utilisateur) obj;
 		return administrateur == other.administrateur && Objects.equals(pseudo, other.pseudo);
 	}
-
 
 }
