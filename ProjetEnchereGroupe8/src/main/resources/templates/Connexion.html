@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ENI-Encheres</h1>
+    <form action="@{/session}" th:object="${utilisateur}" method="post" class="Connexion">
+        <div class="Connexion">
+          <label for="email">Identifiant: </label>
+          <input type="text" th:field="*{email}" name="pseudo" id="pseudo" required>
+        </div>
+        <div class="Connexion">
+          <label for="mdp">Mot de passe: </label>
+          <input type="password" th:field="*{motDePasse}" name="mdp" id="mdp" required>
+        </div>
+        <div class="Connexion">
+          <input type="submit" value="Connexion">
+          <input type="checkbox" id="SeSouvenir" name="SeSouvenir">
+          <label for="SeSouvenir">Se souvenir de moi</label>
+        <a href="">Mot de passe oubliée</a>
+        </div>
+ 
+    </form>
+    
+    <a th:href="@{/CreerCompte}">Créer un compte</a>
+
+</body>
+</html>

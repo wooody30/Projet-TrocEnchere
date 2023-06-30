@@ -42,6 +42,7 @@ public class EnchereSecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+
 		// Customiser le formulaire
 		http.formLogin(form -> {
 			form.loginPage("/login").defaultSuccessUrl("/AcceuilConnexion");
@@ -56,6 +57,7 @@ public class EnchereSecurityConfig {
 		http.authorizeHttpRequests(auth -> { auth
 			//.requestMatchers(HttpMethod.GET, "/login").permitAll()
 			
+
 					// Permettre aux visiteurs d'accéder à la page d'accueil
 					.requestMatchers(HttpMethod.GET, "/Acceuil").permitAll()
 					.requestMatchers(HttpMethod.GET, "/").permitAll()
@@ -72,6 +74,9 @@ public class EnchereSecurityConfig {
 					.anyRequest().authenticated();
 
 		});
+
+
+
 
 		return http.build();
 	}

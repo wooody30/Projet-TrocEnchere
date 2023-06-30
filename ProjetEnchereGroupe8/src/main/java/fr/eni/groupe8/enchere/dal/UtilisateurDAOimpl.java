@@ -18,18 +18,16 @@ import org.springframework.jdbc.support.KeyHolder;
 
 import fr.eni.groupe8.enchere.bo.Utilisateur;
 
-
-
 @Repository
 public class UtilisateurDAOimpl implements UtilisateurDAO {
 
 	private static final String FIND_ALL = "select * from UTILISATEURS";
 	private static final String FIND_BY_ID = "select * from UTILISATEURS where no_utilisateur=:no_utilisateur";
-	private final static String INSERT = "insert into UTILISATEURS ( pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values ( :pseudo, :nom, :prenom, :email, :telephone, :rue, :codePostal, :ville, :motDePasse, :credit, :administrateur)" ;
-	private final static String UPDATE = "update UTILISATEURS set pseudo=:pseudo, nom=:nom, prenom=:prenom, email=:email, telephone=:telephone, rue=:rue, code_postal=:codePostal, ville=:ville, mot_de_passe=:motDePasse, :credit=:credit, administrateur=:administrateur" ;
+	private final static String INSERT = "insert into UTILISATEURS ( pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values ( :pseudo, :nom, :prenom, :email, :telephone, :rue, :codePostal, :ville, :motDePasse, :credit, :administrateur)";
+	private final static String UPDATE = "update UTILISATEURS set pseudo=:pseudo, nom=:nom, prenom=:prenom, email=:email, telephone=:telephone, rue=:rue, code_postal=:codePostal, ville=:ville, mot_de_passe=:motDePasse, :credit=:credit, administrateur=:administrateur";
 	private static final String FIND_BY_EMAIL = "select * from UTILISATEURS WHERE email=:email";
 //	private static final String FIND_BY_EMAIL_2 = "select * from UTILISATEURS WHERE email=?"; // Autre méthode proposée par le formateur
-	
+
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -42,28 +40,25 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 		return lstUtilisteur;
 	}
 
-	
-	
-	//@Override
+	// @Override
 	public Utilisateur readUtilisateur_email(String email) {
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("email", email);
 		System.out.println("readUtilisateur_email");
 		return namedParameterJdbcTemplate.queryForObject(FIND_BY_EMAIL, namedParameters, new BeanPropertyRowMapper<>(Utilisateur.class));
 	}
-	
-		
-	/** Autre méthode proposée par le formateur
-	@Override
-	public Utilisateur readUtilisateur2(String email) {
-		
-		return namedParameterJdbcTemplate.getJdbcOperations().queryForObject(FIND_BY_EMAIL, new BeanPropertyRowMapper<>(Utilisateur.class), email);
-	}
-	
+
+	/**
+	 * Autre méthode proposée par le formateur
+	 * 
+	 * @Override public Utilisateur readUtilisateur2(String email) {
+	 * 
+	 *           return
+	 *           namedParameterJdbcTemplate.getJdbcOperations().queryForObject(FIND_BY_EMAIL,
+	 *           new BeanPropertyRowMapper<>(Utilisateur.class), email); }
+	 * 
 	 */
-	
-	
-	
+
 	public Utilisateur readUtilisateur(Integer noUtilisateur) {
 		Map<String, Object> params = new HashMap<>();
 		params.put("no_utilisateur", noUtilisateur);
@@ -76,12 +71,11 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 		return util;
 
 	}
-	
-	
+
 	@Override
 	public void save(Utilisateur utilisateur) {
 		utilisateur.setAdministrateur(false);
-		
+
 	    if (utilisateur.getNoUtilisateur() == null) {
 	        // Insertion d'un nouvel utilisateur
 	        KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -95,7 +89,4 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 	    }
 	}
 
-	
-	
-	
 }
