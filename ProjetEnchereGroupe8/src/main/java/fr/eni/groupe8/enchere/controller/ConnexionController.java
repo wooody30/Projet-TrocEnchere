@@ -36,9 +36,11 @@ public class ConnexionController {
 	// return "login";
 	// }
 
-	@GetMapping("/Connexion")
-	public String afficherConnexion(@ModelAttribute UtilisateurService utilisateurService) {
-		return "Connexion";
+
+	@GetMapping("/login")
+	public String afficherConnexion() {
+		return "loginForm";
+
 	}
 
 	@PostMapping("/session")

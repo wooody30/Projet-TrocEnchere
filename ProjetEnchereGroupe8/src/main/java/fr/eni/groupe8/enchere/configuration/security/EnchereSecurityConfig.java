@@ -33,20 +33,22 @@ public class EnchereSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
+
+
 		// Customiser le formulaire
 		http.formLogin(form -> {
-			form.loginPage("/Connexion").defaultSuccessUrl("/AcceuilConnexion");
+			form.loginPage("/login").defaultSuccessUrl("/AcceuilConnexion");
 		});
 
 		// /logout --> vider la session et le contexte de sécurité
 		http.logout(logout -> logout.invalidateHttpSession(true).clearAuthentication(true).deleteCookies("JSESSIONID")
 				.logoutRequestMatcher(new AntPathRequestMatcher("/SeDeconnecter")).logoutSuccessUrl("/Acceuil")
 				.permitAll());
-		
-		http.authorizeHttpRequests(auth -> {
-			auth.requestMatchers(HttpMethod.GET,"/Connexion").permitAll()
-					
+
+		http.authorizeHttpRequests(auth -> { auth
+			.requestMatchers(HttpMethod.GET, "/login").permitAll()
+			
+
 					// Permettre aux visiteurs d'accéder à la page d'accueil
 					.requestMatchers(HttpMethod.GET, "/Acceuil").permitAll().requestMatchers(HttpMethod.GET, "/")
 					.permitAll()
@@ -57,8 +59,11 @@ public class EnchereSecurityConfig {
 					// Permettre à tous d'afficher correctement les images et CSS
 					.requestMatchers("/css/*").permitAll().requestMatchers("/images/*").permitAll()
 					// Il faut être connecté pour toutes autres URLs
-					.anyRequest().authenticated();
+					.anyRequest().authenticated()
+					;
 		});
+
+
 
 
 		return http.build();

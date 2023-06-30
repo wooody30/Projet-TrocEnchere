@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Utilisateur {
 
-	private Integer noUtilisateur = 1;
+	private Integer noUtilisateur;
 	private String pseudo;
 	private String nom;
 	private String prenom;
