@@ -37,12 +37,13 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 	@GetMapping({ "/", "/Acceuil" })
 	public String afficherAcceuil(Model model) {
 		model.addAttribute("articles", service.findAllArticles());
+		System.out.println("mappingAcceuil");
 		return "Acceuil";
 	}
 
 	@GetMapping({ "/NouvelleVente" })
 	public String afficherNouvelleVente(@ModelAttribute Article article) {
-
+		System.out.println("mappingnewvente");
 		return "NouvelleVente";
 	}
 
@@ -50,7 +51,7 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 	public String ajouterVente(@ModelAttribute Article article) {
 
 		service.ajouterArticle(article);
-
+		System.out.println("mappingajouterVente");
 		return "redirect:/AcceuilConnexion";
 
 	}

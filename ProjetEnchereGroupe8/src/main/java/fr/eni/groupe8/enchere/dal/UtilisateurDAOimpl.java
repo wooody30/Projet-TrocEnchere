@@ -38,7 +38,7 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 
 		List<Utilisateur> lstUtilisteur = namedParameterJdbcTemplate.query(FIND_ALL,
 				new BeanPropertyRowMapper<>(Utilisateur.class));
-
+		System.out.println("findAllUtilisateurs");
 		return lstUtilisteur;
 	}
 
@@ -48,6 +48,7 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 	public Utilisateur readUtilisateur_email(String email) {
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("email", email);
+		System.out.println("readUtilisateur_email");
 		return namedParameterJdbcTemplate.queryForObject(FIND_BY_EMAIL, namedParameters, new BeanPropertyRowMapper<>(Utilisateur.class));
 	}
 	
@@ -71,6 +72,7 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 
 		util = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, params,
 				new BeanPropertyRowMapper<>(Utilisateur.class));
+		System.out.println("readUtilisateur");
 		return util;
 
 	}
@@ -89,6 +91,7 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 	    } else {
 	        // Mise à jour d'un utilisateur existant
 	        namedParameterJdbcTemplate.update(UPDATE, new BeanPropertySqlParameterSource(utilisateur));
+	        System.out.println("save");
 	    }
 	}
 

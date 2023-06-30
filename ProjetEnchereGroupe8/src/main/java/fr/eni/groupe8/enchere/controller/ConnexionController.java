@@ -61,6 +61,7 @@ public class ConnexionController {
 		return "redirect:/AcceuilConnexion";
 	}
 
+	
 	// Cette méthode met par défaut un nouveau membre en session
 	@ModelAttribute("utilisateurEnSession")
 	public Utilisateur membreEnSession() {

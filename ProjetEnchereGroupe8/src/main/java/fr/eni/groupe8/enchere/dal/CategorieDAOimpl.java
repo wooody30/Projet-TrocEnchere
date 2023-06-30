@@ -27,7 +27,7 @@ public class CategorieDAOimpl implements CategorieDAO {
 	public List<Categorie> findAllCategorie() {
 		
 		List<Categorie> lstCategorie = namedParameterJdbcTemplate.query(FIND_ALL, new BeanPropertyRowMapper<>(Categorie.class));
-		
+		System.out.println("findAllCategorie");
 				return lstCategorie;
 	}
 	
@@ -38,6 +38,7 @@ public class CategorieDAOimpl implements CategorieDAO {
 		
 		Categorie cat = null;
 		cat = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, params, new BeanPropertyRowMapper<>(Categorie.class));
+		System.out.println("readCategorie");
 		return cat;
 	}
 	

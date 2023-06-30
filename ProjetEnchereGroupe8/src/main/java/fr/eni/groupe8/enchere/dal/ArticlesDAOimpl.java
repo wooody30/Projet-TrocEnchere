@@ -50,7 +50,7 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 			Categorie categorie;
 			categorie = categorieDAO.readCategorie(rs.getInt("no_categorie"));
 			article.setCategorie(categorie);
-
+			System.out.println("mapRow");
 			return article;
 		}
 
@@ -59,7 +59,7 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 	@Override
 	public List<Article> findAll() {
 		List<Article> lstArticle = namedParameterJdbcTemplate.query(FIND_ALL, new ArticleRowMapper());
-
+		System.out.println("findAll");
 		return lstArticle;
 
 	}
@@ -74,7 +74,7 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 		paramSrc.addValue("prix_initial ", article.getPrixInitial());
 		paramSrc.addValue("date_debut_encheres", article.getDateDebutEncheres());
 		paramSrc.addValue("date_fin_encheres", article.getDateFinEncheres());
-
+		System.out.println("saveArticle");
 		namedParameterJdbcTemplate.update(INSERT, paramSrc);
 
 	}
