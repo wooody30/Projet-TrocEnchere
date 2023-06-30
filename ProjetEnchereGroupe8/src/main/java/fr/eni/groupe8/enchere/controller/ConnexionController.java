@@ -41,8 +41,12 @@ public class ConnexionController {
 	}
 
 	@PostMapping("/session")
-	String chargerMembreEnSession(@ModelAttribute("utilisateurEnSession") Utilisateur utilisateurEnSession,
+	String chargerMembreEnSession(@ModelAttribute("utilisateur") Utilisateur utilisateurEnSession,
 			Principal principal) {
+		System.out.println(utilisateurEnSession);
+		if (principal != null) {
+			
+		
 		String email = principal.getName();
 		Utilisateur aCharger = service.findUtilisateurByEmail(email);
 		if (aCharger != null) {
@@ -56,7 +60,7 @@ public class ConnexionController {
 			utilisateurEnSession.setMotDePasse(null);
 
 		}
-		System.out.println(utilisateurEnSession);
+		}
 
 		return "redirect:/AcceuilConnexion";
 	}

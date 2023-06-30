@@ -9,15 +9,15 @@
 <body>
     <h1>ENI-Encheres</h1>
 
-    <form action="/session" method="post" class="Connexion">
+    <form th:action="@{/session}" method="post" class="Connexion">
         <div class="Connexion">
           <label for="email">Identifiant: </label>
-          <input type="text" name="pseudo" id="pseudo" required>
+          <input type="text" name="username" id="pseudo" required>
         </div>
 
         <div class="Connexion">
           <label for="mdp">Mot de passe: </label>
-          <input type="password" name="mdp" id="mdp" required>
+          <input type="password" name="password" id="mdp" required>
         </div>
 
         <div class="Connexion">
