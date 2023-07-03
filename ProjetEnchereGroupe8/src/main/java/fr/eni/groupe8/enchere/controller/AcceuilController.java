@@ -31,7 +31,6 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 			UtilisateurService utilisateurService, ArticlesService articleService) {
 
 		this.service = service;
-
 		this.categorieService = categorieService;
 		this.utilisateurService = utilisateurService;
 		this.articleService=articleService;
@@ -55,7 +54,9 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 	public String ajouterVente(@ModelAttribute Article article) {
 		// cree un utilisateur en dur avec un article.setutilisateurs qui utiliserait le constructeur 
 		// avec juste un numero utilisateur
+
 		Utilisateur utilisateur = utilisateurService.findUtilisateurById(2); 
+
 		article.setVendeur(utilisateur);
 		System.out.println("utilisateur associer a l'article");
 		

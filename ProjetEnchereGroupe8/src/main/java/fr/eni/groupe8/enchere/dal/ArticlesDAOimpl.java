@@ -87,7 +87,10 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 		paramSrc.addValue("no_utilisateur", article.getVendeur().getNoUtilisateur());
 		paramSrc.addValue("description", article.getDescription());
 		paramSrc.addValue("no_categorie",
-				article.getCategorie() == null ? null : article.getCategorie().getNoCategorie());
+
+				//TODO pas de categorie null notmalement puisquil ya une categorie NOT NULL
+				article.getCategorie() == null ? null  : article.getCategorie().getNoCategorie());
+
 		paramSrc.addValue("prix_initial", article.getPrixInitial());
 		paramSrc.addValue("date_debut_encheres", article.getDateDebutEncheres());
 		paramSrc.addValue("date_fin_encheres", article.getDateFinEncheres());

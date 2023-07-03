@@ -39,4 +39,3 @@ public class CategorieDAOimpl implements CategorieDAO {
 	}
 
 }
-

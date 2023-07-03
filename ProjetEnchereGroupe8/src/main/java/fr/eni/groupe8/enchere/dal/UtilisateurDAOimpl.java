@@ -68,6 +68,8 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 		util = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, params,
 				new BeanPropertyRowMapper<>(Utilisateur.class));
 		System.out.println("readUtilisateur");
+		System.out.println(util);
+
 		return util;
 
 	}
