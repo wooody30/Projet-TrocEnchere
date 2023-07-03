@@ -25,6 +25,7 @@ public class UtilisateurController { // Contrôleur pour les fonctionnalités li
 	@GetMapping("/CreerCompte")
 	public String afficherCreeCompte(Model model) {
 		model.addAttribute("utilisateur", new Utilisateur());
+		System.out.println("mapping CreerCompte");
 		return "CreerCompte";
 	}
 
@@ -45,6 +46,7 @@ public class UtilisateurController { // Contrôleur pour les fonctionnalités li
 	@GetMapping("/AcceuilConnexion")
 	public String afficherAcceuilConnecter(Model model) {
 		model.addAttribute("articles", service.findAllArticles());
+		System.out.println("mappingAcceuilConnexion");
 		return "AcceuilConnexion";
 	}
 

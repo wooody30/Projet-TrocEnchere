@@ -40,6 +40,7 @@
 <td  data-th-text="${article.prixVente}"></td>
 <td  data-th-text="${article.categorie.libelle}"></td>
 <td  data-th-text="${article.vendeur.pseudo}"></td>
+<td><a th:href="@{/detailarticle(noArticle=${article.noArticle})}">Voir la vente</a> 
 
 </tr>
 </table>

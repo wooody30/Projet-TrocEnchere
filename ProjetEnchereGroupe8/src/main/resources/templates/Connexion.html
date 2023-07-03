@@ -10,11 +10,11 @@
     <form action="@{/session}" th:object="${utilisateur}" method="post" class="Connexion">
         <div class="Connexion">
           <label for="email">Identifiant: </label>
-          <input type="text" th:field="*{email}" name="pseudo" id="pseudo" required>
+          <input type="text" th:field="*{email}" name="email" id="email" required>
         </div>
         <div class="Connexion">
           <label for="mdp">Mot de passe: </label>
-          <input type="password" th:field="*{motDePasse}" name="mdp" id="mdp" required>
+          <input type="password" th:field="*{motDePasse}" name="motDePasse" id="motDePasse" required>
         </div>
         <div class="Connexion">
           <input type="submit" value="Connexion">

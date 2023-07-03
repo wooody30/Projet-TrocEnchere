@@ -12,5 +12,7 @@ public interface ArticlesService { //Interface de service pour la gestion des ar
 	List<Article> findAllArticles();
 	
 	void ajouterArticle(Article article);
+
+	Article articleById(Integer noArticle);
 	
 }

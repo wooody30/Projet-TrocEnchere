@@ -36,30 +36,33 @@ public class ConnexionController {
 	// return "login";
 	// }
 
-
-	@GetMapping("/login")
+	//@GetMapping("/login")
 	public String afficherConnexion() {
 		return "loginForm";
 
 	}
 
 	@PostMapping("/session")
-	String chargerMembreEnSession(@ModelAttribute("utilisateurEnSession") Utilisateur utilisateurEnSession,
+	String chargerMembreEnSession(
+			//@ModelAttribute("utilisateur") Utilisateur utilisateurEnSession,
 			Principal principal) {
-		String email = principal.getName();
-		Utilisateur aCharger = service.findUtilisateurByEmail(email);
-		if (aCharger != null) {
-			utilisateurEnSession.setEmail(aCharger.getEmail());
-			utilisateurEnSession.setMotDePasse(aCharger.getMotDePasse());
-			utilisateurEnSession.setPseudo(aCharger.getPseudo());
+		//System.out.println(utilisateurEnSession);
+		if (principal != null) {
+			System.out.println(principal.getName());
+			String email = principal.getName();
+			Utilisateur aCharger = service.findUtilisateurByEmail(email);
+			if (aCharger != null) {
+			//	utilisateurEnSession.setEmail(aCharger.getEmail());
+				//utilisateurEnSession.setMotDePasse(aCharger.getMotDePasse());
+			//	utilisateurEnSession.setPseudo(aCharger.getPseudo());
 
-		} else {
+			} else {
 
-			utilisateurEnSession.setEmail(null);
-			utilisateurEnSession.setMotDePasse(null);
+				//utilisateurEnSession.setEmail(null);
+				//utilisateurEnSession.setMotDePasse(null);
 
+			}
 		}
-		System.out.println(utilisateurEnSession);
 
 		return "redirect:/AcceuilConnexion";
 	}
@@ -72,3 +75,5 @@ public class ConnexionController {
 	}
 
 }
+
+

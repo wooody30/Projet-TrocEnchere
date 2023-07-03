@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+
 import fr.eni.groupe8.enchere.bo.Article;
 import fr.eni.groupe8.enchere.bo.Categorie;
 import fr.eni.groupe8.enchere.bo.Utilisateur;
@@ -19,7 +20,8 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 
 	private static final String FIND_ALL = "select no_article, nom_article,description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie  from ARTICLES_VENDUS";
 	private static final String INSERT = "insert into ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) values (:nom_article, :description, :date_debut_encheres, :date_fin_encheres, :prix_initial, :no_utilisateur, :no_categorie)";
-
+	private static final String FIND_BY_ID = "select * from ARTICLES_VENDUS where no_article=:no_article";
+	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -50,7 +52,7 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 			Categorie categorie;
 			categorie = categorieDAO.readCategorie(rs.getInt("no_categorie"));
 			article.setCategorie(categorie);
-
+			System.out.println("mapRow");
 			return article;
 		}
 
@@ -59,23 +61,39 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 	@Override
 	public List<Article> findAll() {
 		List<Article> lstArticle = namedParameterJdbcTemplate.query(FIND_ALL, new ArticleRowMapper());
-
+		System.out.println("findAll");
 		return lstArticle;
 
 	}
 
+	
+	@Override
+	public Article find(Integer noArticle) {
+		MapSqlParameterSource paramSrc = new MapSqlParameterSource("no_article", noArticle );
+		
+		Article article = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID,paramSrc, new ArticleRowMapper() );
+		return article;
+	}
+	
+	
+	
+	
+	
+	
 	@Override
 	public void saveArticle(Article article) {
 
 		MapSqlParameterSource paramSrc = new MapSqlParameterSource("nom_article", article.getNomArticle());
+		paramSrc.addValue("no_utilisateur", article.getVendeur().getNoUtilisateur());
 		paramSrc.addValue("description", article.getDescription());
 		paramSrc.addValue("no_categorie",
 				article.getCategorie() == null ? null : article.getCategorie().getNoCategorie());
-		paramSrc.addValue("prix_initial ", article.getPrixInitial());
+		paramSrc.addValue("prix_initial", article.getPrixInitial());
 		paramSrc.addValue("date_debut_encheres", article.getDateDebutEncheres());
 		paramSrc.addValue("date_fin_encheres", article.getDateFinEncheres());
-
+		System.out.println("saveArticle");
 		namedParameterJdbcTemplate.update(INSERT, paramSrc);
 
 	}
 }
+

@@ -10,6 +10,8 @@ public interface ArticlesDAO {
 
 	void saveArticle(Article article);
 
+	Article find(Integer noArticle);
+
 
 	
 }

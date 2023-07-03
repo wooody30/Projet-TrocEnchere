@@ -9,15 +9,15 @@
 <body>
     <h1>ENI-Encheres</h1>
 
-    <form action="/session" method="post" class="Connexion">
+    <form th:action="@{/session}" method="post" class="Connexion">
         <div class="Connexion">
-          <label for="email">Identifiant: </label>
+          <label for="pseudo">Identifiant: </label>
           <input type="text" name="pseudo" id="pseudo" required>
         </div>
 
         <div class="Connexion">
-          <label for="mdp">Mot de passe: </label>
-          <input type="password" name="mdp" id="mdp" required>
+          <label for="motDePasse">Mot de passe: </label>
+          <input type="password" name="motDePasse" id="motDePasse" required>
         </div>
 
         <div class="Connexion">
@@ -31,8 +31,8 @@
 </body>
 </html>
 
-
-<!--  <!DOCTYPE html>
+<!-- 
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -41,7 +41,7 @@
 </head>
 <body>
 	<h1>ENI-Encheres</h1>
-	<form action="@{/session}" th:object="${utilisateur}" method="post">
+	<form action="@{/session}" method="post">
 		<div class="Connexion">
 			<label for="email">Identifiant: </label> <input type="text"
 				th:field="*{email}" required>

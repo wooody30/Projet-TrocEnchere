@@ -2,6 +2,7 @@ package fr.eni.groupe8.enchere.bll;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fr.eni.groupe8.enchere.bo.Utilisateur;
@@ -12,8 +13,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
 	private UtilisateurDAO utilisateurDAO;
 
-	public UtilisateurServiceImpl(UtilisateurDAO utilisateurDAO) {
-		this.utilisateurDAO = utilisateurDAO;
+	private final PasswordEncoder passwordEncoder;
+	
+	public UtilisateurServiceImpl(UtilisateurDAO utilisateurDAO, PasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
+		this.utilisateurDAO=utilisateurDAO;
 	}
 
 	@Override
@@ -30,7 +34,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
 	@Override
 	public void enregistrerUtilisateurs(Utilisateur utilisateur) {
-
+		
+		utilisateur.setMotDePasse(passwordEncoder.encode(utilisateur.getMotDePasse()));
 		utilisateurDAO.save(utilisateur);
 
 	}

@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.eni.groupe8.enchere.bll.ArticlesService;
 import fr.eni.groupe8.enchere.bll.CategorieService;
@@ -21,39 +22,59 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	private CategorieService categorieService;
 	private UtilisateurService utilisateurService;
+	private Utilisateur utilisateur;
+	private ArticlesService articleService;
 
 	@Autowired
 
 	public AcceuilController(ArticlesService service, CategorieService categorieService,
-			UtilisateurService utilisateurService) {
+			UtilisateurService utilisateurService, ArticlesService articleService) {
 
 		this.service = service;
 
 		this.categorieService = categorieService;
 		this.utilisateurService = utilisateurService;
+		this.articleService=articleService;
 
 	}
 
 	@GetMapping({ "/", "/Acceuil" })
 	public String afficherAcceuil(Model model) {
 		model.addAttribute("articles", service.findAllArticles());
+		System.out.println("mappingAcceuil");
 		return "Acceuil";
 	}
 
 	@GetMapping({ "/NouvelleVente" })
 	public String afficherNouvelleVente(@ModelAttribute Article article) {
-
+		System.out.println("mappingnewvente");
 		return "NouvelleVente";
 	}
 
 	@PostMapping("/ajouterVente")
 	public String ajouterVente(@ModelAttribute Article article) {
-
+		// cree un utilisateur en dur avec un article.setutilisateurs qui utiliserait le constructeur 
+		// avec juste un numero utilisateur
+		Utilisateur utilisateur = utilisateurService.findUtilisateurById(2); 
+		article.setVendeur(utilisateur);
+		System.out.println("utilisateur associer a l'article");
+		
 		service.ajouterArticle(article);
-
+		System.out.println("mappingAjouterVente");
 		return "redirect:/AcceuilConnexion";
 
+		
 	}
 
 
+	@GetMapping("/detailarticle")
+	public String detailArticle(Integer noArticle, Model model ) {
+		
+		Article article = articleService.articleById(noArticle);
+		model.addAttribute("article", article);
+		return "detailArticle";
+	}
+	
+	
+	
 }

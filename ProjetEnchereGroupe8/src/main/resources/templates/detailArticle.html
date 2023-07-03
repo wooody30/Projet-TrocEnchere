@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail</title>
+</head>
+<body>
+	<h1>ENI-Encheres</h1>
+	<h2>Détail vente</h2>
+
+
+	<div class="DetailVente">
+
+		<table>
+			<tbody>
+				<tr>
+
+					<th>Nom :</th>
+					<td data-th-text="${article.nomArticle}"></td>
+				</tr>
+
+				<tr>
+					<th>Description :</th>
+					<td data-th-text="${article.description}"></td>
+				</tr>
+
+				<tr>
+					<th>Catégorie :</th>
+					<td data-th-text="${article.categorie.libelle}"></td>
+				</tr>
+
+				<tr>
+					<th>Fin de l'enchère :</th>
+					<td data-th-text="${article.dateFinEncheres}"></td>
+				</tr>
+
+				<tr>
+					<th>Meilleure offre :</th>
+					<td>A faire</td>
+				</tr>
+
+				<tr>
+					<th>Mise à prix :</th>
+					<td>A faire</td>
+				</tr>
+
+
+				<tr>
+					<th>Retrait :</th>
+					<td data-th-text="${article.vendeur.rue}"><br><td data-th-text="${article.vendeur.codePostal}">
+					</td><td data-th-text="${article.vendeur.ville}"></td>
+				</tr>
+
+				<tr>
+					<th>Vendeur :</th>
+					<td data-th-text="${article.vendeur.pseudo}"></td>
+				</tr>
+				<tr>
+					<th>Ma proposition :</th>
+					<td>A faire</td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="submit">Enchérir</button>
+
+	</div>
+</body>
+</html>
