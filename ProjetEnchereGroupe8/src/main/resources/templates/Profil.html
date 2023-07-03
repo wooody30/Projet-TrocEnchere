@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Profile</title>
+</head>
+<body>
+<h1>ENI-Encheres</h1>
+	<table class="table table-hover" >
+			<tr>
+				<th>Pseudo:</th>
+				<th>Nom:</th>
+				<th>Prenom:</th>
+				<th>Email:</th>
+				<th>Téléphone:</th>
+				<th>Rue:</th>
+				<th>Code postal:</th>
+				<th>Ville:</th>
+			</tr>
+			<tr>
+				<td data-th-text="${utilisateur.pseudo}"></td>
+				<td data-th-text="${utilisateur.nom}"></td>
+				<td data-th-text="${utilisateur.prenom}"></td>
+				<td data-th-text="${utilisateur.email}"></td>
+				<td data-th-text="${utilisateur.telephone}"></td>
+				<td data-th-text="${utilisateur.rue}"></td>
+				<td data-th-text="${utilisateur.codePostal}"></td>
+				<td data-th-text="${utilisateur.ville}"></td>
+			</tr>
+	</table>
+	
+	<a th:href="@{/AcceuilConnexion}">Acceuil</a>
+	<a th:href="@{/CreerCompte}">Modifier</a>
+</body>
+</html>

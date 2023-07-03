@@ -25,7 +25,7 @@ public class Utilisateur
 	
 	public Utilisateur(Integer noUtilisateur) {
 		super();
-		this.noUtilisateur = 1;
+		this.noUtilisateur = noUtilisateur;
 	}
 
 	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,

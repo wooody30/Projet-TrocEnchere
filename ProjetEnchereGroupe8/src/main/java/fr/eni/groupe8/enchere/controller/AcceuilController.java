@@ -29,7 +29,6 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 			UtilisateurService utilisateurService) {
 
 		this.service = service;
-
 		this.categorieService = categorieService;
 		this.utilisateurService = utilisateurService;
 
@@ -52,7 +51,7 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 	public String ajouterVente(@ModelAttribute Article article) {
 		// cree un utilisateur en dur avec un article.setutilisateurs qui utiliserait le constructeur 
 		// avec juste un numero utilisateur
-		Utilisateur utilisateur = utilisateurService.findUtilisateurById(2); 
+		Utilisateur utilisateur = utilisateurService.findUtilisateurById(4); 
 		article.setVendeur(utilisateur);
 		System.out.println("utilisateur associer a l'article");
 		
@@ -60,7 +59,6 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 		System.out.println("mappingAjouterVente");
 		return "redirect:/AcceuilConnexion";
 
-		
 	}
 
 
