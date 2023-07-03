@@ -71,7 +71,7 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 		paramSrc.addValue("description", article.getDescription());
 		paramSrc.addValue("no_categorie",
 				article.getCategorie() == null ? null : article.getCategorie().getNoCategorie());
-		paramSrc.addValue("prix_initial ", article.getPrixInitial());
+		paramSrc.addValue("prix_initial", article.getPrixInitial());
 		paramSrc.addValue("date_debut_encheres", article.getDateDebutEncheres());
 		paramSrc.addValue("date_fin_encheres", article.getDateFinEncheres());
 		System.out.println("saveArticle");

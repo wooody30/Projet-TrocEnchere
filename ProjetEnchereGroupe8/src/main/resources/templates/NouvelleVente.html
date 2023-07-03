@@ -12,7 +12,7 @@
 
 	<div class="NouvelleVente">
 
-		<form action="/ajouterVente" th:object="${article}" method="POST"
+		<form th:action="@{/ajouterVente}" th:object="${article}" method="POST"
 			enctype="multipart/form-data">
 
 			<div class="article">
@@ -42,8 +42,8 @@
 			</div>
 
 			<div class="article">
-				<label for="miseaprix">Mise à prix :</label> <input type="text"
-					th:field="*{prixInitial}" id="miseaprix" name="miseaprix"
+				<label for="prixInitial">Mise à prix :</label> <input type="text"
+					th:field="*{prixInitial}" id="prixInitial" name="prixInitial"
 					placeholder="Prix de départ en €" required>
 			</div>
 			<div class="article">
