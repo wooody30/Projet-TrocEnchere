@@ -21,6 +21,7 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	private CategorieService categorieService;
 	private UtilisateurService utilisateurService;
+	private Utilisateur utilisateur;
 
 	@Autowired
 
@@ -49,11 +50,17 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	@PostMapping("/ajouterVente")
 	public String ajouterVente(@ModelAttribute Article article) {
-
+		// cree un utilisateur en dur avec un article.setutilisateurs qui utiliserait le constructeur 
+		// avec juste un numero utilisateur
+		Utilisateur utilisateur = utilisateurService.findUtilisateurById(2); 
+		article.setVendeur(utilisateur);
+		System.out.println("utilisateur associer a l'article");
+		
 		service.ajouterArticle(article);
-		System.out.println("mappingajouterVente");
+		System.out.println("mappingAjouterVente");
 		return "redirect:/AcceuilConnexion";
 
+		
 	}
 
 

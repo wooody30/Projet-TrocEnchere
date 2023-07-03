@@ -25,6 +25,7 @@ private ArticlesDAO articlesDAO;
 	@Override
 	public void ajouterArticle(Article article) {
 		articlesDAO.saveArticle(article);
+		System.out.println("saveArticle");
 		
 	}
 

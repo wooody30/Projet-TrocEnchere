@@ -9,7 +9,7 @@ import fr.eni.groupe8.enchere.bll.UtilisateurServiceImpl;
 
 import fr.eni.groupe8.enchere.bo.Utilisateur;
 
-@Component
+//@Component
 public class StringToUtilisateurController implements Converter<String, Utilisateur>{
 
 	

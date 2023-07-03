@@ -2,7 +2,9 @@ package fr.eni.groupe8.enchere.bo;
 
 import java.util.Objects;
 
-public class Utilisateur {
+public class Utilisateur 
+//implements UserDetails 
+{
 
 	private Integer noUtilisateur;
 	private String pseudo;
@@ -19,6 +21,11 @@ public class Utilisateur {
 
 	public Utilisateur() {
 
+	}
+	
+	public Utilisateur(Integer noUtilisateur) {
+		super();
+		this.noUtilisateur = 1;
 	}
 
 	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
@@ -162,6 +169,14 @@ public class Utilisateur {
 			return false;
 		Utilisateur other = (Utilisateur) obj;
 		return administrateur == other.administrateur && Objects.equals(pseudo, other.pseudo);
+	}
+	//@Override
+	public String getPassword() {
+		return motDePasse;
+	}
+	//@Override
+	public String getUsername() {
+		return pseudo;
 	}
 
 }

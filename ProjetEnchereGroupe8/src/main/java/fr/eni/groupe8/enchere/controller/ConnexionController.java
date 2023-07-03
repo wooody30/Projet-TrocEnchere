@@ -36,39 +36,37 @@ public class ConnexionController {
 	// return "login";
 	// }
 
-
-	@GetMapping("/login")
+	//@GetMapping("/login")
 	public String afficherConnexion() {
 		return "loginForm";
 
 	}
 
 	@PostMapping("/session")
-	String chargerMembreEnSession(@ModelAttribute("utilisateur") Utilisateur utilisateurEnSession,
+	String chargerMembreEnSession(
+			//@ModelAttribute("utilisateur") Utilisateur utilisateurEnSession,
 			Principal principal) {
-		System.out.println(utilisateurEnSession);
+		//System.out.println(utilisateurEnSession);
 		if (principal != null) {
-			
-		
-		String email = principal.getName();
-		Utilisateur aCharger = service.findUtilisateurByEmail(email);
-		if (aCharger != null) {
-			utilisateurEnSession.setEmail(aCharger.getEmail());
-			utilisateurEnSession.setMotDePasse(aCharger.getMotDePasse());
-			utilisateurEnSession.setPseudo(aCharger.getPseudo());
+			System.out.println(principal.getName());
+			String email = principal.getName();
+			Utilisateur aCharger = service.findUtilisateurByEmail(email);
+			if (aCharger != null) {
+			//	utilisateurEnSession.setEmail(aCharger.getEmail());
+				//utilisateurEnSession.setMotDePasse(aCharger.getMotDePasse());
+			//	utilisateurEnSession.setPseudo(aCharger.getPseudo());
 
-		} else {
+			} else {
 
-			utilisateurEnSession.setEmail(null);
-			utilisateurEnSession.setMotDePasse(null);
+				//utilisateurEnSession.setEmail(null);
+				//utilisateurEnSession.setMotDePasse(null);
 
-		}
+			}
 		}
 
 		return "redirect:/AcceuilConnexion";
 	}
 
-	
 	// Cette méthode met par défaut un nouveau membre en session
 	@ModelAttribute("utilisateurEnSession")
 	public Utilisateur membreEnSession() {
