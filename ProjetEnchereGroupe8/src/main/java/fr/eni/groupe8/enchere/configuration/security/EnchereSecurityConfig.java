@@ -153,6 +153,7 @@ public class EnchereSecurityConfig {
 			.requestMatchers( HttpMethod.GET, "/Acceuil" ).permitAll()
 			.requestMatchers( HttpMethod.GET, "/AcceuilConnexion" ).permitAll()//.authenticated()
 			.requestMatchers(HttpMethod.GET,"/detailarticle" ).permitAll()
+			.requestMatchers(HttpMethod.GET,"/profil" ).permitAll()
 
 
 					// Permettre aux visiteurs d'accéder à la page de création d'un compte
