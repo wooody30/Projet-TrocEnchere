@@ -36,7 +36,10 @@ public class ConnexionController {
 	// return "login";
 	// }
 
-	@GetMapping("/login")
+
+	//@GetMapping("/login")
+	@GetMapping("/Connexion")
+
 	public String afficherConnexion() {
 		return "loginForm";
 
@@ -46,7 +49,9 @@ public class ConnexionController {
 	String chargerMembreEnSession(
 			//@ModelAttribute("utilisateur") Utilisateur utilisateurEnSession,
 			Principal principal) {
-		System.out.println("utilisateurEnSession");
+
+		System.out.println(principal);
+
 		if (principal != null) {
 			System.out.println(principal.getName());
 			String email = principal.getName();
@@ -68,10 +73,10 @@ public class ConnexionController {
 	}
 
 	// Cette méthode met par défaut un nouveau membre en session
-	@ModelAttribute("utilisateurEnSession")
+	/*@ModelAttribute("utilisateurEnSession")
 	public Utilisateur membreEnSession() {
 		System.out.println("Add Attribut Session");
 		return new Utilisateur();
-	}
+	}*/
 
 }

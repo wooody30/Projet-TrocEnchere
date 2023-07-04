@@ -21,76 +21,77 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class EnchereSecurityConfig {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-	private final String SELECT_USER = "select email, mot_de_passe, 1 from UTILISATEURS where email=?";
-	private final String SELECT_ROLES = "select email, 'admin' from UTILISATEURS where email=?";
-	
+
+	// private final String SELECT_USER = "select email, mot_de_passe, 1 from
+	// UTILISATEURS where email=?";
+	// private final String SELECT_ROLES = "select email, 'admin' from UTILISATEURS
+	// where email=?";
+	private final String SELECT_USER = "select email, mot_de_passe, 1 from UTILISATEURS where ? IN (pseudo, email)";
+	private final String SELECT_ROLES = "select email, 'admin' from UTILISATEURS where ? IN (pseudo, email)";
+
 	@Autowired
-    private DataSource dataSource ;
-	
-	 @Autowired
-	    public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception {
-	        auth.jdbcAuthentication()
-	            .dataSource( dataSource )
-	            .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ? " )
-	            .authoritiesByUsernameQuery( "SELECT ?, 'admin' " )
-	            .passwordEncoder( passwordEncoder )
-	            ;
-	    }
-	/*@Bean
-	public UserDetailsManager userDetailsManager(DataSource dataSource) {
-		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+	private DataSource dataSource;
 
-		jdbcUserDetailsManager.setUsersByUsernameQuery(SELECT_USER);
-		jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(SELECT_ROLES);
+	/*
+	 * @Autowired public void configureGlobal( AuthenticationManagerBuilder auth )
+	 * throws Exception { auth.jdbcAuthentication() .dataSource( dataSource )
+	 * .usersByUsernameQuery(
+	 * "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ? " )
+	 * .authoritiesByUsernameQuery( "SELECT ?, 'admin' " ) .passwordEncoder(
+	 * passwordEncoder ) ; }
+	 */
 
-		return jdbcUserDetailsManager;
-	}*/
-	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery(SELECT_USER)
+				.authoritiesByUsernameQuery(SELECT_ROLES).passwordEncoder(passwordEncoder);
+	}
 
-    //private final PasswordEncoder passwordEncoder  = new BCryptPasswordEncoder() ;
+	/*
+	 * @Bean public UserDetailsManager userDetailsManager(DataSource dataSource) {
+	 * JdbcUserDetailsManager jdbcUserDetailsManager = new
+	 * JdbcUserDetailsManager(dataSource);
+	 * 
+	 * @@ -45,77 +46,86 @@ public UserDetailsManager userDetailsManager(DataSource
+	 * dataSource) { return jdbcUserDetailsManager; }
+	 */
 
-	    //private final PasswordEncoder passwordEncoder  = new BCryptPasswordEncoder() ;
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return passwordEncoder;
+	}
 
-	    private final PasswordEncoder passwordEncoder  = new PasswordEncoder() {
+	// private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder() ;
 
-	        @Override
-	        public String encode(CharSequence rawPassword) {
-	            System.out.println( "encode: " + rawPassword);
-	            return rawPassword.toString();
-	        }
+	private final PasswordEncoder passwordEncoder = new PasswordEncoder() {
 
-	        @Override
-	        public boolean matches(CharSequence rawPassword, String encodedPassword) {
-	            System.out.println( "matches: " + rawPassword + " " + encodedPassword );
-	            if ( encodedPassword.startsWith("{noop}") ) {
-	                return encodedPassword.endsWith(rawPassword.toString());
-	            } else if (encodedPassword.startsWith("$2a$")) {
-	                var result = new BCryptPasswordEncoder().matches( rawPassword, encodedPassword ) ;
-	                return result ;
-	            } else {
-	            	return encodedPassword.endsWith(rawPassword.toString());
-	            }
-	        }
-	    } ;
-	    
-	    @Bean
-	    public PasswordEncoder passwordEncoder() {
-	        return passwordEncoder;
-	    }
-	    
-	    
+		@Override
+		public String encode(CharSequence rawPassword) {
+			System.out.println("encode: " + rawPassword);
+			return rawPassword.toString();
+		}
+
+		@Override
+		public boolean matches(CharSequence rawPassword, String encodedPassword) {
+			System.out.println("matches: " + rawPassword + " " + encodedPassword);
+			if (encodedPassword.startsWith("{noop}")) {
+				return encodedPassword.endsWith(rawPassword.toString());
+			} else if (encodedPassword.startsWith("$2a$")) {
+				var result = new BCryptPasswordEncoder().matches(rawPassword, encodedPassword);
+				return result;
+			} else {
+				return encodedPassword.endsWith(rawPassword.toString());
+			}
+		}
+	};
+
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		// Customiser le formulaire
-		http.formLogin(form -> {
-			form.loginProcessingUrl("/login")
-			//.loginPage("/login")
-			//.defaultSuccessUrl("/AcceuilConnexion")
-			//.usernameParameter("pseudo")
-			//.passwordParameter("motDePasse")
-			.permitAll()
-			;
+		http.formLogin(login -> {
+			login.loginPage("/Connexion").loginProcessingUrl("/session").defaultSuccessUrl("/AcceuilConnexion")
+					.failureUrl("/login").usernameParameter("pseudo").passwordParameter("motDePasse").permitAll();
 		});
 
 		// /logout --> vider la session et le contexte de sécurité
@@ -103,22 +104,16 @@ public class EnchereSecurityConfig {
 			auth.requestMatchers(HttpMethod.GET, "/login").permitAll()
 
 					// Permettre aux visiteurs d'accéder à la page d'accueil
-			.requestMatchers(HttpMethod.GET, "/Acceuil").permitAll()
-			.requestMatchers(HttpMethod.GET, "/").permitAll()
-
-					// Permettre aux visiteurs d'accéder à la page de création d'un compte
-			.requestMatchers(HttpMethod.POST, "/CreerCompte").permitAll()
-			.requestMatchers(HttpMethod.GET, "/CreerCompte").permitAll()
-
+					.requestMatchers(HttpMethod.GET, "/").permitAll().requestMatchers(HttpMethod.GET, "/Acceuil")
+					.permitAll().requestMatchers(HttpMethod.GET, "/AcceuilConnexion").authenticated()
 					// Permettre à tous d'afficher correctement les images et CSS
-			.requestMatchers("/css/*").permitAll().requestMatchers("/images/*").permitAll()
+					.requestMatchers("/css/*").permitAll().requestMatchers("/images/*").permitAll()
 					// Il faut être connecté pour toutes autres URLs
-
-			.requestMatchers(HttpMethod.POST, "/session").permitAll()
-			//.anyRequest().authenticated()
-			.anyRequest().permitAll();
-					;
+					.requestMatchers(HttpMethod.POST, "/session").permitAll().anyRequest().authenticated()
+			// .anyRequest().permitAll()
+			;
 		});
 		return http.build();
 	}
+
 }
