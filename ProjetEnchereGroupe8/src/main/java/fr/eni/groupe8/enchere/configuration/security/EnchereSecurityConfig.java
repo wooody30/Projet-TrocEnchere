@@ -1,7 +1,6 @@
 package fr.eni.groupe8.enchere.configuration.security;
 
 import javax.sql.DataSource;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +51,22 @@ public class EnchereSecurityConfig {
 	 * JdbcUserDetailsManager jdbcUserDetailsManager = new
 	 * JdbcUserDetailsManager(dataSource);
 	 * 
-	 * @@ -45,77 +46,86 @@ public UserDetailsManager userDetailsManager(DataSource
-	 * dataSource) { return jdbcUserDetailsManager; }
+	 * @@ -49,6 +64,7 @@ public UserDetailsManager userDetailsManager(DataSource
+	 * dataSource) {
+	 * 
+	 * //private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder()
+	 * ;
+	 * 
+	 * /* private final PasswordEncoder passwordEncoder = new PasswordEncoder() {
+	 * 
+	 * @Override
+	 * 
+	 * @@ -74,46 +90,109 @@ public boolean matches(CharSequence rawPassword, String
+	 * encodedPassword) {
+	 * 
+	 * @Bean public PasswordEncoder passwordEncoder() { return passwordEncoder;
+	 * 
+	 * }
 	 */
 
 	@Bean
@@ -61,40 +74,50 @@ public class EnchereSecurityConfig {
 		return passwordEncoder;
 	}
 
-	// private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder() ;
+	private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-	private final PasswordEncoder passwordEncoder = new PasswordEncoder() {
-
-		@Override
-		public String encode(CharSequence rawPassword) {
-			System.out.println("encode: " + rawPassword);
-			return rawPassword.toString();
-		}
-
-		@Override
-		public boolean matches(CharSequence rawPassword, String encodedPassword) {
-			System.out.println("matches: " + rawPassword + " " + encodedPassword);
-			if (encodedPassword.startsWith("{noop}")) {
-				return encodedPassword.endsWith(rawPassword.toString());
-			} else if (encodedPassword.startsWith("$2a$")) {
-				var result = new BCryptPasswordEncoder().matches(rawPassword, encodedPassword);
-				return result;
-			} else {
-				return encodedPassword.endsWith(rawPassword.toString());
-			}
-		}
-	};
+	/*
+	 * private final PasswordEncoder passwordEncoder = new PasswordEncoder() {
+	 * 
+	 * @Override public String encode(CharSequence rawPassword) {
+	 * System.out.println( "encode: " + rawPassword); return rawPassword.toString();
+	 * }
+	 * 
+	 * @Override public boolean matches(CharSequence rawPassword, String
+	 * encodedPassword) { System.out.println( "matches: " + rawPassword + " " +
+	 * encodedPassword ); if ( encodedPassword.startsWith("{noop}") ) { return
+	 * encodedPassword.endsWith(rawPassword.toString()); } else if
+	 * (encodedPassword.startsWith("$2a$")) { var result = new
+	 * BCryptPasswordEncoder().matches( rawPassword, encodedPassword ) ; return
+	 * result ; } else { return encodedPassword.endsWith(rawPassword.toString()); }
+	 * } } ;
+	 */
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		// Customiser le formulaire
+		/*
+		 * http.formLogin(form -> { form.loginProcessingUrl("/login")
+		 * //.loginPage("/login") //.defaultSuccessUrl("/AcceuilConnexion")
+		 * //.usernameParameter("pseudo") //.passwordParameter("motDePasse")
+		 * .permitAll() ; });
+		 */
+
 		http.formLogin(login -> {
 			login.loginPage("/Connexion").loginProcessingUrl("/session").defaultSuccessUrl("/AcceuilConnexion")
 					.failureUrl("/login").usernameParameter("pseudo").passwordParameter("motDePasse").permitAll();
 		});
 
 		// /logout --> vider la session et le contexte de sécurité
+
+		/*
+		 * http.logout( logout -> logout .invalidateHttpSession(true)
+		 * .clearAuthentication(true) .deleteCookies("JSESSIONID")
+		 * .logoutRequestMatcher(new AntPathRequestMatcher("/SeDeconnecter"))
+		 * .logoutSuccessUrl("/Acceuil") // .permitAll() );
+		 */
+
 		http.logout(logout -> logout.invalidateHttpSession(true).clearAuthentication(true).deleteCookies("JSESSIONID")
 				.logoutRequestMatcher(new AntPathRequestMatcher("/SeDeconnecter")).logoutSuccessUrl("/Acceuil")
 		// .permitAll()
@@ -104,16 +127,35 @@ public class EnchereSecurityConfig {
 			auth.requestMatchers(HttpMethod.GET, "/login").permitAll()
 
 					// Permettre aux visiteurs d'accéder à la page d'accueil
+
+					// .requestMatchers(HttpMethod.GET, "/Acceuil").permitAll()
+					// .requestMatchers(HttpMethod.GET, "/").permitAll()
 					.requestMatchers(HttpMethod.GET, "/").permitAll().requestMatchers(HttpMethod.GET, "/Acceuil")
-					.permitAll().requestMatchers(HttpMethod.GET, "/AcceuilConnexion").authenticated()
+					.permitAll().requestMatchers(HttpMethod.GET, "/AcceuilConnexion").permitAll()// .authenticated()
+					.requestMatchers(HttpMethod.GET, "/detailarticle").permitAll()
+					.requestMatchers(HttpMethod.GET, "/profil").permitAll()
+
+					// Permettre aux visiteurs d'accéder à la page de création d'un compte
+
+					// .requestMatchers(HttpMethod.POST, "/CreerCompte").permitAll()
+					// .requestMatchers(HttpMethod.GET, "/CreerCompte").permitAll()
+					.requestMatchers(HttpMethod.GET, "/CreerCompte").permitAll()
+					.requestMatchers(HttpMethod.POST, "/CreerCompte").permitAll()
+
 					// Permettre à tous d'afficher correctement les images et CSS
+					// .requestMatchers("/css/*").permitAll().requestMatchers("/images/*").permitAll()
 					.requestMatchers("/css/*").permitAll().requestMatchers("/images/*").permitAll()
+
 					// Il faut être connecté pour toutes autres URLs
-					.requestMatchers(HttpMethod.POST, "/session").permitAll().anyRequest().authenticated()
+
+					// .requestMatchers(HttpMethod.POST, "/session").permitAll()
+					// .anyRequest().authenticated()
+					// .anyRequest().permitAll();
+					.requestMatchers(HttpMethod.POST, "/session").permitAll().requestMatchers("/**").authenticated()
 			// .anyRequest().permitAll()
 			;
 		});
 		return http.build();
-	}
 
+	}
 }
