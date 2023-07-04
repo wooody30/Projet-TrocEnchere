@@ -9,14 +9,14 @@ public class Enchere {
 	private BigDecimal montantEnchere;
 	private Utilisateur encherisseur;
 	private Article noArticle;
-	private int noEnchere;
+	private Integer noEnchere;
 
 	public Enchere() {
 
 	}
 
 	public Enchere(LocalDateTime dateEnchere, BigDecimal montantEnchere, Utilisateur encherisseur, Article noArticle,
-			int noEnchere) {
+			Integer noEnchere) {
 		super();
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
@@ -41,11 +41,11 @@ public class Enchere {
 		this.montantEnchere = montantEnchere;
 	}
 
-	public int getNoEnchere() {
+	public Integer getNoEnchere() {
 		return noEnchere;
 	}
 
-	public void setNoEnchere(int noEnchere) {
+	public void setNoEnchere(Integer noEnchere) {
 		this.noEnchere = noEnchere;
 	}
 

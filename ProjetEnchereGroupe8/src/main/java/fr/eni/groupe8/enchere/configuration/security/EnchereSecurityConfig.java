@@ -152,8 +152,7 @@ public class EnchereSecurityConfig {
 					// .anyRequest().authenticated()
 					// .anyRequest().permitAll();
 					.requestMatchers(HttpMethod.POST, "/session").permitAll().requestMatchers("/**").authenticated()
-			 .anyRequest().permitAll()
-			;
+					.anyRequest().permitAll();
 		});
 		return http.build();
 

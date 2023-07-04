@@ -151,8 +151,8 @@ public class Article {
 	}
 
 	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, BigDecimal prixInitial, BigDecimal prixVente, Boolean etatVente, Utilisateur vendeur,
-			Categorie categorie) {
+			LocalDate dateFinEncheres, BigDecimal prixInitial, BigDecimal prixVente, Boolean etatVente,
+			Utilisateur vendeur, Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;

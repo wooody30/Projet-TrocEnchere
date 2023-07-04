@@ -1,5 +1,9 @@
 package fr.eni.groupe8.enchere.dal;
 
-public interface EncheresDAO {
+import fr.eni.groupe8.enchere.bo.Enchere;
 
+public interface EncheresDAO {
+	
+	void saveEnchere(Enchere enchere);
+	
 }
