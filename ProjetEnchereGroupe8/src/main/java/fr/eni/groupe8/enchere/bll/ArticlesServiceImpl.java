@@ -45,30 +45,36 @@ public class ArticlesServiceImpl implements ArticlesService {
 	public void encherir(Article noArticle, Utilisateur utilisateur) {
 		// TODO Auto-generated method stub
 
+		
 	}
 
-	/*
-	 * @Override public void encherir(Article article, Utilisateur utilisateur) {
-	 * 
-	 * // Check le crédit de l'acheteur potentiel if (utilisateur.getCredit() <
-	 * utilisateur.getPropositionAcheteur()) { throw new
-	 * IllegalArgumentException("Crédits insuffisants"); }
-	 * 
-	 * // Check si le prix proposé est sup au prix initial if
-	 * (utilisateur.getPropositionAcheteur() <= article.getPrixInitial()) { throw
-	 * new
-	 * IllegalArgumentException("Le prix proposé doit être supérieur à la mise à prix"
-	 * ); }
-	 * 
-	 * // MAJ l'article avec le nouveau meilleur prix et le meilleur enchérisseur
-	 * article.setMeilleurPrix(utilisateur.getPropositionAcheteur());
-	 * article.setMeilleurEncherisseur(utilisateur);
-	 * articlesDAO.saveArticle(article);
-	 * 
-	 * // Débiter le crédit du user utilisateur.setCredit(utilisateur.getCredit() -
-	 * utilisateur.getPropositionAcheteur()); utilisateurDAO.save(utilisateur);
-	 * 
-	 * }
-	 */
+	/*@Override
+	public void encherir(Article article, Utilisateur utilisateur) {
+>>>>>>> branch 'main' of https://github.com/wooody30/ProjetEnchereGroupe8.git
+
+<<<<<<< HEAD
+	}
+=======
+		// Check le crédit de l'acheteur potentiel
+		if (utilisateur.getCredit() < utilisateur.getPropositionAcheteur()) {
+			throw new IllegalArgumentException("Crédits insuffisants");
+		}
+
+		// Check si le prix proposé est sup au prix initial
+		if (utilisateur.getPropositionAcheteur() <= article.getPrixInitial()) {
+			throw new IllegalArgumentException("Le prix proposé doit être supérieur à la mise à prix");
+		}
+
+		// MAJ l'article avec le nouveau meilleur prix et le meilleur enchérisseur
+		article.setMeilleurPrix(utilisateur.getPropositionAcheteur());
+		article.setMeilleurEncherisseur(utilisateur);
+		articlesDAO.saveArticle(article);
+
+		// Débiter le crédit du user
+		utilisateur.setCredit(utilisateur.getCredit() - utilisateur.getPropositionAcheteur());
+		utilisateurDAO.save(utilisateur);
+
+	}*/
+
 
 }

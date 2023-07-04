@@ -41,6 +41,8 @@ public class Enchere {
 		this.montantEnchere = montantEnchere;
 	}
 
+
+
 	public Article getNoArticle() {
 		return noArticle;
 	}
@@ -56,6 +58,7 @@ public class Enchere {
 	public void setEncherisseur(Utilisateur encherisseur) {
 		this.encherisseur = encherisseur;
 	}
+
 
 	public Integer getNoEnchere() {
 		return noEnchere;
