@@ -36,7 +36,7 @@ public class ConnexionController {
 	// return "login";
 	// }
 
-	//@GetMapping("/login")
+	@GetMapping("/login")
 	public String afficherConnexion() {
 		return "loginForm";
 
@@ -46,7 +46,7 @@ public class ConnexionController {
 	String chargerMembreEnSession(
 			//@ModelAttribute("utilisateur") Utilisateur utilisateurEnSession,
 			Principal principal) {
-		//System.out.println(utilisateurEnSession);
+		System.out.println("utilisateurEnSession");
 		if (principal != null) {
 			System.out.println(principal.getName());
 			String email = principal.getName();

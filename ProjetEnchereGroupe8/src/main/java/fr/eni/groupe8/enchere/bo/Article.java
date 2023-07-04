@@ -20,6 +20,8 @@ public class Article {
 	private boolean etatVente;
 	private Utilisateur vendeur;
 	private Categorie categorie;
+	private int meilleurPrix;
+	private Utilisateur meilleurEncherisseur;
 
 	public Article() {
 
@@ -169,6 +171,22 @@ public class Article {
 	public void addAttribute(String string, List<Categorie> listCategorie) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int getMeilleurPrix() {
+		return meilleurPrix;
+	}
+
+	public void setMeilleurPrix(int meilleurPrix) {
+		this.meilleurPrix = meilleurPrix;
+	}
+
+	public Utilisateur getMeilleurEncherisseur() {
+		return meilleurEncherisseur;
+	}
+
+	public void setMeilleurEncherisseur(Utilisateur meilleurEncherisseur) {
+		this.meilleurEncherisseur = meilleurEncherisseur;
 	}
 
 }
