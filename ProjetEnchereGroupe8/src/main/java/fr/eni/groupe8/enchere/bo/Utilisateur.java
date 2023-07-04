@@ -1,8 +1,9 @@
 package fr.eni.groupe8.enchere.bo;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Utilisateur 
+public class Utilisateur
 //implements UserDetails 
 {
 
@@ -16,14 +17,14 @@ public class Utilisateur
 	private String codePostal;
 	private String ville;
 	private String motDePasse;
-	private int credit;
+	private BigDecimal credit;
 	private boolean administrateur;
-	private int propositionAcheteur;
+	private BigDecimal propositionAcheteur;
 
 	public Utilisateur() {
 
 	}
-	
+
 	public Utilisateur(Integer noUtilisateur) {
 		super();
 		this.noUtilisateur = 1;
@@ -32,7 +33,7 @@ public class Utilisateur
 	}
 
 	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, int credit) {
+			String rue, String codePostal, String ville, String motDePasse, BigDecimal credit) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -127,11 +128,11 @@ public class Utilisateur
 		this.motDePasse = motDePasse;
 	}
 
-	public int getCredit() {
+	public BigDecimal getCredit() {
 		return credit;
 	}
 
-	public void setCredit(int credit) {
+	public void setCredit(BigDecimal credit) {
 		this.credit = credit;
 	}
 
@@ -173,20 +174,22 @@ public class Utilisateur
 		Utilisateur other = (Utilisateur) obj;
 		return administrateur == other.administrateur && Objects.equals(pseudo, other.pseudo);
 	}
-	//@Override
+
+	// @Override
 	public String getPassword() {
 		return motDePasse;
 	}
-	//@Override
+
+	// @Override
 	public String getUsername() {
 		return pseudo;
 	}
 
-	public int getPropositionAcheteur() {
+	public BigDecimal getPropositionAcheteur() {
 		return propositionAcheteur;
 	}
 
-	public void setPropositionAcheteur(int propositionAcheteur) {
+	public void setPropositionAcheteur(BigDecimal propositionAcheteur) {
 		this.propositionAcheteur = propositionAcheteur;
 	}
 

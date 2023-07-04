@@ -1,6 +1,6 @@
 package fr.eni.groupe8.enchere.bo;
 
-
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,12 +15,12 @@ public class Article {
 	private LocalDate dateFinEncheres;
 	private LocalTime heureDebutEnchere;
 	private LocalTime heureFinEnchere;
-	private int prixInitial;
-	private int prixVente;
+	private BigDecimal prixInitial;
+	private BigDecimal prixVente;
 	private boolean etatVente;
 	private Utilisateur vendeur;
 	private Categorie categorie;
-	private int meilleurPrix;
+	private BigDecimal meilleurPrix;
 	private Utilisateur meilleurEncherisseur;
 
 	public Article() {
@@ -28,9 +28,8 @@ public class Article {
 	}
 
 	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, LocalTime heureDebutEnchere, LocalTime heureFinEnchere,
-			int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
-			Categorie categorie) {
+			LocalDate dateFinEncheres, LocalTime heureDebutEnchere, LocalTime heureFinEnchere, BigDecimal prixInitial,
+			BigDecimal prixVente, Boolean etatVente, Utilisateur vendeur, Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -43,9 +42,8 @@ public class Article {
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
 		this.vendeur = vendeur;
-		this.categorie =categorie;
+		this.categorie = categorie;
 	}
-
 
 	public Integer getNoArticle() {
 		return noArticle;
@@ -87,19 +85,19 @@ public class Article {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 
-	public int getPrixInitial() {
+	public BigDecimal getPrixInitial() {
 		return prixInitial;
 	}
 
-	public void setPrixInitial(int prixInitial) {
+	public void setPrixInitial(BigDecimal prixInitial) {
 		this.prixInitial = prixInitial;
 	}
 
-	public int getPrixVente() {
+	public BigDecimal getPrixVente() {
 		return prixVente;
 	}
 
-	public void setPrixVente(int prixVente) {
+	public void setPrixVente(BigDecimal prixVente) {
 		this.prixVente = prixVente;
 	}
 
@@ -153,7 +151,7 @@ public class Article {
 	}
 
 	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
+			LocalDate dateFinEncheres, BigDecimal prixInitial, BigDecimal prixVente, Boolean etatVente, Utilisateur vendeur,
 			Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
@@ -170,14 +168,14 @@ public class Article {
 
 	public void addAttribute(String string, List<Categorie> listCategorie) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	public int getMeilleurPrix() {
+	public BigDecimal getMeilleurPrix() {
 		return meilleurPrix;
 	}
 
-	public void setMeilleurPrix(int meilleurPrix) {
+	public void setMeilleurPrix(BigDecimal meilleurPrix) {
 		this.meilleurPrix = meilleurPrix;
 	}
 

@@ -11,20 +11,16 @@ public class Enchere {
 	private Article noArticle;
 	private int noEnchere;
 
-	
-	
 	public Enchere() {
-		
+
 	}
-	
-	
-	
+
 	public Enchere(LocalDateTime dateEnchere, BigDecimal montantEnchere, Utilisateur encherisseur, Article noArticle,
 			int noEnchere) {
 		super();
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
-		this.encherisseur=encherisseur;
+		this.encherisseur = encherisseur;
 		this.noArticle = noArticle;
 		this.noEnchere = noEnchere;
 	}
@@ -53,7 +49,6 @@ public class Enchere {
 		this.noEnchere = noEnchere;
 	}
 
-
 	public Article getNoArticle() {
 		return noArticle;
 	}
@@ -62,26 +57,18 @@ public class Enchere {
 		this.noArticle = noArticle;
 	}
 
-
-
 	public Utilisateur getEncherisseur() {
 		return encherisseur;
 	}
 
-
-
 	public void setEncherisseur(Utilisateur encherisseur) {
 		this.encherisseur = encherisseur;
 	}
-
-
 
 	@Override
 	public String toString() {
 		return "Enchere [dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + ", encherisseur="
 				+ encherisseur + ", noArticle=" + noArticle + ", noEnchere=" + noEnchere + "]";
 	}
-
-
 
 }

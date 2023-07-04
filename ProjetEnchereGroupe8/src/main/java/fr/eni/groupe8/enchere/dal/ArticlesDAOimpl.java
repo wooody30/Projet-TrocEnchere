@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-
 import fr.eni.groupe8.enchere.bo.Article;
 import fr.eni.groupe8.enchere.bo.Categorie;
 import fr.eni.groupe8.enchere.bo.Utilisateur;
@@ -21,7 +20,7 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 	private static final String FIND_ALL = "select no_article, nom_article,description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie  from ARTICLES_VENDUS";
 	private static final String INSERT = "insert into ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) values (:nom_article, :description, :date_debut_encheres, :date_fin_encheres, :prix_initial, :no_utilisateur, :no_categorie)";
 	private static final String FIND_BY_ID = "select * from ARTICLES_VENDUS where no_article=:no_article";
-	
+
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -42,8 +41,8 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 			article.setDescription(rs.getString("description"));
 			article.setDateDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 			article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
-			article.setPrixInitial(rs.getInt("prix_initial"));
-			article.setPrixVente(rs.getInt("prix_vente"));
+			article.setPrixInitial(rs.getBigDecimal("prix_initial"));
+			article.setPrixVente(rs.getBigDecimal("prix_vente"));
 
 			Utilisateur vendeur;
 			vendeur = utilisateurDAO.readUtilisateur(rs.getInt("no_utilisateur"));
@@ -66,20 +65,14 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 
 	}
 
-	
 	@Override
 	public Article find(Integer noArticle) {
-		MapSqlParameterSource paramSrc = new MapSqlParameterSource("no_article", noArticle );
-		
-		Article article = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID,paramSrc, new ArticleRowMapper() );
+		MapSqlParameterSource paramSrc = new MapSqlParameterSource("no_article", noArticle);
+
+		Article article = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, paramSrc, new ArticleRowMapper());
 		return article;
 	}
-	
-	
-	
-	
-	
-	
+
 	@Override
 	public void saveArticle(Article article) {
 
@@ -88,8 +81,8 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 		paramSrc.addValue("description", article.getDescription());
 		paramSrc.addValue("no_categorie",
 
-				//TODO pas de categorie null notmalement puisquil ya une categorie NOT NULL
-				article.getCategorie() == null ? null  : article.getCategorie().getNoCategorie());
+				// TODO pas de categorie null notmalement puisquil ya une categorie NOT NULL
+				article.getCategorie() == null ? null : article.getCategorie().getNoCategorie());
 
 		paramSrc.addValue("prix_initial", article.getPrixInitial());
 		paramSrc.addValue("date_debut_encheres", article.getDateDebutEncheres());
@@ -99,4 +92,3 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 
 	}
 }
-

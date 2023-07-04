@@ -19,7 +19,7 @@ public class ArticlesServiceImpl implements ArticlesService {
 
 	public ArticlesServiceImpl(ArticlesDAO articlesDAO, UtilisateurDAO utilisateurDAO) {
 		this.articlesDAO = articlesDAO;
-		this.utilisateurDAO=utilisateurDAO;
+		this.utilisateurDAO = utilisateurDAO;
 	}
 
 	@Override
@@ -42,6 +42,12 @@ public class ArticlesServiceImpl implements ArticlesService {
 	}
 
 	@Override
+	public void encherir(Article noArticle, Utilisateur utilisateur) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*@Override
 	public void encherir(Article article, Utilisateur utilisateur) {
 
 		// Check le crédit de l'acheteur potentiel
@@ -54,8 +60,6 @@ public class ArticlesServiceImpl implements ArticlesService {
 			throw new IllegalArgumentException("Le prix proposé doit être supérieur à la mise à prix");
 		}
 
-		
-
 		// MAJ l'article avec le nouveau meilleur prix et le meilleur enchérisseur
 		article.setMeilleurPrix(utilisateur.getPropositionAcheteur());
 		article.setMeilleurEncherisseur(utilisateur);
@@ -65,7 +69,6 @@ public class ArticlesServiceImpl implements ArticlesService {
 		utilisateur.setCredit(utilisateur.getCredit() - utilisateur.getPropositionAcheteur());
 		utilisateurDAO.save(utilisateur);
 
-		
-	}
+	}*/
 
 }

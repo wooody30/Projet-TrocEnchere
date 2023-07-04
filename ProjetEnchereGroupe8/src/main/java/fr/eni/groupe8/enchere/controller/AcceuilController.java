@@ -33,7 +33,7 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 		this.service = service;
 		this.categorieService = categorieService;
 		this.utilisateurService = utilisateurService;
-		this.articleService=articleService;
+		this.articleService = articleService;
 
 	}
 
@@ -52,37 +52,37 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 
 	@PostMapping("/ajouterVente")
 	public String ajouterVente(@ModelAttribute Article article) {
-		// cree un utilisateur en dur avec un article.setutilisateurs qui utiliserait le constructeur 
+		// cree un utilisateur en dur avec un article.setutilisateurs qui utiliserait le
+		// constructeur
 		// avec juste un numero utilisateur
 
-		Utilisateur utilisateur = utilisateurService.findUtilisateurById(2); 
+		Utilisateur utilisateur = utilisateurService.findUtilisateurById(2);
 
 		article.setVendeur(utilisateur);
 		System.out.println("utilisateur associer a l'article");
-		
+
 		service.ajouterArticle(article);
 		System.out.println("mappingAjouterVente");
 		return "redirect:/AcceuilConnexion";
 
-		
 	}
 
-
 	@GetMapping("/detailarticle")
-	public String detailArticle(Integer noArticle, Model model ) {
-		
+	public String detailArticle(Integer noArticle, Model model) {
+
 		Article article = articleService.articleById(noArticle);
 		model.addAttribute("article", article);
 		return "detailArticle";
 	}
-	
-	@PostMapping("/encherir")
-	public String encherir(@RequestParam("propositionAcheteur") Utilisateur propositionAcheteur, Integer noArticle, Model model) {
-		 Article article = articleService.articleById(noArticle);
-		 Utilisateur acheteur = utilisateurService.findUtilisateurById(2);
-		// A poursuivre // articleService.encherir(article, propositionAcheteur, acheteur);
-	    return "redirect:/Acceuil"; 
-	}
 
+	@PostMapping("/encherir")
+	public String encherir(@RequestParam("propositionAcheteur") Utilisateur propositionAcheteur, Integer noArticle,
+			Model model) {
+		Article article = articleService.articleById(noArticle);
+		Utilisateur acheteur = utilisateurService.findUtilisateurById(2);
+		// A poursuivre // articleService.encherir(article, propositionAcheteur,
+		// acheteur);
+		return "redirect:/Acceuil";
+	}
 
 }

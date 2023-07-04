@@ -45,7 +45,8 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("email", email);
 		System.out.println("readUtilisateur_email");
-		return namedParameterJdbcTemplate.queryForObject(FIND_BY_EMAIL, namedParameters, new BeanPropertyRowMapper<>(Utilisateur.class));
+		return namedParameterJdbcTemplate.queryForObject(FIND_BY_EMAIL, namedParameters,
+				new BeanPropertyRowMapper<>(Utilisateur.class));
 	}
 
 	/**
@@ -78,17 +79,17 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 	public void save(Utilisateur utilisateur) {
 		utilisateur.setAdministrateur(false);
 
-	    if (utilisateur.getNoUtilisateur() == null) {
-	        // Insertion d'un nouvel utilisateur
-	        KeyHolder keyHolder = new GeneratedKeyHolder();
-	        namedParameterJdbcTemplate.update(INSERT, new BeanPropertySqlParameterSource(utilisateur), keyHolder);
-	        utilisateur.setNoUtilisateur(keyHolder.getKey().intValue());
-	        System.out.println("Utilisateur inséré : " + utilisateur);
-	    } else {
-	        // Mise à jour d'un utilisateur existant
-	        namedParameterJdbcTemplate.update(UPDATE, new BeanPropertySqlParameterSource(utilisateur));
-	        System.out.println("save");
-	    }
+		if (utilisateur.getNoUtilisateur() == null) {
+			// Insertion d'un nouvel utilisateur
+			KeyHolder keyHolder = new GeneratedKeyHolder();
+			namedParameterJdbcTemplate.update(INSERT, new BeanPropertySqlParameterSource(utilisateur), keyHolder);
+			utilisateur.setNoUtilisateur(keyHolder.getKey().intValue());
+			System.out.println("Utilisateur inséré : " + utilisateur);
+		} else {
+			// Mise à jour d'un utilisateur existant
+			namedParameterJdbcTemplate.update(UPDATE, new BeanPropertySqlParameterSource(utilisateur));
+			System.out.println("save");
+		}
 	}
 
 }

@@ -1,73 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceuil</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceuil</title>
 </head>
 <body>
-    <h1>ENI-Encheres</h1>
-    <h2>Liste des Encheres</h2>
-    <span th:text="'user:'+${#authentication.principal}"></span>
-    <nav>
-        <a href="/NouvelleVente">Encheres</a>
-        <a href="/NouvelleVente">Vendre un article</a>
-        <a href="/profil">Mon Profil</a>
-        <a href="/Acceuil">Deconnexion</a>
-    </nav>
-    <form>
-        <input type="search" id="maRecherche" name="filtre"
-        placeholder="Le nom de l'article contient…">
-        <button>Rechercher</button>
-    </form>
+	<h1>ENI-Encheres</h1>
+	<h2>Liste des Encheres</h2>
+	<span th:text="'user:'+${#authentication.principal}"></span>
+	<nav>
+		<a href="/NouvelleVente">Encheres</a> <a href="/NouvelleVente">Vendre
+			un article</a> <a href="/profil">Mon Profil</a> <a href="/Acceuil">Deconnexion</a>
+	</nav>
+	<form>
+		<input type="search" id="maRecherche" name="filtre"
+			placeholder="Le nom de l'article contient…">
+		<button>Rechercher</button>
+	</form>
 
-    <label for="select-Categorie">Categorie:</label>
-    <select name="Categorie" id="select-Categorie">
-        <option value="">--Toutes--</option>
-        <option value="informatique">Informatique</option>
-        <option value="Ameublement">Ameublement</option>
-        <option value="vetement">Vetement</option>
-        <option value="sport/loisirs">Sport&Loisirs</option>
-     </select>
-     
-     <form>
-    <label for="radio">Achats</label>
-    <input type="radio">
-    <input type="checkbox" value="achats">
-    <label for="achats">enchères ouvertes</label>
-    <input type="checkbox" value="achats">
-    <label for="achats">mes enchères en cours</label>
-    <input type="checkbox" value="achats">
-    <label for="achats">mes enchères remportées</label>
-</form>
+	<label for="select-Categorie">Categorie:</label>
+	<select name="Categorie" id="select-Categorie">
+		<option value="">--Toutes--</option>
+		<option value="informatique">Informatique</option>
+		<option value="Ameublement">Ameublement</option>
+		<option value="vetement">Vetement</option>
+		<option value="sport/loisirs">Sport&Loisirs</option>
+	</select>
 
-<form>
-    <label for="radio">Mes ventes</label>
-    <input type="radio">
-    <input type="checkbox" value="ventes">
-    <label for="ventes">mes ventes en cours</label>
-    <input type="checkbox" value="ventes">
-    <label for="ventes">ventes non debutées</label>
-    <input type="checkbox" value="ventes">
-    <label for="ventes">ventes terminées</label>
-</form>
-  
-  <table class="table table-hover" >
-  <tr data-th-each="article: ${articles}">
+	<form>
+		<label for="radio">Achats</label> <input type="radio"> <input
+			type="checkbox" value="achats"> <label for="achats">enchères
+			ouvertes</label> <input type="checkbox" value="achats"> <label
+			for="achats">mes enchères en cours</label> <input type="checkbox"
+			value="achats"> <label for="achats">mes enchères
+			remportées</label>
+	</form>
 
-<td data-th-text="${article.noArticle}"></td>
-<td  data-th-text="${article.nomArticle}"></td>
-<td  data-th-text="${article.description}"></td>
-<td  data-th-text="${article.dateDebutEncheres}"></td>
-<td  data-th-text="${article.dateFinEncheres}"></td>
-<td  data-th-text="${article.prixInitial}"></td>
-<td  data-th-text="${article.prixVente}"></td>
-<td  data-th-text="${article.categorie.libelle}"></td>
-<td  data-th-text="${article.vendeur.pseudo}"></td>
-<td><a th:href="@{/detailarticle(noArticle=${article.noArticle})}">Voir la vente</a> 
+	<form>
+		<label for="radio">Mes ventes</label> <input type="radio"> <input
+			type="checkbox" value="ventes"> <label for="ventes">mes
+			ventes en cours</label> <input type="checkbox" value="ventes"> <label
+			for="ventes">ventes non debutées</label> <input type="checkbox"
+			value="ventes"> <label for="ventes">ventes terminées</label>
+	</form>
 
-</tr>
-</table>
+	<table class="table table-hover">
+		<tr data-th-each="article: ${articles}">
+
+			<td data-th-text="${article.noArticle}"></td>
+			<td data-th-text="${article.nomArticle}"></td>
+			<td data-th-text="${article.description}"></td>
+			<td data-th-text="${article.dateDebutEncheres}"></td>
+			<td data-th-text="${article.dateFinEncheres}"></td>
+			<td data-th-text="${article.prixInitial}"></td>
+			<td data-th-text="${article.prixVente}"></td>
+			<td data-th-text="${article.categorie.libelle}"></td>
+			<td data-th-text="${article.vendeur.pseudo}"></td>
+			<td><a
+				th:href="@{/detailarticle(noArticle=${article.noArticle})}">Voir
+					la vente</a>
+		</tr>
+	</table>
 
 
 </body>
