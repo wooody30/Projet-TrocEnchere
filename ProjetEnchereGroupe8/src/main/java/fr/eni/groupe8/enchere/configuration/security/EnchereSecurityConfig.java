@@ -170,7 +170,7 @@ public class EnchereSecurityConfig {
 					//.requestMatchers(HttpMethod.GET, "/").permitAll()
 			.requestMatchers( HttpMethod.GET, "/" ).permitAll()
 			.requestMatchers( HttpMethod.GET, "/Acceuil" ).permitAll()
-			.requestMatchers( HttpMethod.GET, "/AcceuilConnexion" ).authenticated()
+			.requestMatchers( HttpMethod.GET, "/AcceuilConnexion" ).permitAll()//.authenticated()
 			
 			
 					// Permettre aux visiteurs d'accéder à la page de création d'un compte
@@ -191,8 +191,8 @@ public class EnchereSecurityConfig {
 					//.anyRequest().authenticated()
 					//.anyRequest().permitAll();
 			.requestMatchers( HttpMethod.POST, "/session" ).permitAll()
-			.requestMatchers("/**").authenticated()
-		//	.anyRequest().permitAll()
+		//	.requestMatchers("/**").authenticated() //echanger les commentaire 194 et 195 pour avec sans connexion
+			.anyRequest().permitAll()
 					;
 		});
 		return http.build();
