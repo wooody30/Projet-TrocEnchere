@@ -1,61 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 </head>
 <body>
-    <h1>ENI-Encheres</h1>
-    <h2>Mon Profil</h2>
-    <form th:action="@{/CreerCompte}" th:object="${utilisateur}" method="post">
-        <div class="MonProfil">
-          <label for="pseudo">Pseudo: </label>
-          <input type="text" th:field="*{pseudo}" required>
-        </div>
-        <div class="MonProfil">
-          <label for="nom">Nom: </label>
-          <input type="text" th:field="*{nom}" required>
-        </div>
-        <div class="MonProfil">
-            <label for="prenom">Prenom: </label>
-            <input type="text" th:field="*{prenom}" required>
-          </div>
-          <div class="MonProfil">
-            <label for="email">Email: </label>
-            <input type="email" th:field="*{email}" required>
-          </div>
-          <div class="MonProfil">
-            <label for="tel">Telephone: </label>
-            <input type="tel" th:field="*{telephone}" required>
-          </div>
-          <div class="MonProfil">
-            <label for="rue">Rue: </label>
-            <input type="text" th:field="*{rue}" required>
-          </div>
-          <div class="MonProfil">
-            <label for="CP">Code postal: </label>
-            <input type="text" th:field="*{codePostal}" required>
-          </div>
-          <div class="MonProfil">
-            <label for="ville">Ville: </label>
-            <input type="text" th:field="*{ville}" required>
-          </div>
-          <div class="MonProfil">
-            <label for="mdp">Mot de passe </label>
-            <input type="password" th:field="*{motDePasse}" required>
-          </div>
-          <div class="MonProfil">
-            <label for="mdpConfirm">Confirmation: </label>
-            <input type="password" th:field="*{motDePasse}" required>
-          </div>
-        <div class="bouton">
-          <button type="submit" value="Créer">Créer</button>
-        </div>
-      </form>
-      
-      <a th:href="@{/Acceuil}">Acceuil</a>
-      
+	<h1>ENI-Encheres</h1>
+	<h2>Mon Profil</h2>
+	<form th:action="@{/CreerCompte}" th:object="${utilisateur}"
+		method="post">
+		<div class="MonProfil">
+			<label for="pseudo">Pseudo: </label> <input type="text"
+				th:field="*{pseudo}" required>
+		</div>
+		<div class="MonProfil">
+			<label for="nom">Nom: </label> <input type="text" th:field="*{nom}"
+				required>
+		</div>
+		<div class="MonProfil">
+			<label for="prenom">Prenom: </label> <input type="text"
+				th:field="*{prenom}" required>
+		</div>
+		<div class="MonProfil">
+			<label for="email">Email: </label> <input type="email"
+				th:field="*{email}" required>
+		</div>
+		<div class="MonProfil">
+			<label for="tel">Telephone: </label> <input type="tel"
+				th:field="*{telephone}" required>
+		</div>
+		<div class="MonProfil">
+			<label for="rue">Rue: </label> <input type="text" th:field="*{rue}"
+				required>
+		</div>
+		<div class="MonProfil">
+			<label for="CP">Code postal: </label> <input type="text"
+				th:field="*{codePostal}" required>
+		</div>
+		<div class="MonProfil">
+			<label for="ville">Ville: </label> <input type="text"
+				th:field="*{ville}" required>
+		</div>
+		<div class="MonProfil">
+			<label for="mdp">Mot de passe </label> <input type="password"
+				th:field="*{motDePasse}" required>
+		</div>
+		<div class="MonProfil">
+			<label for="mdpConfirm">Confirmation: </label> <input type="password"
+				th:field="*{motDePasse}" required>
+		</div>
+		<div class="bouton">
+			<button type="submit" value="Créer">Créer</button>
+		</div>
+	</form>
+
+	<a th:href="@{/Acceuil}">Acceuil</a>
+
 
 </body>
 </html>

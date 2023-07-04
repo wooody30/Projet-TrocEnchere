@@ -12,6 +12,4 @@ public interface ArticlesDAO {
 
 	Article find(Integer noArticle);
 
-
-	
 }

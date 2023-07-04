@@ -23,9 +23,10 @@ public class CategorieDAOimpl implements CategorieDAO {
 
 	@Override
 	public List<Categorie> findAllCategorie() {
-		List<Categorie> lstCategorie = namedParameterJdbcTemplate.query(FIND_ALL, new BeanPropertyRowMapper<>(Categorie.class));
+		List<Categorie> lstCategorie = namedParameterJdbcTemplate.query(FIND_ALL,
+				new BeanPropertyRowMapper<>(Categorie.class));
 		System.out.println("findAllCategorie");
-				return lstCategorie;
+		return lstCategorie;
 	}
 
 	public Categorie readCategorie(Integer nocategorie) {
@@ -33,7 +34,8 @@ public class CategorieDAOimpl implements CategorieDAO {
 		params.put("no_categorie", nocategorie);
 
 		Categorie cat = null;
-		cat = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, params, new BeanPropertyRowMapper<>(Categorie.class));
+		cat = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, params,
+				new BeanPropertyRowMapper<>(Categorie.class));
 		System.out.println("readCategorie");
 		return cat;
 	}

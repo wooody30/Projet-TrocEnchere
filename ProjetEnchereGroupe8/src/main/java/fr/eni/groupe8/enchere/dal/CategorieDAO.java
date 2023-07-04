@@ -6,10 +6,8 @@ import fr.eni.groupe8.enchere.bo.Categorie;
 
 public interface CategorieDAO {
 
-	List<Categorie>findAllCategorie();
+	List<Categorie> findAllCategorie();
 
 	Categorie readCategorie(Integer nocategorie);
-
-	
 
 }

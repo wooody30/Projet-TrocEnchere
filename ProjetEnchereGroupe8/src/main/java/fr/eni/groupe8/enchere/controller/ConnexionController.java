@@ -36,8 +36,7 @@ public class ConnexionController {
 	// return "login";
 	// }
 
-
-	//@GetMapping("/login")
+	// @GetMapping("/login")
 	@GetMapping("/Connexion")
 
 	public String afficherConnexion() {
@@ -47,7 +46,7 @@ public class ConnexionController {
 
 	@PostMapping("/session")
 	String chargerMembreEnSession(
-			//@ModelAttribute("utilisateur") Utilisateur utilisateurEnSession,
+			// @ModelAttribute("utilisateur") Utilisateur utilisateurEnSession,
 			Principal principal) {
 
 		System.out.println(principal);
@@ -57,14 +56,14 @@ public class ConnexionController {
 			String email = principal.getName();
 			Utilisateur aCharger = service.findUtilisateurByEmail(email);
 			if (aCharger != null) {
-			//	utilisateurEnSession.setEmail(aCharger.getEmail());
-				//utilisateurEnSession.setMotDePasse(aCharger.getMotDePasse());
-			//	utilisateurEnSession.setPseudo(aCharger.getPseudo());
+				// utilisateurEnSession.setEmail(aCharger.getEmail());
+				// utilisateurEnSession.setMotDePasse(aCharger.getMotDePasse());
+				// utilisateurEnSession.setPseudo(aCharger.getPseudo());
 
 			} else {
 
-				//utilisateurEnSession.setEmail(null);
-				//utilisateurEnSession.setMotDePasse(null);
+				// utilisateurEnSession.setEmail(null);
+				// utilisateurEnSession.setMotDePasse(null);
 
 			}
 		}
@@ -73,10 +72,9 @@ public class ConnexionController {
 	}
 
 	// Cette méthode met par défaut un nouveau membre en session
-	/*@ModelAttribute("utilisateurEnSession")
-	public Utilisateur membreEnSession() {
-		System.out.println("Add Attribut Session");
-		return new Utilisateur();
-	}*/
+	/*
+	 * @ModelAttribute("utilisateurEnSession") public Utilisateur membreEnSession()
+	 * { System.out.println("Add Attribut Session"); return new Utilisateur(); }
+	 */
 
 }

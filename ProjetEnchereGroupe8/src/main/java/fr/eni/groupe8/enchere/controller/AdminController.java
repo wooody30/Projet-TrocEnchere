@@ -10,16 +10,15 @@ import fr.eni.groupe8.enchere.bll.CategorieService;
 import fr.eni.groupe8.enchere.bll.UtilisateurService;
 import fr.eni.groupe8.enchere.bo.Utilisateur;
 
-
 @Controller
-public class AdminController{ //Contrôleur pour les fonctionnalités d'administration. {
-	
+public class AdminController { // Contrôleur pour les fonctionnalités d'administration. {
+
 	private ArticlesService service;
 
 	private CategorieService categorieService;
 	private UtilisateurService utilisateurService;
 	private Utilisateur utilisateur;
-	
+
 	@Autowired
 
 	public AdminController(ArticlesService service, CategorieService categorieService,
@@ -30,13 +29,11 @@ public class AdminController{ //Contrôleur pour les fonctionnalités d'administ
 		this.utilisateurService = utilisateurService;
 
 	}
-	
-	
-	
+
 	@GetMapping("/profil")
-	public String profil(Model model ) {
-		
-		Utilisateur utilisateur = utilisateurService.findUtilisateurById(9); 
+	public String profil(Model model) {
+
+		Utilisateur utilisateur = utilisateurService.findUtilisateurById(9);
 		model.addAttribute("utilisateur", utilisateur);
 		System.out.println(utilisateur);
 		return "Profil";

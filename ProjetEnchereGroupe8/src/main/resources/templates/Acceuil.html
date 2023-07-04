@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceuil</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceuil</title>
 </head>
 <body>
-    <h1>ENI-Encheres</h1>
-    <h2>Liste des Encheres</h2>
-    <nav>
-        <a href="/CreerCompte">S'inscrire</a>
-        <a href="/Connexion">Se connecter</a>
-        <a href="/NouvelleVente">Vendre un article</a>
-    </nav>
-    <form>
-        <input type="search" id="maRecherche" name="filtre"
-        placeholder="Le nom de l'article contient…">
-        <button>Rechercher</button>
-    </form>
+	<h1>ENI-Encheres</h1>
+	<h2>Liste des Encheres</h2>
+	<nav>
+		<a href="/CreerCompte">S'inscrire</a> <a href="/Connexion">Se
+			connecter</a> <a href="/NouvelleVente">Vendre un article</a>
+	</nav>
+	<form>
+		<input type="search" id="maRecherche" name="filtre"
+			placeholder="Le nom de l'article contient…">
+		<button>Rechercher</button>
+	</form>
 
-    <label for="select-Categorie">Categorie:</label>
-    <select name="Categorie" id="select-Categorie">
-        <option value="">--Toutes--</option>
-        <option value="informatique">Informatique</option>
-        <option value="Ameublement">Ameublement</option>
-        <option value="vetement">Vetement</option>
-        <option value="sport/loisirs">Sport&Loisirs</option>
-     </select>
-  
-  <table class="table table-hover" >
-  <tr data-th-each="article: ${articles}">
+	<label for="select-Categorie">Categorie:</label>
+	<select name="Categorie" id="select-Categorie">
+		<option value="">--Toutes--</option>
+		<option value="informatique">Informatique</option>
+		<option value="Ameublement">Ameublement</option>
+		<option value="vetement">Vetement</option>
+		<option value="sport/loisirs">Sport&Loisirs</option>
+	</select>
 
-<td data-th-text="${article.noArticle}"></td>
-<td  data-th-text="${article.nomArticle}"></td>
-<td  data-th-text="${article.description}"></td>
-<td  data-th-text="${article.dateDebutEncheres}"></td>
-<td  data-th-text="${article.dateFinEncheres}"></td>
-<td  data-th-text="${article.prixInitial}"></td>
-<td  data-th-text="${article.prixVente}"></td>
-<td  data-th-text="${article.categorie.libelle}"></td>
-<td  data-th-text="${article.vendeur.pseudo}"></td>
-<td><a th:href="@{/detailarticle(noArticle=${article.noArticle})}">Voir la vente</a> 
+	<table class="table table-hover">
+		<tr data-th-each="article: ${articles}">
 
-</tr>
-</table>
+			<td data-th-text="${article.noArticle}"></td>
+			<td data-th-text="${article.nomArticle}"></td>
+			<td data-th-text="${article.description}"></td>
+			<td data-th-text="${article.dateDebutEncheres}"></td>
+			<td data-th-text="${article.dateFinEncheres}"></td>
+			<td data-th-text="${article.prixInitial}"></td>
+			<td data-th-text="${article.prixVente}"></td>
+			<td data-th-text="${article.categorie.libelle}"></td>
+			<td data-th-text="${article.vendeur.pseudo}"></td>
+			<td><a
+				th:href="@{/detailarticle(noArticle=${article.noArticle})}">Voir
+					la vente</a>
+		</tr>
+	</table>
 
 
 </body>
