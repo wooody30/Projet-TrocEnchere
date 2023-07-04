@@ -18,6 +18,7 @@ public class Utilisateur
 	private String motDePasse;
 	private int credit;
 	private boolean administrateur;
+	private int propositionAcheteur;
 
 	public Utilisateur() {
 
@@ -179,6 +180,14 @@ public class Utilisateur
 	//@Override
 	public String getUsername() {
 		return pseudo;
+	}
+
+	public int getPropositionAcheteur() {
+		return propositionAcheteur;
+	}
+
+	public void setPropositionAcheteur(int propositionAcheteur) {
+		this.propositionAcheteur = propositionAcheteur;
 	}
 
 }

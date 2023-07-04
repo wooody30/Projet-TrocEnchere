@@ -9,61 +9,65 @@
 	<h1>ENI-Encheres</h1>
 	<h2>Détail vente</h2>
 
+	<form action="@{/encherir}" th:object="${article}" method="post" class="DetailVente">
+		<div class="DetailVente">
 
-	<div class="DetailVente">
+			<table>
+				<tbody>
+					<tr>
 
-		<table>
-			<tbody>
-				<tr>
+						<th>Nom :</th>
+						<td data-th-text="${article.nomArticle}"></td>
+					</tr>
 
-					<th>Nom :</th>
-					<td data-th-text="${article.nomArticle}"></td>
-				</tr>
+					<tr>
+						<th>Description :</th>
+						<td data-th-text="${article.description}"></td>
+					</tr>
 
-				<tr>
-					<th>Description :</th>
-					<td data-th-text="${article.description}"></td>
-				</tr>
+					<tr>
+						<th>Catégorie :</th>
+						<td data-th-text="${article.categorie.libelle}"></td>
+					</tr>
 
-				<tr>
-					<th>Catégorie :</th>
-					<td data-th-text="${article.categorie.libelle}"></td>
-				</tr>
+					<tr>
+						<th>Fin de l'enchère :</th>
+						<td data-th-text="${article.dateFinEncheres}"></td>
+					</tr>
 
-				<tr>
-					<th>Fin de l'enchère :</th>
-					<td data-th-text="${article.dateFinEncheres}"></td>
-				</tr>
+					<tr>
+						<th>Meilleure offre :</th>
+						<td>A faire</td>
+					</tr>
 
-				<tr>
-					<th>Meilleure offre :</th>
-					<td>A faire</td>
-				</tr>
-
-				<tr>
-					<th>Mise à prix :</th>
-					<td>A faire</td>
-				</tr>
+					<tr>
+						<th>Mise à prix :</th>
+						<td data-th-text="${article.prixInitial}"></td>
+					</tr>
 
 
-				<tr>
-					<th>Retrait :</th>
-					<td data-th-text="${article.vendeur.rue}"><br><td data-th-text="${article.vendeur.codePostal}">
-					</td><td data-th-text="${article.vendeur.ville}"></td>
-				</tr>
+					<tr>
+						<th>Retrait :</th>
+						<td data-th-text="${article.vendeur.rue}"><br>
+						<td data-th-text="${article.vendeur.codePostal}"></td>
+						<td data-th-text="${article.vendeur.ville}"></td>
+					</tr>
 
-				<tr>
-					<th>Vendeur :</th>
-					<td data-th-text="${article.vendeur.pseudo}"></td>
-				</tr>
-				<tr>
-					<th>Ma proposition :</th>
-					<td>A faire</td>
-				</tr>
-			</tbody>
-		</table>
-		<button type="submit">Enchérir</button>
-		<a th:href="@{/AcceuilConnexion}">Acceuil</a>
-	</div>
+					<tr>
+						<th>Vendeur :</th>
+						<td data-th-text="${article.vendeur.pseudo}"></td>
+					</tr>
+					<tr>
+						<th>Ma proposition :</th>
+						<td><input type="text" id="propositionAcheteur"
+							name="propositionAcheteur"></td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit">Enchérir</button>
+		</div>
+	</form>
+	<a th:href="@{/AcceuilConnexion}">Acceuil</a>
+
 </body>
 </html>
