@@ -80,7 +80,7 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 	public String encherir(@RequestParam("propositionAcheteur") Utilisateur propositionAcheteur, Integer noArticle, Model model) {
 		 Article article = articleService.articleById(noArticle);
 		 Utilisateur acheteur = utilisateurService.findUtilisateurById(2);
-		// A poursuivre // articleService.encherir(article, propositionAcheteur, acheteur);
+		articleService.encherir(article, acheteur);
 	    return "redirect:/Acceuil"; 
 	}
 
