@@ -19,14 +19,12 @@ import jakarta.validation.Valid;
 @Controller
 public class AcceuilController { // Contrôleur pour la page d'accueil et la recherche d'articles.
 	private ArticlesService service;
-
 	private CategorieService categorieService;
 	private UtilisateurService utilisateurService;
 	private Utilisateur utilisateur;
 	private ArticlesService articleService;
 
 	@Autowired
-
 	public AcceuilController(ArticlesService service, CategorieService categorieService,
 			UtilisateurService utilisateurService, ArticlesService articleService) {
 
@@ -44,47 +42,5 @@ public class AcceuilController { // Contrôleur pour la page d'accueil et la rec
 		return "Acceuil";
 	}
 
-	@GetMapping({ "/NouvelleVente" })
-	public String afficherNouvelleVente(@ModelAttribute Article article) {
-		System.out.println("mappingnewvente");
-		return "NouvelleVente";
-	}
-
-	@PostMapping("/ajouterVente")
-	public String ajouterVente(@ModelAttribute Article article) {
-		// cree un utilisateur en dur avec un article.setutilisateurs qui utiliserait le
-		// constructeur
-		// avec juste un numero utilisateur
-
-		Utilisateur utilisateur = utilisateurService.findUtilisateurById(2);
-
-		article.setVendeur(utilisateur);
-		System.out.println("utilisateur associer a l'article");
-
-		service.ajouterArticle(article);
-		System.out.println("mappingAjouterVente");
-		return "redirect:/AcceuilConnexion";
-
-	}
-
-	@GetMapping("/detailarticle")
-	public String detailArticle(Integer noArticle, Model model) {
-
-		Article article = articleService.articleById(noArticle);
-		model.addAttribute("article", article);
-		return "detailArticle";
-	}
-
-	@PostMapping("/encherir")
-	public String encherir(@RequestParam("propositionAcheteur") Utilisateur propositionAcheteur, Integer noArticle,
-			Model model) {
-		Article article = articleService.articleById(noArticle);
-		Utilisateur acheteur = utilisateurService.findUtilisateurById(2);
-
-		articleService.encherir(article, acheteur);
-
-
-		return "redirect:/Acceuil";
-	}
 
 }

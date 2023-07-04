@@ -42,7 +42,6 @@ public class Enchere {
 	}
 
 
-
 	public Article getNoArticle() {
 		return noArticle;
 	}

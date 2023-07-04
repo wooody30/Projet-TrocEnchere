@@ -12,4 +12,6 @@ public interface EncheresService { // Interface de service pour la gestion des e
 
 	void SaveNewEnchere(Enchere enchere);
 
+
 }
+
