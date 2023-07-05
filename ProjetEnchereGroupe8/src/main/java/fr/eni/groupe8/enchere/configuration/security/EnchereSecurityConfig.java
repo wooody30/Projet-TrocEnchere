@@ -128,12 +128,11 @@ public class EnchereSecurityConfig {
 
 					// Permettre aux visiteurs d'accéder à la page d'accueil
 
-					// .requestMatchers(HttpMethod.GET, "/Acceuil").permitAll()
-					// .requestMatchers(HttpMethod.GET, "/").permitAll()
 					.requestMatchers(HttpMethod.GET, "/").permitAll().requestMatchers(HttpMethod.GET, "/Acceuil")
-					.permitAll().requestMatchers(HttpMethod.GET, "/AcceuilConnexion").permitAll()// .authenticated()
+					.permitAll().requestMatchers(HttpMethod.GET, "/AcceuilConnexion").authenticated()
 					.requestMatchers(HttpMethod.GET, "/detailarticle").permitAll()
-					.requestMatchers(HttpMethod.GET, "/profil").permitAll()
+					.requestMatchers(HttpMethod.GET, "/profil").authenticated()
+					.requestMatchers(HttpMethod.GET, "/NouvelleVente").authenticated()
 
 					// Permettre aux visiteurs d'accéder à la page de création d'un compte
 
@@ -151,10 +150,9 @@ public class EnchereSecurityConfig {
 					// .requestMatchers(HttpMethod.POST, "/session").permitAll()
 					// .anyRequest().authenticated()
 					// .anyRequest().permitAll();
-					//.requestMatchers(HttpMethod.POST, "/session").permitAll().requestMatchers("/**").authenticated()
 
+					.requestMatchers(HttpMethod.POST, "/session").authenticated();
 
-					.anyRequest().permitAll();
 
 		});
 		return http.build();

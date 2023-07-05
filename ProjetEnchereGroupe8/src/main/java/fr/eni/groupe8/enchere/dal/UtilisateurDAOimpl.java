@@ -24,7 +24,7 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 	private static final String FIND_ALL = "select * from UTILISATEURS";
 	private static final String FIND_BY_ID = "select * from UTILISATEURS where no_utilisateur=:no_utilisateur";
 	private final static String INSERT = "insert into UTILISATEURS ( pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) values ( :pseudo, :nom, :prenom, :email, :telephone, :rue, :codePostal, :ville, :motDePasse, :credit, :administrateur)";
-	private final static String UPDATE = "update UTILISATEURS set pseudo=:pseudo, nom=:nom, prenom=:prenom, email=:email, telephone=:telephone, rue=:rue, code_postal=:codePostal, ville=:ville, mot_de_passe=:motDePasse, :credit=:credit, administrateur=:administrateur";
+	private final static String UPDATE = "update UTILISATEURS set pseudo=:pseudo, nom=:nom, prenom=:prenom, email=:email, telephone=:telephone, rue=:rue, code_postal=:codePostal, ville=:ville, mot_de_passe=:motDePasse, :credit=:credit, administrateur=:administrateur WHERE no_utilisateur=:noUtilisateur ";
 	private static final String FIND_BY_EMAIL = "select * from UTILISATEURS WHERE email=:email";
 //	private static final String FIND_BY_EMAIL_2 = "select * from UTILISATEURS WHERE email=?"; // Autre méthode proposée par le formateur
 

@@ -1,5 +1,7 @@
 package fr.eni.groupe8.enchere.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,18 +10,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.eni.groupe8.enchere.bll.ArticlesService;
 import fr.eni.groupe8.enchere.bll.UtilisateurService;
+import fr.eni.groupe8.enchere.bll.contexte.ContexteService;
 import fr.eni.groupe8.enchere.bo.Utilisateur;
 
 @Controller
 public class UtilisateurController { // Contrôleur pour les fonctionnalités liées aux utilisateurs (inscription,
 										// connexion, profil, etc.)
 	private UtilisateurService utilisateurService;
-	private ArticlesService service;
+	private ContexteService service;
+	private ArticlesService articleService;
 
 	@Autowired
-	public UtilisateurController(ArticlesService service, UtilisateurService utilisateurService) {
+	public UtilisateurController(ArticlesService articleService, UtilisateurService utilisateurService,
+			ContexteService service) {
 		this.utilisateurService = utilisateurService;
 		this.service = service;
+		this.articleService = articleService;
 	}
 
 	@GetMapping("/CreerCompte")
@@ -30,12 +36,22 @@ public class UtilisateurController { // Contrôleur pour les fonctionnalités li
 	}
 
 	@PostMapping("/CreerCompte")
-	public String newUtilisateurs(Utilisateur utilisateur) {
-		utilisateur.setCredit(0);
-		utilisateurService.enregistrerUtilisateurs(utilisateur);
-		
+	public String newUtilisateurs(Utilisateur nouvelleDonneesUtilisateur, Principal principal) {
 
-		System.out.println("enregistrement de : " + utilisateur);
+		if (principal == null) {
+			// utilisateur.setCredit(0);
+		}
+		// System.out.println(utilisateur);
+		else {
+			String email = principal.getName();
+			Utilisateur ancienneDonneesUtilisateur = service.findUtilisateurByEmail(email);
+			nouvelleDonneesUtilisateur.setNoUtilisateur(ancienneDonneesUtilisateur.getNoUtilisateur());
+		}
+		// model.addAttribute("utilisateur", utilisateur);
+
+		utilisateurService.enregistrerUtilisateurs(nouvelleDonneesUtilisateur);
+
+		// System.out.println("enregistrement de : " + utilisateur);
 
 		return "redirect:/AcceuilConnexion";
 	}
@@ -47,7 +63,7 @@ public class UtilisateurController { // Contrôleur pour les fonctionnalités li
 
 	@GetMapping("/AcceuilConnexion")
 	public String afficherAcceuilConnecter(Model model) {
-		model.addAttribute("articles", service.findAllArticles());
+		model.addAttribute("articles", articleService.findAllArticles());
 		System.out.println("mappingAcceuilConnexion");
 		return "AcceuilConnexion";
 	}
