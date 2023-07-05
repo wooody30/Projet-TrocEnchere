@@ -77,7 +77,7 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 	}
 
 	@PostMapping("/encherir")
-	public String encherir(@RequestParam("propositionAcheteur") BigDecimal montantEnchere, Integer noArticle,
+	public String encherir(@RequestParam("montantEnchere") BigDecimal montantEnchere, Integer noArticle,
 			Model model, Enchere enchere, Utilisateur utilisateur) {
 		Article article = articleService.articleById(noArticle);
 		Utilisateur acheteur = utilisateurService.findUtilisateurById(2);

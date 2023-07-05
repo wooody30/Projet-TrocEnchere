@@ -17,7 +17,7 @@ public class Utilisateur
 	private String codePostal;
 	private String ville;
 	private String motDePasse;
-	private BigDecimal credit;
+	private int credit = 0;
 	private boolean administrateur;
 	private BigDecimal propositionAcheteur;
 
@@ -33,7 +33,7 @@ public class Utilisateur
 	}
 
 	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, BigDecimal credit) {
+			String rue, String codePostal, String ville, String motDePasse, int credit) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -128,11 +128,11 @@ public class Utilisateur
 		this.motDePasse = motDePasse;
 	}
 
-	public BigDecimal getCredit() {
+	public int getCredit() {
 		return credit;
 	}
 
-	public void setCredit(BigDecimal credit) {
+	public void setCredit(int credit) {
 		this.credit = credit;
 	}
 
