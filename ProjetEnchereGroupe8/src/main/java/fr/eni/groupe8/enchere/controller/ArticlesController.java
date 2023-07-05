@@ -28,13 +28,13 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 
 	@Autowired
 	public ArticlesController(ArticlesService service,UtilisateurService utilisateurService, 
-			ArticlesService articleService, EncheresService encheresService,
-			EncheresService enchere) {
+			ArticlesService articleService, EncheresService encheresService/*,
+			EncheresService enchere*/) {
 
 		this.service = service;
 		this.utilisateurService = utilisateurService;
 		this.articleService = articleService;
-		this.encheres = enchere;
+		//this.encheres = enchere;
 
 	}
 
@@ -71,15 +71,20 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 
 	@PostMapping("/encherir")
 	public String encherir(@RequestParam("montantEnchere") int montantEnchere, Integer noArticle,
+
 			Model model, Enchere enchere, Integer noUtilisateur) {
+
 		Article article = articleService.articleById(noArticle);
-		Utilisateur acheteur = utilisateurService.findUtilisateurById(noUtilisateur);
+		Utilisateur utilisateur = utilisateurService.findUtilisateurById(noUtilisateur);
 		
 		
 		//if (encheresService.enchereValideSi(null, article, acheteur)) { // null doit représenter la proposition de l'acheteur// enchere.setMontantEnchere(propositionAcheteur);
 		//encheresService.enchereValideSi(enchere.getMontantEnchere(), article, acheteur);
 
-		if (encheres.enchereValideSi(montantEnchere, article, acheteur)) {
+		if (encheres.enchereValideSi(montantEnchere, article, utilisateur)) {
+			 enchere.setMontantEnchere(montantEnchere); // Mettez à jour l'objet Enchere lié au formulaire
+		        enchere.setNoArticle(article.getNoArticle());
+		        enchere.setEncherisseur(utilisateur.getNoUtilisateur());
 			encheres.SaveNewEnchere(enchere);
 			
 			//model.addAttribute("article", article); // Pourquoi cette ligne?

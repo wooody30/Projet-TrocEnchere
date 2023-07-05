@@ -31,7 +31,9 @@ public class UtilisateurController { // Contrôleur pour les fonctionnalités li
 
 	@PostMapping("/CreerCompte")
 	public String newUtilisateurs(Utilisateur utilisateur) {
+		utilisateur.setCredit(0);
 		utilisateurService.enregistrerUtilisateurs(utilisateur);
+		
 
 		System.out.println("enregistrement de : " + utilisateur);
 

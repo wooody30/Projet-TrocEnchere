@@ -93,11 +93,11 @@ public class Article {
 		this.prixInitial = prixInitial;
 	}
 
-	public Integer getPrixVente() {
+	public int getPrixVente() {
 		return prixVente;
 	}
 
-	public void setPrixVente(Integer prixVente) {
+	public void setPrixVente(int prixVente) {
 		this.prixVente = prixVente;
 	}
 
@@ -151,8 +151,8 @@ public class Article {
 	}
 
 	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial, int prixVente, Boolean etatVente,
-			Utilisateur vendeur, Categorie categorie) {
+			LocalDate dateFinEncheres, int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
+			Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
