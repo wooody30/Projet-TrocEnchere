@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.eni.groupe8.enchere.bll.ArticlesService;
-import fr.eni.groupe8.enchere.bll.CategorieService;
 import fr.eni.groupe8.enchere.bll.EncheresService;
 import fr.eni.groupe8.enchere.bll.UtilisateurService;
 import fr.eni.groupe8.enchere.bo.Article;
@@ -22,26 +21,20 @@ import fr.eni.groupe8.enchere.bo.Utilisateur;
 public class ArticlesController { // Contrôleur pour les fonctionnalités liées aux articles (vente, enchère//
 									// détails, etc.) {
 
-
 	private ArticlesService service;
-	private CategorieService categorieService;
 	private UtilisateurService utilisateurService;
-	private Utilisateur utilisateur;
 	private ArticlesService articleService;
 	private EncheresService encheres;
 
-	
 	@Autowired
-	public ArticlesController(ArticlesService service, CategorieService categorieService,
-			UtilisateurService utilisateurService, ArticlesService articleService,EncheresService encheresService,EncheresService enchere) {
-
+	public ArticlesController(ArticlesService service,UtilisateurService utilisateurService, 
+			ArticlesService articleService, EncheresService encheresService,
+			EncheresService enchere) {
 
 		this.service = service;
-		this.categorieService = categorieService;
 		this.utilisateurService = utilisateurService;
 		this.articleService = articleService;
 		this.encheres = enchere;
-	
 
 	}
 
@@ -84,14 +77,15 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 		
 		
 		//if (encheresService.enchereValideSi(null, article, acheteur)) { // null doit représenter la proposition de l'acheteur// enchere.setMontantEnchere(propositionAcheteur);
-			if	(encheres.enchereValideSi(montantEnchere, article, acheteur)) {           //encheresService.enchereValideSi(enchere.getMontantEnchere(), article, acheteur);
+		//encheresService.enchereValideSi(enchere.getMontantEnchere(), article, acheteur);
 
+		if (encheres.enchereValideSi(montantEnchere, article, acheteur)) {
 			encheres.SaveNewEnchere(enchere);
 			
 			model.addAttribute("article", article); // Pourquoi cette ligne?
 			model.addAttribute("encheres", enchere); // Pourquoi cette ligne?
 		}
-		
+
 		// A poursuivre // articleService.encherir(article, propositionAcheteur,
 		// acheteur);
 		return "redirect:/Acceuil";
