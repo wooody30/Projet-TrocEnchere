@@ -1,5 +1,7 @@
 package fr.eni.groupe8.enchere.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,26 +15,22 @@ import fr.eni.groupe8.enchere.bo.Utilisateur;
 @Controller
 public class AdminController { // Contrôleur pour les fonctionnalités d'administration. {
 
-	private ArticlesService service;
 
-	private CategorieService categorieService;
 	private UtilisateurService utilisateurService;
-	private Utilisateur utilisateur;
 
 	@Autowired
 
 	public AdminController(ArticlesService service, CategorieService categorieService,
 			UtilisateurService utilisateurService) {
 
-		this.service = service;
-		this.categorieService = categorieService;
 		this.utilisateurService = utilisateurService;
 
 	}
 
 	@GetMapping("/profil")
-	public String profil(Model model) {
-
+	public String profil(Model model, Principal principal) {
+		
+		String id = principal.getName();
 		Utilisateur utilisateur = utilisateurService.findUtilisateurById(9);
 		model.addAttribute("utilisateur", utilisateur);
 		System.out.println(utilisateur);

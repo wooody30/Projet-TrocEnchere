@@ -42,8 +42,8 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 			article.setDescription(rs.getString("description"));
 			article.setDateDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());
 			article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
-			article.setPrixInitial(rs.getBigDecimal("prix_initial"));
-			article.setPrixVente(rs.getBigDecimal("prix_vente"));
+			article.setPrixInitial(rs.getInt("prix_initial"));
+			article.setPrixVente(rs.getInt("prix_vente"));
 
 			Utilisateur vendeur;
 			vendeur = utilisateurDAO.readUtilisateur(rs.getInt("no_utilisateur"));

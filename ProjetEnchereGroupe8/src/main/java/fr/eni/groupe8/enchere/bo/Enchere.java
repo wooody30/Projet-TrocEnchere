@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Enchere {
 
 	private LocalDateTime dateEnchere;
-	private BigDecimal montantEnchere;
+	private int montantEnchere;
 	private Utilisateur encherisseur;
 	private Article noArticle;
 	private Integer noEnchere;
@@ -15,7 +15,7 @@ public class Enchere {
 
 	}
 
-	public Enchere(LocalDateTime dateEnchere, BigDecimal montantEnchere, Utilisateur encherisseur, Article noArticle,
+	public Enchere(LocalDateTime dateEnchere, int montantEnchere, Utilisateur encherisseur, Article noArticle,
 			Integer noEnchere) {
 		super();
 		this.dateEnchere = dateEnchere;
@@ -33,11 +33,11 @@ public class Enchere {
 		this.dateEnchere = dateEnchere;
 	}
 
-	public BigDecimal getMontantEnchere() {
+	public int getMontantEnchere() {
 		return montantEnchere;
 	}
 
-	public void setMontantEnchere(BigDecimal montantEnchere) {
+	public void setMontantEnchere(int montantEnchere) {
 		this.montantEnchere = montantEnchere;
 	}
 

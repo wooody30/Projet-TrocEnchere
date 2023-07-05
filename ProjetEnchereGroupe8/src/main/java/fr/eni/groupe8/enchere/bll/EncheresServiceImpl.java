@@ -21,14 +21,14 @@ public class EncheresServiceImpl implements EncheresService {
 	}
 
 	@Override
-	public boolean enchereValideSi(BigDecimal montantEnchere, Article article, Utilisateur utilisateur) {
+	public boolean enchereValideSi(int montantEnchere, Article article, Utilisateur utilisateur) {
 
 		// if enchere inferieur a montant return false
-		if (montantEnchere.compareTo(article.getPrixVente()) <= 0) {
+		if (montantEnchere < (article.getPrixVente())) {
 			return false;
 		}
 		// if solde utilisateur inferieur a enchere return false
-		if (utilisateur.getCredit().compareTo(montantEnchere) < 0) {
+		if ((utilisateur.getCredit()) < montantEnchere) {
 			return false;
 		}
 		// if dateDebut < enchere < dateFin return false

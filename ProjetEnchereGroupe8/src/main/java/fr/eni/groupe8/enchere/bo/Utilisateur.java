@@ -17,7 +17,7 @@ public class Utilisateur
 	private String codePostal;
 	private String ville;
 	private String motDePasse;
-	private int credit = 0;
+	private int credit;
 	private boolean administrateur;
 	private BigDecimal propositionAcheteur;
 

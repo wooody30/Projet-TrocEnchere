@@ -15,8 +15,8 @@ public class Article {
 	private LocalDate dateFinEncheres;
 	private LocalTime heureDebutEnchere;
 	private LocalTime heureFinEnchere;
-	private BigDecimal prixInitial;
-	private BigDecimal prixVente;
+	private int prixInitial;
+	private int prixVente;
 	private boolean etatVente;
 	private Utilisateur vendeur;
 	private Categorie categorie;
@@ -28,8 +28,8 @@ public class Article {
 	}
 
 	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, LocalTime heureDebutEnchere, LocalTime heureFinEnchere, BigDecimal prixInitial,
-			BigDecimal prixVente, Boolean etatVente, Utilisateur vendeur, Categorie categorie) {
+			LocalDate dateFinEncheres, LocalTime heureDebutEnchere, LocalTime heureFinEnchere, int prixInitial,
+			int prixVente, Boolean etatVente, Utilisateur vendeur, Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -85,19 +85,19 @@ public class Article {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 
-	public BigDecimal getPrixInitial() {
+	public int getPrixInitial() {
 		return prixInitial;
 	}
 
-	public void setPrixInitial(BigDecimal prixInitial) {
+	public void setPrixInitial(int prixInitial) {
 		this.prixInitial = prixInitial;
 	}
 
-	public BigDecimal getPrixVente() {
+	public int getPrixVente() {
 		return prixVente;
 	}
 
-	public void setPrixVente(BigDecimal prixVente) {
+	public void setPrixVente(int prixVente) {
 		this.prixVente = prixVente;
 	}
 
@@ -151,7 +151,7 @@ public class Article {
 	}
 
 	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, BigDecimal prixInitial, BigDecimal prixVente, Boolean etatVente,
+			LocalDate dateFinEncheres, int prixInitial, int prixVente, Boolean etatVente,
 			Utilisateur vendeur, Categorie categorie) {
 		super();
 		this.noArticle = noArticle;
