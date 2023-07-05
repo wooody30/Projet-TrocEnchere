@@ -31,11 +31,15 @@ public class AdminController { // Contrôleur pour les fonctionnalités d'admini
 	}
 
 	@GetMapping("/profil")
-	public String profil(Model model) {
+	public String profil(Model model, Integer noUtilisateur) {
 
-		Utilisateur utilisateur = utilisateurService.findUtilisateurById(9);
+		Utilisateur utilisateur = utilisateurService.findUtilisateurById(noUtilisateur);
 		model.addAttribute("utilisateur", utilisateur);
 		System.out.println(utilisateur);
 		return "Profil";
 	}
+	
+	
+	
+	
 }

@@ -8,7 +8,7 @@ import fr.eni.groupe8.enchere.bo.Utilisateur;
 
 public interface EncheresService { // Interface de service pour la gestion des enchères.
 
-	public boolean enchereValideSi(BigDecimal montantEnchere, Article article, Utilisateur utilisateur);
+	public boolean enchereValideSi(int montantEnchere, Article article, Utilisateur utilisateur);
 
 	void SaveNewEnchere(Enchere enchere);
 

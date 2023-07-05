@@ -19,7 +19,7 @@ public class Utilisateur
 	private String motDePasse;
 	private int credit = 0;
 	private boolean administrateur;
-	private BigDecimal propositionAcheteur;
+	private int propositionAcheteur;
 
 	public Utilisateur() {
 
@@ -128,11 +128,11 @@ public class Utilisateur
 		this.motDePasse = motDePasse;
 	}
 
-	public int getCredit() {
+	public Integer getCredit() {
 		return credit;
 	}
 
-	public void setCredit(int credit) {
+	public void setCredit(Integer credit) {
 		this.credit = credit;
 	}
 
@@ -185,11 +185,11 @@ public class Utilisateur
 		return pseudo;
 	}
 
-	public BigDecimal getPropositionAcheteur() {
+	public int getPropositionAcheteur() {
 		return propositionAcheteur;
 	}
 
-	public void setPropositionAcheteur(BigDecimal propositionAcheteur) {
+	public void setPropositionAcheteur(int propositionAcheteur) {
 		this.propositionAcheteur = propositionAcheteur;
 	}
 
