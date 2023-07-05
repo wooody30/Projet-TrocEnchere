@@ -26,20 +26,19 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 	private UtilisateurService utilisateurService;
 	private Utilisateur utilisateur;
 	private ArticlesService articleService;
-	private EncheresService encheresService;
-	private Enchere enchere;
+	private EncheresService encheres;
+	
 
 	@Autowired
 	public ArticlesController(ArticlesService service, CategorieService categorieService,
 			UtilisateurService utilisateurService, ArticlesService articleService,
-			EncheresService encheresService,Enchere enchere) {
+			EncheresService encheresService,EncheresService enchere) {
 
 		this.service = service;
 		this.categorieService = categorieService;
 		this.utilisateurService = utilisateurService;
 		this.articleService = articleService;
-		this.encheresService = encheresService;
-		this.enchere = enchere;
+		this.encheres = enchere;
 		
 
 	}
@@ -81,8 +80,8 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 		Article article = articleService.articleById(noArticle);
 		Utilisateur acheteur = utilisateurService.findUtilisateurById(2);
 		
-		if (encheresService.enchereValideSi(null, article, acheteur)) {
-			encheresService.SaveNewEnchere(enchere);
+		if (encheres.enchereValideSi(null, article, acheteur)) {
+			encheres.SaveNewEnchere(enchere);
 			
 			model.addAttribute("article", article);
 			model.addAttribute("encheres", enchere);
