@@ -1,5 +1,7 @@
 package fr.eni.groupe8.enchere.controller;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,20 +28,20 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 	private UtilisateurService utilisateurService;
 	private Utilisateur utilisateur;
 	private ArticlesService articleService;
-	private EncheresService encheresService;
-	private Enchere enchere;
+	private EncheresService encheres;
+	//private Enchere enchere;
 
 	@Autowired
 	public ArticlesController(ArticlesService service, CategorieService categorieService,
 			UtilisateurService utilisateurService, ArticlesService articleService,
-			EncheresService encheresService,Enchere enchere) {
+			EncheresService enchere/*,Enchere enchere*/) {
 
 		this.service = service;
 		this.categorieService = categorieService;
 		this.utilisateurService = utilisateurService;
 		this.articleService = articleService;
-		this.encheresService = encheresService;
-		this.enchere = enchere;
+		this.encheres = enchere;
+		//this.enchere = enchere;
 		
 
 	}
@@ -76,16 +78,18 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 	}
 
 	@PostMapping("/encherir")
-	public String encherir(@RequestParam("propositionAcheteur") Utilisateur propositionAcheteur, Integer noArticle,
-			Model model, Enchere enchere) {
+	public String encherir(@RequestParam("propositionAcheteur") BigDecimal montantEnchere, Integer noArticle,
+			Model model, Enchere enchere, Utilisateur utilisateur) {
 		Article article = articleService.articleById(noArticle);
 		Utilisateur acheteur = utilisateurService.findUtilisateurById(2);
 		
-		if (encheresService.enchereValideSi(null, article, acheteur)) {
-			encheresService.SaveNewEnchere(enchere);
+		
+		//if (encheresService.enchereValideSi(null, article, acheteur)) { // null doit représenter la proposition de l'acheteur// enchere.setMontantEnchere(propositionAcheteur);
+			if	(encheres.enchereValideSi(montantEnchere, article, acheteur)) {           //encheresService.enchereValideSi(enchere.getMontantEnchere(), article, acheteur);
+			encheres.SaveNewEnchere(enchere);
 			
-			model.addAttribute("article", article);
-			model.addAttribute("encheres", enchere);
+			model.addAttribute("article", article); // Pourquoi cette ligne?
+			model.addAttribute("encheres", enchere); // Pourquoi cette ligne?
 		}
 		
 		// A poursuivre // articleService.encherir(article, propositionAcheteur,
