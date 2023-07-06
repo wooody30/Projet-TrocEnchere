@@ -77,6 +77,8 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 
 		Article article = articleService.articleById(noArticle);
 		model.addAttribute("article", article);
+		model.addAttribute("montant", article.getPrixInitial());
+		System.out.println("detail articles");
 		return "detailArticle";
 	}
 
@@ -84,28 +86,29 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 	public String encherir(@ModelAttribute Enchere enchere, Integer noArticle, Model model, Principal principal) {
 
 		Article article = articleService.articleById(noArticle);
-
 		String email = principal.getName();
 		Utilisateur utilisateur = contexteService.findUtilisateurByEmail(email);
+		System.out.println("encherir utilisateur" + utilisateur);
 
 		if (encheres.enchereValideSi(enchere.getMontantEnchere(), article, utilisateur)) {
-
+			System.out.println("enchere valide si");
 			// Si il n'y a déjà une enchère
-			if (article.getPrixVente() != null) {
+			if (article.getPrixVente() == null) {
 
 				// Enchere enchere= new Enchere();
 
 				enchere.setMontantEnchere(enchere.getMontantEnchere());
 				enchere.setEncherisseur(utilisateur);
 				encheres.SaveNewEnchere(enchere);
+				System.out.println("if article null");
 			}
 
-			else
+			/*else
 				article.setPrixVente(enchere.getMontantEnchere());
+		*/}
 
-			return "redirect:/Acceuil";
+		return "redirect:/Acceuil";
 
-		}
 	}
 }
 

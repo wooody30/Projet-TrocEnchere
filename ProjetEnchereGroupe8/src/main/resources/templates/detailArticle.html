@@ -62,10 +62,8 @@
 					</tr>
 					<tr>
 						<th>Ma proposition :</th>
-					<!--<td><input type="text" id="propositionAcheteur"
-							name="propositionAcheteur" ></td>-->
-						<td><input type="text" id="propositionAcheteur"
-							name="montantEnchere" th:field="*{montantEnchere}"></td>
+						<td><input type="number" id="propositionAcheteur"
+							name="montantEnchere" th:value="${montant}"></td>
 					</tr>
 				</tbody>
 			</table>
