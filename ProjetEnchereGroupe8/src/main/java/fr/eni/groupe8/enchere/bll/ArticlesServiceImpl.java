@@ -2,6 +2,7 @@ package fr.eni.groupe8.enchere.bll;
 
 import java.util.List;
 
+import org.springframework.security.access.event.PublicInvocationEvent;
 import org.springframework.stereotype.Service;
 
 import fr.eni.groupe8.enchere.bo.Article;
@@ -40,7 +41,11 @@ public class ArticlesServiceImpl implements ArticlesService {
 		return articlesDAO.find(noArticle);
 
 	}
-
+	@Override
+	public Article articleByPrixVente(Integer prixVente) {
+		return articlesDAO.find(prixVente);
+	}
+	
 	@Override
 	public void encherir(Article noArticle, Utilisateur utilisateur) {
 		// TODO Auto-generated method stub

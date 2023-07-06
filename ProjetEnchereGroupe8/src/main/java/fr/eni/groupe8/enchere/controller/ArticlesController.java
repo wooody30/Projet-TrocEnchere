@@ -73,12 +73,14 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 	}
 
 	@GetMapping("/detailarticle")
-	public String detailArticle(Integer noArticle, Model model) {
-
+	public String detailArticle(Integer noArticle, Model model,Integer prixVente) {
+		
 		Article article = articleService.articleById(noArticle);
+		//Article prixV = articleService.articleByPrixVente(prixVente);
 		model.addAttribute("article", article);
 		model.addAttribute("montantEnchere", article.getPrixInitial());
-		System.out.println("detail articles");
+		System.out.println(article);
+		//System.out.println(prixV);
 		return "detailArticle";
 	}
 

@@ -16,6 +16,8 @@ public interface ArticlesService { // Interface de service pour la gestion des a
 
 	void encherir(Article noArticle, Utilisateur utilisateur);
 
+	Article articleByPrixVente(Integer prixVente);
+
 	// Article encherir();
 
 }
