@@ -24,8 +24,8 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 									// détails, etc.) {
 
 	private ArticlesService service;
-	private UtilisateurService utilisateurService;
 	private ContexteService contexteService;
+	private UtilisateurService utilisateurService;
 	private ArticlesService articleService;
 	private EncheresService encheres;
 
@@ -37,12 +37,20 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 		this.utilisateurService = utilisateurService;
 		this.articleService = articleService;
 		this.contexteService = contexteService;
+
 		// this.encheres = enchere;
 
 	}
 
 	@GetMapping({ "/NouvelleVente" })
-	public String afficherNouvelleVente(@ModelAttribute Article article) {
+	public String afficherNouvelleVente(@ModelAttribute Article article, Principal principal, Model model) {
+
+		/*
+		 * String email = principal.getName(); Utilisateur aCharger =
+		 * contexteService.findUtilisateurByEmail(email); model.addAttribute(aCharger);
+		 * ya quelque chose a creuser!
+		 */
+
 		System.out.println("mappingnewvente");
 		return "NouvelleVente";
 	}
@@ -73,63 +81,57 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 	}
 
 	@PostMapping("/encherir")
-	public String encherir(@ModelAttribute Enchere enchere, Integer noArticle, Model model,Principal principal) {
+	public String encherir(@ModelAttribute Enchere enchere, Integer noArticle, Model model, Principal principal) {
 
 		Article article = articleService.articleById(noArticle);
+
 		String email = principal.getName();
 		Utilisateur utilisateur = contexteService.findUtilisateurByEmail(email);
 
 		if (encheres.enchereValideSi(enchere.getMontantEnchere(), article, utilisateur)) {
 
-			
-			
 			// Si il n'y a déjà une enchère
-			if ( article.getPrixVente() != null) {
-			
-			 //Enchere enchere= new Enchere();
-			  
-			  enchere.setMontantEnchere(enchere.getMontantEnchere());
-			  enchere.setEncherisseur(utilisateur); 
-			  encheres.SaveNewEnchere(enchere);
+			if (article.getPrixVente() != null) {
+
+				// Enchere enchere= new Enchere();
+
+				enchere.setMontantEnchere(enchere.getMontantEnchere());
+				enchere.setEncherisseur(utilisateur);
+				encheres.SaveNewEnchere(enchere);
 			}
-			  
+
 			else
-			 article.setPrixVente(enchere.getMontantEnchere());
-			  
-			
-			  return "redirect:/Acceuil";
-			  
-			 
-			 
-			
+				article.setPrixVente(enchere.getMontantEnchere());
+
+			return "redirect:/Acceuil";
+
 		}
 	}
-	}
+}
 
-
-			  /*
-			 * @PostMapping("/encherir") public String
-			 * encherir(@RequestParam("montantEnchere") int montantEnchere, Integer
-			 * noArticle,
-			 * 
-			 * Model model, Enchere enchere, Principal principal) {
-			 * 
-			 * Article article = articleService.articleById(noArticle); String email =
-			 * principal.getName(); Utilisateur utilisateur =
-			 * contexteService.findUtilisateurByEmail(email);
-			 * 
-			 * if (encheres.enchereValideSi(montantEnchere, article, utilisateur)) {
-			 * 
-			 * article.setPrixVente(montantEnchere);
-			 * 
-			 * enchere.setMontantEnchere(montantEnchere); enchere.setNoArticle(article);
-			 * enchere.setEncherisseur(utilisateur); encheres.SaveNewEnchere(enchere);
-			 * 
-			 * //model.addAttribute("article", article); // Pourquoi cette ligne?
-			 * //model.addAttribute("encheres", enchere); // Pourquoi cette ligne? } // TODO
-			 * :Retrouver l'enchère existante si elle existe //Débiter le nouvel
-			 * enchérisseur // Recréditer l'ancien // Insérer une enchère dans la table
-			 * enchère
-			 * 
-			 * return "redirect:/Acceuil";
-			 */
+/*
+ * @PostMapping("/encherir") public String
+ * encherir(@RequestParam("montantEnchere") int montantEnchere, Integer
+ * noArticle,
+ * 
+ * Model model, Enchere enchere, Principal principal) {
+ * 
+ * Article article = articleService.articleById(noArticle); String email =
+ * principal.getName(); Utilisateur utilisateur =
+ * contexteService.findUtilisateurByEmail(email);
+ * 
+ * if (encheres.enchereValideSi(montantEnchere, article, utilisateur)) {
+ * 
+ * article.setPrixVente(montantEnchere);
+ * 
+ * enchere.setMontantEnchere(montantEnchere); enchere.setNoArticle(article);
+ * enchere.setEncherisseur(utilisateur); encheres.SaveNewEnchere(enchere);
+ * 
+ * //model.addAttribute("article", article); // Pourquoi cette ligne?
+ * //model.addAttribute("encheres", enchere); // Pourquoi cette ligne? } // TODO
+ * :Retrouver l'enchère existante si elle existe //Débiter le nouvel
+ * enchérisseur // Recréditer l'ancien // Insérer une enchère dans la table
+ * enchère
+ * 
+ * return "redirect:/Acceuil";
+ */

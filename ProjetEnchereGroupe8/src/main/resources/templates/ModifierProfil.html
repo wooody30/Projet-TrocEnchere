@@ -8,7 +8,7 @@
 <body>
 	<h1>ENI-Encheres</h1>
 	<h2>Mon Profil</h2>
-	<form th:action="@{/CreerCompte}" th:object="${utilisateur}"
+	<form th:action="@{/ModifierProfil}" th:object="${utilisateur}"
 		method="post">
 		<div class="MonProfil">
 			<label for="pseudo">Pseudo: </label> <input type="text"
@@ -43,23 +43,34 @@
 				th:field="*{ville}" required>
 		</div>
 		<div class="MonProfil">
-			<label for="mdp">Mot de passe </label> <input type="password"
+			<label for="mdp">Mot de passe actuel </label> <input type="password"
 				th:field="*{motDePasse}" required>
 		</div>
+		
+		<!--<div class="MonProfil">
+			<label for="mdp">Nouveau mot de passe</label> <input type="password"
+				th:field="*{motDePasse}" required>
+		</div>  -->
 
 		<!--<div class="MonProfil">
 			<label for="mdpConfirm">Confirmation: </label> <input type="password"
 				th:field="*{mdpConfirm}" required>
 		</div>-->
+		
+		<div class="MonProfil">
+			<label for="credit">Credit </label> <input type="text"
+				th:field="*{credit}" required>
+		</div>
 
 		<div class="bouton">
-			<button type="submit" value="Créer">Créer</button>
+			<button type="submit" value="Enregistrer">Enregistrer</button>
+			<button type="submit" value="Supprimer">Supprimer mon compte</button>
 		</div>
 	</form>
 
 	<form action="/Acceuil" method="get">
-    <button type="submit">Accueil</button>
-</form>
+		<button type="submit">Acceuil</button>
+	</form>
 
 
 </body>

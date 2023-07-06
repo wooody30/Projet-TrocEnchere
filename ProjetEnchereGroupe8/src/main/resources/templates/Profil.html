@@ -6,7 +6,7 @@
 <title>Mon Profile</title>
 </head>
 <body>
-	<h1>ENI-Encheres</h1>
+	<h1><a th:href="@{/AcceuilConnexion}">ENI-Encheres</a></h1>
 	<table class="table table-hover">
 		<tr>
 			<th>Pseudo:</th>
@@ -30,7 +30,11 @@
 		</tr>
 	</table>
 
-	<a th:href="@{/AcceuilConnexion}">Acceuil</a>
-	<a th:href="@{/CreerCompte}">Modifier</a>
+	<form action="/AcceuilConnexion" method="get">
+		<button type="submit">Acceuil</button>
+	</form>
+	<form action="/ModifierProfil" method="get">
+		<button type="submit">Modifier</button>
+	</form>
 </body>
 </html>
