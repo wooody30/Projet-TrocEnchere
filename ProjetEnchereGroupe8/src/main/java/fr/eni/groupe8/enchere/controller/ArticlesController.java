@@ -77,7 +77,7 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 
 		Article article = articleService.articleById(noArticle);
 		model.addAttribute("article", article);
-		model.addAttribute("montant", article.getPrixInitial());
+		model.addAttribute("montantEnchere", article.getPrixInitial());
 		System.out.println("detail articles");
 		return "detailArticle";
 	}
