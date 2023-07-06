@@ -55,6 +55,13 @@ public class UtilisateurController { // Contrôleur pour les fonctionnalités li
 
 		return "redirect:/AcceuilConnexion";
 	}
+	
+	@GetMapping("/ModifierProfil")
+	public String afficherModifierProfil(Model model) {
+		model.addAttribute("utilisateur", new Utilisateur());
+		System.out.println("mapping CreerCompte");
+		return "ModifierProfil";
+	}
 
 	@GetMapping("/annuler")
 	public String annuler() {

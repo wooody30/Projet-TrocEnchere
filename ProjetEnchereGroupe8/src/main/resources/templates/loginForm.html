@@ -27,7 +27,9 @@
 				passe oubliée</a>
 		</div>
 	</form>
-	<a th:href="@{/CreerCompte}">Créer un compte</a>
+	<form action="/CreerCompte" method="get">
+		<button type="submit">Créer un compte</button>
+	</form>
 </body>
 </html>
 

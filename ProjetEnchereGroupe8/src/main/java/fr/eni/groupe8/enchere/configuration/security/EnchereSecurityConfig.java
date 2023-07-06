@@ -21,10 +21,6 @@ public class EnchereSecurityConfig {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	// private final String SELECT_USER = "select email, mot_de_passe, 1 from
-	// UTILISATEURS where email=?";
-	// private final String SELECT_ROLES = "select email, 'admin' from UTILISATEURS
-	// where email=?";
 	private final String SELECT_USER = "select email, mot_de_passe, 1 from UTILISATEURS where ? IN (pseudo, email)";
 	private final String SELECT_ROLES = "select email, 'admin' from UTILISATEURS where ? IN (pseudo, email)";
 

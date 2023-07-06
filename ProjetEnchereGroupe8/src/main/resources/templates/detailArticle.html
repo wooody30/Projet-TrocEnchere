@@ -64,14 +64,16 @@
 							name="propositionAcheteur" ></td>-->
 						<td><input type="text" id="propositionAcheteur"
 							name="montantEnchere" th:field="*{montantEnchere}"></td>
-
 					</tr>
 				</tbody>
 			</table>
 			<button type="submit">Enchérir</button>
 		</div>
 	</form>
-	<a th:href="@{/AcceuilConnexion}">Acceuil</a>
+
+	<form action="/AcceuilConnexion" method="get">
+		<button type="submit">Acceuil</button>
+	</form>
 
 </body>
 </html>

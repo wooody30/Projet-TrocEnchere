@@ -6,7 +6,7 @@
 <title>Vente</title>
 </head>
 <body>
-	<h1>ENI-Encheres</h1>
+	<h1><a th:href="@{/AcceuilConnexion}">ENI-Encheres</a></h1>
 	<h2>Nouvelle vente</h2>
 	<span th:text="'user:'+${#authentication.principal}"></span>
 
@@ -61,27 +61,28 @@
 				<h3>Retrait :</h3>
 				<div>
 					<label for="rue">Rue :</label> <input type="text" id="rue"
-						name="rue" placeholder="Votre adresse" required>
+						name="rue" placeholder="Votre adresse" value="${utilisateur.rue}" required>
 				</div>
 				<div>
 					<label for="codepostal">Code postal :</label> <input type="text"
 						id="codepostal" name="codepostal" placeholder="Votre code postal"
-						required>
+						value="${utilisateur.codePostal}" required>
 				</div>
 				<div>
 					<label for="ville">Ville :</label> <input type="text" id="ville"
-						name="ville" placeholder="Votre ville" required>
+						name="ville" placeholder="Votre ville" value="${utilisateur.ville}" required>
 				</div>
 			</div>
 			<div>
 				<button type="submit">Enregistrer</button>
-				<button type="reset">Annuler</button>
 			</div>
-
-
 		</form>
+		<form action="/AcceuilConnexion" method="get">
+		<button type="submit">Annuler</button>
+	</form>
 	</div>
 
-	<a th:href="@{AcceuilConnexion}">Revenir à l'accueil</a>
+	
+	
 </body>
 </html>
