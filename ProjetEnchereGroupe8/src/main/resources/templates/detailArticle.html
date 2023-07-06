@@ -9,7 +9,7 @@
 	<h1>ENI-Encheres</h1>
 	<h2>Détail vente</h2>
 
-	<form action="@{/encherir}" th:object="${article}" method="post"
+	<form action="/encherir" th:object="${article}" method="post"
 		class="DetailVente">
 		<div class="DetailVente">
 
@@ -39,6 +39,8 @@
 					<tr>
 						<th>Meilleure offre :</th>
 						<td>A faire</td>
+						<!--<th>Meilleure offre :</th>
+						<td data-th-text="${enchere.montantEnchere}"></td>-->
 					</tr>
 
 					<tr>
@@ -60,7 +62,7 @@
 					</tr>
 					<tr>
 						<th>Ma proposition :</th>
-						<!--<td><input type="text" id="propositionAcheteur"
+					<!--<td><input type="text" id="propositionAcheteur"
 							name="propositionAcheteur" ></td>-->
 						<td><input type="text" id="propositionAcheteur"
 							name="montantEnchere" th:field="*{montantEnchere}"></td>

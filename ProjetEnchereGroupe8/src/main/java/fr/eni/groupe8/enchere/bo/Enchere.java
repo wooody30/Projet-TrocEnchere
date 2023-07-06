@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Enchere {
 
 	private LocalDateTime dateEnchere;
-	private int montantEnchere;
+	private Integer montantEnchere;
 	private Utilisateur encherisseur;
 	private Article noArticle;
 	private Integer noEnchere;
@@ -15,7 +15,7 @@ public class Enchere {
 
 	}
 
-	public Enchere(LocalDateTime dateEnchere, int montantEnchere, Utilisateur encherisseur, Article noArticle,
+	public Enchere(LocalDateTime dateEnchere, Integer montantEnchere, Utilisateur encherisseur, Article noArticle,
 			Integer noEnchere) {
 		super();
 		this.dateEnchere = dateEnchere;
@@ -37,7 +37,7 @@ public class Enchere {
 		return montantEnchere;
 	}
 
-	public void setMontantEnchere(int montantEnchere) {
+	public void setMontantEnchere(Integer montantEnchere) {
 		this.montantEnchere = montantEnchere;
 	}
 
