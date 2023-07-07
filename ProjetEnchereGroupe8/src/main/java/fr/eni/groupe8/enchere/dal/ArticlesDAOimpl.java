@@ -3,13 +3,13 @@ package fr.eni.groupe8.enchere.dal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-
 import fr.eni.groupe8.enchere.bo.Article;
 import fr.eni.groupe8.enchere.bo.Categorie;
 import fr.eni.groupe8.enchere.bo.Utilisateur;
@@ -19,8 +19,9 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 
 	private static final String FIND_ALL = "select no_article, nom_article,description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie  from ARTICLES_VENDUS";
 	private static final String INSERT = "insert into ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) values (:nom_article, :description, :date_debut_encheres, :date_fin_encheres, :prix_initial, :no_utilisateur, :no_categorie)";
-	private static final String UPDATE = "update ARTICLES_VENDUS set nom_article=:nom_article, description=:description, date_debut_encheres=:date_debut_encheres, date_fin_encheres=:date_fin_encheres, prix_initial=:prix_initial, no_utilisateur=:no_utilisateur, no_categorie=:no_categorie";
+//	private static final String UPDATE = "update ARTICLES_VENDUS set nom_article=:nom_article, description=:description, date_debut_encheres=:date_debut_encheres, date_fin_encheres=:date_fin_encheres, prix_initial=:prix_initial, no_utilisateur=:no_utilisateur, no_categorie=:no_categorie";
 	private static final String FIND_BY_ID = "select * from ARTICLES_VENDUS where no_article=:no_article";
+//	private static final String INSERT_RETRAITS = "insert into RETRAITS (rue, code_postal, ville) values (:rue, :code_postal, :ville)";
 
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -76,6 +77,7 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 
 	@Override
 	public void saveArticle(Article article) {
+		KeyHolder keyHolder = new GeneratedKeyHolder();
 
 		MapSqlParameterSource paramSrc = new MapSqlParameterSource("nom_article", article.getNomArticle());
 		paramSrc.addValue("no_utilisateur", article.getVendeur().getNoUtilisateur());
@@ -89,7 +91,19 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 		paramSrc.addValue("date_debut_encheres", article.getDateDebutEncheres());
 		paramSrc.addValue("date_fin_encheres", article.getDateFinEncheres());
 		System.out.println("saveArticle");
-		namedParameterJdbcTemplate.update(INSERT, paramSrc);
+		namedParameterJdbcTemplate.update(INSERT, paramSrc, keyHolder);
+		article.setNoArticle(keyHolder.getKey().intValue());
 
 	}
+
+	/*
+	 * @Override public void saveRetrait(Retrait retrait) { KeyHolder keyHolder =
+	 * new GeneratedKeyHolder(); MapSqlParameterSource paramSrc = new
+	 * MapSqlParameterSource("rue", retrait.getRue());
+	 * paramSrc.addValue("code_postal", retrait.getCode_postal());
+	 * paramSrc.addValue("ville", retrait.getVille());
+	 * namedParameterJdbcTemplate.update(INSERT_RETRAITS, paramSrc,keyHolder);
+	 * retrait.setNoArticle(keyHolder.getKey().intValue()); }
+	 */
+
 }

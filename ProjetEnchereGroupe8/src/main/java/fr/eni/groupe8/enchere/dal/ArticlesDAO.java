@@ -12,4 +12,6 @@ public interface ArticlesDAO {
 
 	Article find(Integer noArticle);
 
+	// void saveRetrait(Retrait retrait);
+
 }

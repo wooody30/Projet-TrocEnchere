@@ -3,14 +3,9 @@ package fr.eni.groupe8.enchere.controller;
 import java.security.Principal;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.security.Principal;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import fr.eni.groupe8.enchere.bll.UtilisateurService;
 import fr.eni.groupe8.enchere.bll.contexte.ContexteService;
 import fr.eni.groupe8.enchere.bo.Utilisateur;
@@ -21,19 +16,11 @@ import fr.eni.groupe8.enchere.bo.Utilisateur;
 public class ConnexionController {
 
 	private ContexteService service;
-	private UtilisateurService utilisateurService;
 
 	public ConnexionController(ContexteService service, UtilisateurService utilisateurService) {
 		this.service = service;
-		this.utilisateurService = utilisateurService;
 	}
 
-	// @GetMapping("/login")
-	// String login() {
-	// return "login";
-	// }
-
-	// @GetMapping("/login")
 	@GetMapping("/Connexion")
 
 	public String afficherConnexion() {
@@ -67,11 +54,5 @@ public class ConnexionController {
 
 		return "redirect:/AcceuilConnexion";
 	}
-
-	// Cette méthode met par défaut un nouveau membre en session
-	/*
-	 * @ModelAttribute("utilisateurEnSession") public Utilisateur membreEnSession()
-	 * { System.out.println("Add Attribut Session"); return new Utilisateur(); }
-	 */
 
 }

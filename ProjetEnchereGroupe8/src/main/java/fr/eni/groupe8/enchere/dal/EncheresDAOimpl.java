@@ -12,23 +12,23 @@ import fr.eni.groupe8.enchere.bo.Enchere;
 public class EncheresDAOimpl implements EncheresDAO {
 
 	private static final String INSERT = "insert into ENCHERES (no_utilisateur, no_article, date_enchere, montant_enchere) values (:no_utilisateur, :no_article, :date_enchere, :montant_enchere)";
-//	private static final String UPDATE = "update ENCHERES set no_utilisateur=:no_utilisateur, no_article=:no_article, date_enchere=:date_enchere, montant_enchere=:montant_enchere" ;
-										// Pas de NoEnchere dans la BDD
+
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	public void saveEnchere(Enchere enchere) {
 
-		//if (enchere.getNoEnchere() == null) {
-			// Insertion d'une nouvelle enchère
-			KeyHolder keyHolder = new GeneratedKeyHolder();
-			namedParameterJdbcTemplate.update(INSERT, new BeanPropertySqlParameterSource(enchere), keyHolder);
-			enchere.setNoEnchere(keyHolder.getKey().intValue());
-			System.out.println("Enchère insérée : " + enchere);
-		//} else {
-			// Mise à jour d'une enchère existante
-		//	namedParameterJdbcTemplate.update(UPDATE, new BeanPropertySqlParameterSource(enchere));
-			System.out.println("saveEnchere");
-		//}
+		// if (enchere.getNoEnchere() == null) {
+		// Insertion d'une nouvelle enchère
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		namedParameterJdbcTemplate.update(INSERT, new BeanPropertySqlParameterSource(enchere), keyHolder);
+		enchere.setNoEnchere(keyHolder.getKey().intValue());
+		System.out.println("Enchère insérée : " + enchere);
+		// } else {
+		// Mise à jour d'une enchère existante
+		// namedParameterJdbcTemplate.update(UPDATE, new
+		// BeanPropertySqlParameterSource(enchere));
+		System.out.println("saveEnchere");
+		// }
 	}
 }

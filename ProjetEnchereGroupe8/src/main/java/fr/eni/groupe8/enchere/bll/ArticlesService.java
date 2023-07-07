@@ -4,7 +4,6 @@ import java.util.List;
 
 import fr.eni.groupe8.enchere.bo.Article;
 import fr.eni.groupe8.enchere.bo.Utilisateur;
-import jakarta.validation.Valid;
 
 public interface ArticlesService { // Interface de service pour la gestion des articles.
 
@@ -17,6 +16,8 @@ public interface ArticlesService { // Interface de service pour la gestion des a
 	void encherir(Article noArticle, Utilisateur utilisateur);
 
 	Article articleByPrixVente(Integer prixVente);
+
+	// void ajouterRetrait(Retrait retrait);
 
 	// Article encherir();
 

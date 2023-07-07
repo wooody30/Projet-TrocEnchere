@@ -2,10 +2,7 @@ package fr.eni.groupe8.enchere.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
-
 import fr.eni.groupe8.enchere.bll.UtilisateurServiceImpl;
-
 import fr.eni.groupe8.enchere.bo.Utilisateur;
 
 //@Component

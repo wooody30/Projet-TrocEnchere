@@ -1,7 +1,5 @@
 package fr.eni.groupe8.enchere.bll;
 
-import java.math.BigDecimal;
-
 import org.springframework.stereotype.Service;
 
 import fr.eni.groupe8.enchere.bo.Article;
@@ -24,7 +22,8 @@ public class EncheresServiceImpl implements EncheresService {
 	public boolean enchereValideSi(int montantEnchere, Article article, Utilisateur utilisateur) {
 
 		// if enchere inferieur a montant return false
-		if (montantEnchere < (article.getPrixInitial())) { // TODO : prix intial si pas d'enchère sinon prix de la plus grande enchère
+		if (montantEnchere < (article.getPrixInitial())) { // TODO : prix intial si pas d'enchère sinon prix de la plus
+															// grande enchère
 			return false;
 		}
 		// if solde utilisateur inferieur a enchere return false

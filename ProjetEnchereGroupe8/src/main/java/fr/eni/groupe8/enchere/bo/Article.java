@@ -1,8 +1,6 @@
 package fr.eni.groupe8.enchere.bo;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class Article {
 	private int meilleurPrix;
 	private Utilisateur meilleurEncherisseur;
 
-	public Article() {
+	public Article() { //Constructeur vide
 
 	}
 
@@ -38,6 +36,22 @@ public class Article {
 		this.dateFinEncheres = dateFinEncheres;
 		this.heureDebutEnchere = heureDebutEnchere;
 		this.heureFinEnchere = heureFinEnchere;
+		this.prixInitial = prixInitial;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.vendeur = vendeur;
+		this.categorie = categorie;
+	}
+	
+	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
+			Categorie categorie) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
 		this.prixInitial = prixInitial;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
@@ -141,36 +155,6 @@ public class Article {
 		this.heureFinEnchere = heureFinEnchere;
 	}
 
-	@Override
-	public String toString() {
-		return "Article [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
-				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres
-				+ ", heureDebutEnchere=" + heureDebutEnchere + ", heureFinEnchere=" + heureFinEnchere + ", prixInitial="
-				+ prixInitial + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", vendeur=" + vendeur
-				+ ", categorie=" + categorie + "]";
-	}
-
-	public Article(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int prixInitial, int prixVente, Boolean etatVente, Utilisateur vendeur,
-			Categorie categorie) {
-		super();
-		this.noArticle = noArticle;
-		this.nomArticle = nomArticle;
-		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
-		this.prixInitial = prixInitial;
-		this.prixVente = prixVente;
-		this.etatVente = etatVente;
-		this.vendeur = vendeur;
-		this.categorie = categorie;
-	}
-
-	public void addAttribute(String string, List<Categorie> listCategorie) {
-		// TODO Auto-generated method stub
-
-	}
-
 	public int getMeilleurPrix() {
 		return meilleurPrix;
 	}
@@ -185,6 +169,21 @@ public class Article {
 
 	public void setMeilleurEncherisseur(Utilisateur meilleurEncherisseur) {
 		this.meilleurEncherisseur = meilleurEncherisseur;
+	}
+
+	@Override
+	public String toString() {
+		return "Article [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
+				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres
+				+ ", heureDebutEnchere=" + heureDebutEnchere + ", heureFinEnchere=" + heureFinEnchere + ", prixInitial="
+				+ prixInitial + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", vendeur=" + vendeur
+				+ ", categorie=" + categorie + "]";
+	}
+
+
+	public void addAttribute(String string, List<Categorie> listCategorie) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

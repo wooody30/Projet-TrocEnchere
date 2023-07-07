@@ -8,7 +8,7 @@
 <body>
 	<h1><a th:href="@{/AcceuilConnexion}">ENI-Encheres</a></h1>
 	<h2>Nouvelle vente</h2>
-	<span th:text="'user:'+${#authentication.principal}"></span>
+	<!--<span th:text="'user:'+${#authentication.principal}"></span>-->
 
 	<div class="NouvelleVente">
 
@@ -57,20 +57,20 @@
 					type="date" th:field="*{dateFinEncheres}" id="finenchere"
 					name="finenchere" placeholder="Date de fin de l'enchère" required>
 			</div>
-			<div>
+			<div th:object = "${retrait}">
 				<h3>Retrait :</h3>
 				<div>
 					<label for="rue">Rue :</label> <input type="text" id="rue"
-						name="rue" placeholder="Votre adresse" value="${utilisateur.rue}" required>
+						name="rue" placeholder="Votre adresse" th:field="*{rue}" required>
 				</div>
 				<div>
 					<label for="codepostal">Code postal :</label> <input type="text"
 						id="codepostal" name="codepostal" placeholder="Votre code postal"
-						value="${utilisateur.codePostal}" required>
+						th:field="*{code_postal}" required>
 				</div>
 				<div>
 					<label for="ville">Ville :</label> <input type="text" id="ville"
-						name="ville" placeholder="Votre ville" value="${utilisateur.ville}" required>
+						name="ville" placeholder="Votre ville" th:field="*{ville}" required>
 				</div>
 			</div>
 			<div>

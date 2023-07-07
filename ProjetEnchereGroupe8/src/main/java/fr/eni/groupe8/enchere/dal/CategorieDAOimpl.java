@@ -1,6 +1,5 @@
 package fr.eni.groupe8.enchere.dal;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;

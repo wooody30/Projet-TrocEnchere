@@ -1,6 +1,5 @@
 package fr.eni.groupe8.enchere.bo;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Enchere {
@@ -41,7 +40,6 @@ public class Enchere {
 		this.montantEnchere = montantEnchere;
 	}
 
-
 	public Article getNoArticle() {
 		return noArticle;
 	}
@@ -57,7 +55,6 @@ public class Enchere {
 	public void setEncherisseur(Utilisateur encherisseur) {
 		this.encherisseur = encherisseur;
 	}
-
 
 	public Integer getNoEnchere() {
 		return noEnchere;

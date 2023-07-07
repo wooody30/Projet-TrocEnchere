@@ -3,9 +3,7 @@ package fr.eni.groupe8.enchere.bo;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Utilisateur
-//implements UserDetails 
-{
+public class Utilisateur {
 
 	private Integer noUtilisateur;
 	private String pseudo;
@@ -151,10 +149,29 @@ public class Utilisateur
 		this.administrateur = administrateur;
 	}
 
+	// @Override
+	public String getPassword() {
+		return motDePasse;
+	}
+
+	// @Override
+	public String getUsername() {
+		return pseudo;
+	}
+
+	public BigDecimal getPropositionAcheteur() {
+		return propositionAcheteur;
+	}
+
+	public void setPropositionAcheteur(BigDecimal propositionAcheteur) {
+		this.propositionAcheteur = propositionAcheteur;
+	}
+
 	/**
 	 * Pour valider qu'un membre en session correspond à celui en base. Redéfinition
 	 * de la méthode equals sur toutes les propriétés sauf motDePasse.
 	 */
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -173,24 +190,6 @@ public class Utilisateur
 			return false;
 		Utilisateur other = (Utilisateur) obj;
 		return administrateur == other.administrateur && Objects.equals(pseudo, other.pseudo);
-	}
-
-	// @Override
-	public String getPassword() {
-		return motDePasse;
-	}
-
-	// @Override
-	public String getUsername() {
-		return pseudo;
-	}
-
-	public BigDecimal getPropositionAcheteur() {
-		return propositionAcheteur;
-	}
-
-	public void setPropositionAcheteur(BigDecimal propositionAcheteur) {
-		this.propositionAcheteur = propositionAcheteur;
 	}
 
 }

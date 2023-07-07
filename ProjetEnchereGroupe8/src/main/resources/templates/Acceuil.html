@@ -30,18 +30,19 @@
 	<table class="table table-hover">
 		<tr data-th-each="article: ${articles}">
 
-			<td data-th-text="${article.noArticle}"></td>
-			<td data-th-text="${article.nomArticle}"></td>
-			<td data-th-text="${article.description}"></td>
-			<td data-th-text="${article.dateDebutEncheres}"></td>
-			<td data-th-text="${article.dateFinEncheres}"></td>
-			<td data-th-text="${article.prixInitial}"></td>
-			<td data-th-text="${article.prixVente}"></td>
-			<td data-th-text="${article.categorie.libelle}"></td>
-			<td data-th-text="${article.vendeur.pseudo}"></td>
+			<th>Nom :</th>
 			<td><a
-				th:href="@{/detailarticle(noArticle=${article.noArticle})}">Voir
-					la vente</a>
+				th:href="@{/detailarticle(noArticle=${article.noArticle})}"
+				data-th-text="${article.nomArticle}"></a></td>
+			<th>Fin de l'enchère :</th>
+			<td data-th-text="${article.dateFinEncheres}"></td>
+			<th>Prix :</th>
+			<td data-th-text="${article.prixInitial}"></td>
+			<th>points</th>
+			<!--<td data-th-text="${article.prixVente}"></td>  -->
+			<th>Vendeur :</th>
+			<td data-th-text="${article.vendeur.pseudo}"></td>
+			
 		</tr>
 	</table>
 
