@@ -35,16 +35,16 @@ public class UtilisateurDAOimpl implements UtilisateurDAO {
 		System.out.println("findAllUtilisateurs");
 		return lstUtilisteur;
 	}
-
+/******************************************************************************************************/
 	// @Override
 	public Utilisateur readUtilisateur_email(String email) {
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue("email", email);
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource(); 
+		namedParameters.addValue("email", email); //l'email est ajouter a l'objet namedParameters avec la cle "email"
 		System.out.println("readUtilisateur_email");
-		return namedParameterJdbcTemplate.queryForObject(FIND_BY_EMAIL, namedParameters,
-				new BeanPropertyRowMapper<>(Utilisateur.class));
+		return namedParameterJdbcTemplate.queryForObject(FIND_BY_EMAIL, namedParameters, //execution le requette SQL 
+				new BeanPropertyRowMapper<>(Utilisateur.class)); //renvoi l'utilisateur trouver par la requettes 
 	}
-
+/**********************************************************************************************************/
 	public Utilisateur readUtilisateur(Integer noUtilisateur) {
 		Map<String, Object> params = new HashMap<>();
 		params.put("no_utilisateur", noUtilisateur);

@@ -47,17 +47,17 @@ public class UtilisateurController { // Contrôleur pour les fonctionnalités li
 
 		return "redirect:/AcceuilConnexion";
 	}
-
+/***************************************************************************************************/
 	@GetMapping("/profil")
 	public String profil(Model model, Principal principal) {
 
-		String email = principal.getName();
-		Utilisateur utilisateur = service.findUtilisateurByEmail(email);
-		model.addAttribute("utilisateur", utilisateur);
-		System.out.println(utilisateur);
+		String email = principal.getName(); //extraction de l'email de l'utilisateur 
+		Utilisateur utilisateur = service.findUtilisateurByEmail(email); // injection des info dans utilisateur
+		model.addAttribute("utilisateur", utilisateur); //injection des info dans le model
+		System.out.println(utilisateur); 
 		return "Profil";
 	}
-
+/****************************************************************************************************************/
 	@GetMapping("/ModifierProfil")
 	public String afficherModifierProfil(Model model) {
 		model.addAttribute("utilisateur", new Utilisateur());

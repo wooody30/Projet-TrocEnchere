@@ -2,6 +2,7 @@ package fr.eni.groupe8.enchere.controller;
 
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.InjectionMetadata;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,16 +34,16 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 		this.articleService = articleService;
 		this.contexteService = contexteService;
 	}
-
+/******************************************************************************************************/
 	@GetMapping({ "/NouvelleVente" })
 	public String afficherNouvelleVente(@ModelAttribute Article article, Principal principal, Model model) {
 		Retrait retrait = new Retrait();
 		String email = principal.getName();
-		Utilisateur aCharger = contexteService.findUtilisateurByEmail(email);
-		retrait.setRue(aCharger.getRue());
+		Utilisateur aCharger = contexteService.findUtilisateurByEmail(email); //recuperation de l'urilisateur par son email
+		retrait.setRue(aCharger.getRue()); //initialisation de retrait avec les info user
 		retrait.setCode_postal(aCharger.getCodePostal());
 		retrait.setVille(aCharger.getVille());
-		model.addAttribute("user", aCharger);
+		model.addAttribute("user", aCharger); // ajoues des objets au model 
 		model.addAttribute("retrait", retrait);
 		System.out.println("mappingnewvente");
 		return "NouvelleVente";
@@ -52,22 +53,22 @@ public class ArticlesController { // Contrôleur pour les fonctionnalités liée
 	public String ajouterVente(@ModelAttribute Article article, @ModelAttribute Retrait retrait, Integer noUtilisateur,
 			Principal principal) {
 
-		String email = principal.getName();
-		Utilisateur utilisateur = contexteService.findUtilisateurByEmail(email);
+		String email = principal.getName(); //injection de l'email utilisateur
+		Utilisateur utilisateur = contexteService.findUtilisateurByEmail(email); // recup des info user par find 
 		System.out.println("encherir utilisateur" + utilisateur);
 
-		article.setVendeur(utilisateur);
+		article.setVendeur(utilisateur); //injection des fichier user dans article
 		System.out.println("utilisateur associer a l'article");
 
-		service.ajouterArticle(article); // la meme rentrait
+		service.ajouterArticle(article); // la meme rentrait 
 		// service.ajouterRetrait(retrait);
 
-		retrait.setNoArticle(article.getNoArticle());
+		retrait.setNoArticle(article.getNoArticle()); //retrait est initialiser avec la valeurs de articles
 		System.out.println("mappingAjouterVente");
 		return "redirect:/AcceuilConnexion";
 
 	}
-
+/********************************************************************************************************/
 	@GetMapping("/detailarticle")
 	public String detailArticle(Integer noArticle, Model model, Integer prixVente) {
 

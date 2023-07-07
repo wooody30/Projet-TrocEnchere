@@ -12,6 +12,7 @@
 
 	<div class="NouvelleVente">
 
+		<!-- association du model au form -->
 		<form th:action="@{/ajouterVente}" th:object="${article}"
 			method="POST" enctype="multipart/form-data">
 
@@ -19,6 +20,7 @@
 				<label for="nomArticle">Article :</label> <input type="text"
 					th:field="*{nomArticle}" id="article" name="article"
 					placeholder="Nom de l'article" required>
+					<!-- th:field = liée les valeurs au form -->
 			</div>
 
 			<div class="article">

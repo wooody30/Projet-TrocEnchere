@@ -74,15 +74,16 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 		Article article = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, paramSrc, new ArticleRowMapper());
 		return article;
 	}
-
+/*******************************************************************************************************/
 	@Override
 	public void saveArticle(Article article) {
-		KeyHolder keyHolder = new GeneratedKeyHolder();
+		KeyHolder keyHolder = new GeneratedKeyHolder(); //stockage de la clé generee lors de l'insertion de l'article en SQL
 
-		MapSqlParameterSource paramSrc = new MapSqlParameterSource("nom_article", article.getNomArticle());
+		MapSqlParameterSource paramSrc = new MapSqlParameterSource("nom_article", article.getNomArticle()); //objet crée pour stocker les param de l'article
 		paramSrc.addValue("no_utilisateur", article.getVendeur().getNoUtilisateur());
 		paramSrc.addValue("description", article.getDescription());
 		paramSrc.addValue("no_categorie",
+				//les addValue ajoute les parametres un par un 
 
 				// TODO pas de categorie null notmalement puisquil ya une categorie NOT NULL
 				article.getCategorie() == null ? null : article.getCategorie().getNoCategorie());
@@ -93,7 +94,7 @@ public class ArticlesDAOimpl implements ArticlesDAO {
 		System.out.println("saveArticle");
 		namedParameterJdbcTemplate.update(INSERT, paramSrc, keyHolder);
 		article.setNoArticle(keyHolder.getKey().intValue());
-
+/************************************************************************************************************/
 	}
 
 	/*
