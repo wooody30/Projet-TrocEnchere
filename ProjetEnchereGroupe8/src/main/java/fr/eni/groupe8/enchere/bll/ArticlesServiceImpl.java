@@ -22,14 +22,15 @@ public class ArticlesServiceImpl implements ArticlesService {
 	public List<Article> findAllArticles() {
 		return articlesDAO.findAll();
 	}
-
+/****************************************************************************************************************************************/
 	@Override
 	public void ajouterArticle(Article article) {
 		articlesDAO.saveArticle(article);
 		System.out.println("saveArticle");
 
 	}
-
+/*****************************************************************************************************************************************/
+	
 	@Override
 	public Article articleById(Integer noArticle) {
 

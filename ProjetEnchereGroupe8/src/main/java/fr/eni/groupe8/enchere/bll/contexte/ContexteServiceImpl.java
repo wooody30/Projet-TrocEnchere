@@ -20,6 +20,7 @@ public class ContexteServiceImpl implements ContexteService {
 		return utilisateurDAO.readUtilisateur(noUtilisateur);
 	}
 
+/**********************************************************************************************************************************/	
 	@Override
 	public Utilisateur findUtilisateurByEmail(String email) {
 
@@ -27,3 +28,4 @@ public class ContexteServiceImpl implements ContexteService {
 	}
 
 }
+/******************************************************************************************************************************/
